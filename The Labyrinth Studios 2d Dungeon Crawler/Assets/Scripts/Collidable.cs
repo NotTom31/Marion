@@ -19,10 +19,10 @@ public class Collidable : MonoBehaviour
         boxCollider.OverlapCollider(filter, hits);
         for (int i = 0; i < hits.Length; i++)
         {
-            if (hits[1] == null)
+            if (hits[i] == null)
                 continue;
 
-            Debug.Log(hits[i].name);
+            OnCollide(hits[i]);
 
             // The array is not cleaned up, so we do it ourselves
             hits[i] = null;
