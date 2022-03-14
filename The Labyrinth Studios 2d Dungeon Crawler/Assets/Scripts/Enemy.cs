@@ -63,7 +63,7 @@ public class Enemy : Mover
             if (hits[1] == null)
                 continue;
 
-            if (hits[i].tag == "Figher" && hits[i].name == "Player")
+            if (hits[i].tag == "Figher" && hits[i].name == "player")
             {
                 collidingWithPlayer = true;
             }
