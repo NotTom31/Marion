@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Lever : Collectable
+public class DoorTakeInput : Collectable
 {
-    public Sprite onLever; 
-    public Sprite offLever;
-    public UnityEvent LeverOn;
-    public UnityEvent LeverOff;
+    public UnityEvent DoorOn;
+    public UnityEvent DoorOff;
     public UnityEvent ActivatePortal;
     protected override void OnCollect()
     {
@@ -17,18 +15,14 @@ public class Lever : Collectable
             if (!collected)
             {
                 collected = true;
-                GetComponent<SpriteRenderer>().sprite = onLever;
-                LeverOn.Invoke();
+                DoorOn.Invoke();
                 ActivatePortal.Invoke();
-                transform.localScale = Vector3.one;
             }
             else
             {
                 collected = false;
-                GetComponent<SpriteRenderer>().sprite = offLever;
-                LeverOff.Invoke();
+                DoorOff.Invoke();
                 ActivatePortal.Invoke();
-                transform.localScale = new Vector3(-1, 1, 1);
             }
         }
     }
