@@ -22,3 +22,24 @@ public class player : Mover
         UpdateMotor(new Vector3(x, y, 0));
     }
 }
+
+// suggestion for movement - jason
+/*
+// initializing variables 
+public float speed;
+Vector2 input;
+Rigidbody2D playerRigidbody;
+
+void Start()
+{
+    playerRigidbody = GetComponent<Rigidbody2D>();
+}
+
+void Update()
+{
+    input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+    playerRigidbody.AddForce(input * speed * Time.deltaTime);
+}
+*/
+// change speed value in Unity Editor
+// need to add Rigidbody 2D on player character
