@@ -26,7 +26,7 @@ public class player : Mover
 // suggestion for movement - jason
 /*
 // initializing variables 
-public float speed;
+public float Speed;
 Vector2 input;
 Rigidbody2D playerRigidbody;
 
