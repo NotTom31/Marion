@@ -21,11 +21,11 @@ public abstract class Mover : Fighter
         moveDelta = new Vector3(input.x * xSpeed, input.y * ySpeed, 0);
 
         //Swap sprite direction, whether you're moving right or left
-        if (moveDelta.x > 0)
+        /*if (moveDelta.x > 0)
             transform.localScale = Vector3.one;
         else if (moveDelta.x < 0)
             transform.localScale = new Vector3(-1, 1, 1);
-
+        */
         // Add push vector, if any
         moveDelta += pushDirection;
 
@@ -47,4 +47,5 @@ public abstract class Mover : Fighter
             transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
         }
     }
+    
 }
