@@ -6971,9 +6971,9 @@ GameObject:
   - component: {fileID: 882652518}
   - component: {fileID: 882652517}
   - component: {fileID: 882652521}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7079,7 +7079,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 882652516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.984, y: -0.246, z: 0}
+  m_LocalPosition: {x: -0.063, y: -0.008, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10018,6 +10018,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8950361561161730260, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8950361561161730267, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
       propertyPath: m_Size.x
       value: 0.17305851
@@ -10091,6 +10095,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8950361562287706818, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
+      propertyPath: chaseLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950361562287706818, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
+      propertyPath: triggerLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950361562287706818, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
       propertyPath: filter.layerMask.m_Bits
       value: 0
       objectReference: {fileID: 0}
@@ -10121,6 +10133,14 @@ PrefabInstance:
     - target: {fileID: 8950361562287706845, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
       propertyPath: m_Name
       value: enemy_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950361562287706845, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950361562287706845, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
+      propertyPath: m_TagString
+      value: Fighter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
