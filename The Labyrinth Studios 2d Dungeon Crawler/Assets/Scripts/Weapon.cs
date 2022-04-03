@@ -62,3 +62,6 @@ public class Weapon : Collidable
         anim.SetTrigger("Swing");
     }
 }
+
+
+//Testing
