@@ -17,6 +17,12 @@ public class player : Mover
             animator.SetFloat("Vertical", moveDelta.y);
             animator.SetFloat("Speed", moveDelta.sqrMagnitude);
 
+            if (Input.GetAxisRaw("Horizontal") ==  1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)
+            {
+                animator.SetFloat("LastHorizontal", Input.GetAxisRaw("Horizontal"));
+                animator.SetFloat("LastVertical", Input.GetAxisRaw("Vertical"));
+            }
+
         }
 
         UpdateMotor(new Vector3(x, y, 0));
