@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class player : Mover
 {
+    // Animator object
     public Animator animator;
 
    private void FixedUpdate()
