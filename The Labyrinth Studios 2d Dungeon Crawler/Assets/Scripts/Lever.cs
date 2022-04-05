@@ -12,7 +12,7 @@ public class Lever : Collectable
     public UnityEvent ActivatePortal;
     protected override void OnCollect()
     {
-        if (Input.GetKeyDown("f"))
+        if (Input.GetKeyDown("e"))
         {
             if (!collected)
             {
