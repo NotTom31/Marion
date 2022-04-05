@@ -7501,7 +7501,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   damagePoint: 1
-  pushForce: 2
+  pushForce: 0
   weaponLevel: 0
 --- !u!95 &809438435
 Animator:
@@ -7535,7 +7535,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02344495, y: -0.021816373}
+  m_Offset: {x: 0.108236805, y: -0.021816373}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7546,7 +7546,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1306938, y: 0.12365651}
+  m_Size: {x: 0.30027744, y: 0.12365651}
   m_EdgeRadius: 0
 --- !u!212 &809438437
 SpriteRenderer:
