@@ -80,4 +80,9 @@ public class Enemy : Mover
         //GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
     }
 
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        
+    }
+
 }
