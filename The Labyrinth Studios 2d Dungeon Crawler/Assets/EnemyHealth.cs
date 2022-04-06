@@ -18,7 +18,7 @@ public class EnemyHealth : MonoBehaviour
 
         // Play hurt animation if we have the hurt sprites
 
-        if(currentHealth <= 0)
+        if (Input.GetKeyDown("c"))
         {
             Die();
         }
