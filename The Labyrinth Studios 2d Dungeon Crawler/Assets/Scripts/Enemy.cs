@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : Mover
 {
+    
     // Experience
     public int xpValue = 1;
 
@@ -20,6 +21,7 @@ public class Enemy : Mover
     private BoxCollider2D hitbox;
     private Collider2D[] hits = new Collider2D[10];
 
+    
     protected override void Start()
     {
         base.Start();
@@ -78,11 +80,6 @@ public class Enemy : Mover
         Destroy(gameObject);
         //GameManager.instance.experience += xpValue;
         //GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
-    }
-
-    private void OnCollisionStay2D(Collision2D other)
-    {
-        
     }
 
 }
