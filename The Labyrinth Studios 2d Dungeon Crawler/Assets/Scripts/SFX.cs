@@ -7,7 +7,7 @@ public class SFX : MonoBehaviour
     public AudioSource footSteps;
     void Update()
     {
-        if ( Input.GetAxis("Horizontal") != 0)
+        if ( Input.GetAxis("Horizontal") == 0)
         {
             footSteps.Play();
         }
