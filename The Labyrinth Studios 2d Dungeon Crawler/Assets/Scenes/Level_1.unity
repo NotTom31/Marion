@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 648930848}
   - component: {fileID: 648930850}
   - component: {fileID: 648930849}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7438,6 +7438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lever
       objectReference: {fileID: 0}
+    - target: {fileID: 7010261023892868394, guid: 0578e5c14b68880479a66de79984c912, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0578e5c14b68880479a66de79984c912, type: 3}
 --- !u!1 &809438432
@@ -7678,6 +7682,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Key
       objectReference: {fileID: 0}
+    - target: {fileID: 5995566769453684037, guid: edd274e58ef3f9e43945d1d9361e0edf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5995566769453684153, guid: edd274e58ef3f9e43945d1d9361e0edf, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -7736,6 +7744,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2398441583490796097, guid: 0f2c88aeb08eb774a9bcfbfb203f36a7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8024690339884066551, guid: 0f2c88aeb08eb774a9bcfbfb203f36a7, type: 3}
       propertyPath: m_Name
       value: LockedDoor
@@ -7744,6 +7756,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8024690339884066552, guid: 0f2c88aeb08eb774a9bcfbfb203f36a7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 01277fa67a29c0643889c071d246f17d, type: 3}
     - target: {fileID: 8024690339884066555, guid: 0f2c88aeb08eb774a9bcfbfb203f36a7, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -8267,7 +8283,7 @@ GameObject:
   - component: {fileID: 1643947312}
   - component: {fileID: 1643947311}
   - component: {fileID: 1643947310}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8308,7 +8324,7 @@ MonoBehaviour:
         m_MethodName: SetParent
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 502216844}
+          m_ObjectArgument: {fileID: 6862585004051130386}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -30403,11 +30419,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8553901985322740016, guid: ec8a9551c4fbcac4f818689757e6fe5b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.716
+      value: 0.164
       objectReference: {fileID: 0}
     - target: {fileID: 8553901985322740016, guid: ec8a9551c4fbcac4f818689757e6fe5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.097
+      value: -3.82
       objectReference: {fileID: 0}
     - target: {fileID: 8553901985322740016, guid: ec8a9551c4fbcac4f818689757e6fe5b, type: 3}
       propertyPath: m_LocalPosition.z
