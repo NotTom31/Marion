@@ -7079,6 +7079,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 798191829}
+  attackPoint: {fileID: 0}
+  attackRange: 0.5
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!95 &798191829 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8553901985322740030, guid: ec8a9551c4fbcac4f818689757e6fe5b, type: 3}
@@ -8772,6 +8777,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5995566769453684038, guid: edd274e58ef3f9e43945d1d9361e0edf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 428b0c90d1aded640ae9307119824e89, type: 3}
     - target: {fileID: 5995566769453684153, guid: edd274e58ef3f9e43945d1d9361e0edf, type: 3}
       propertyPath: m_RootOrder
       value: 3
