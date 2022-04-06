@@ -8,6 +8,7 @@ public class playermovement : MonoBehaviour
     public float moveSpeed;
     Vector2 movement;
     public Animator animator;
+    public Transform attackArea;
 
     void Update()
     {
@@ -23,7 +24,24 @@ public class playermovement : MonoBehaviour
                 animator.SetFloat("LastHorizontal", Input.GetAxisRaw("Horizontal"));
                 animator.SetFloat("LastVertical", Input.GetAxisRaw("Vertical"));
             }
+
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            attackArea.localRotation = Quaternion.Euler(0, 0, 90);
         }
+        if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            attackArea.localRotation = Quaternion.Euler(0, 0, -90);
+        }
+        if (Input.GetAxisRaw("Vertical") > 0)
+        {
+            attackArea.localRotation = Quaternion.Euler(0, 0, 180);
+        }
+        if (Input.GetAxisRaw("Vertical") < 0)
+        {
+            attackArea.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+    }
     
     private void FixedUpdate()
     {
