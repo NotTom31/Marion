@@ -14,6 +14,10 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
+        if(health > numOfHearts)
+        {
+            health = numOfHearts;
+        }
         for (int i = 0; i < hearts.Length; i++)
         {
             if(i<health)
