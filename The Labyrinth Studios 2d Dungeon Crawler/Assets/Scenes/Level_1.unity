@@ -34327,6 +34327,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8950361561161730267, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
+      propertyPath: m_Size.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950361561161730267, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8950361562287706816, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -34345,11 +34353,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8950361562287706817, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.17
+      value: -5.154
       objectReference: {fileID: 0}
     - target: {fileID: 8950361562287706817, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.642
+      value: -0.636
       objectReference: {fileID: 0}
     - target: {fileID: 8950361562287706817, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34384,6 +34392,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8950361562287706818, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950361562287706818, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
       propertyPath: chaseLength
       value: 0.5
       objectReference: {fileID: 0}
@@ -34393,11 +34405,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8950361562287706819, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
       propertyPath: m_Size.x
-      value: 0.09942269
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8950361562287706819, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
       propertyPath: m_Size.y
-      value: 0.091305435
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8950361562287706819, guid: c27c5987e896e6e4caa971b2c3b12946, type: 3}
       propertyPath: m_Offset.x
@@ -35194,7 +35206,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  attackRange: 0.14
+  attackRange: 0.17
   attackDamage: 40
 --- !u!4 &6862585004051130386 stripped
 Transform:
