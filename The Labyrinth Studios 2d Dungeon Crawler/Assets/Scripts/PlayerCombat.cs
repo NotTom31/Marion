@@ -18,6 +18,12 @@ public class PlayerCombat : MonoBehaviour
             Attack();
         }
 
+        //the code below checks to play the correct attack animation based off of last input
+        if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)
+        {
+            animator.SetFloat("LastAttackHorizontal", Input.GetAxisRaw("Horizontal"));
+            animator.SetFloat("LastAttackVertical", Input.GetAxisRaw("Vertical"));
+        }
     }
 
     void Attack()
