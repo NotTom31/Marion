@@ -9,7 +9,7 @@ public class playermovement : MonoBehaviour
     public float moveSpeed;
     Vector2 movement;
     public Animator animator;
-    public Transform attackArea;
+    public Transform interactor;
 
     // Code below belongs in player script, but cannot be applied to player
     public int health;
@@ -71,19 +71,19 @@ public class playermovement : MonoBehaviour
 
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            attackArea.localRotation = Quaternion.Euler(0, 0, 90);
+            interactor.localRotation = Quaternion.Euler(0, 0, 90);
         }
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            attackArea.localRotation = Quaternion.Euler(0, 0, -90);
+            interactor.localRotation = Quaternion.Euler(0, 0, -90);
         }
         if (Input.GetAxisRaw("Vertical") > 0)
         {
-            attackArea.localRotation = Quaternion.Euler(0, 0, 180);
+            interactor.localRotation = Quaternion.Euler(0, 0, 180);
         }
         if (Input.GetAxisRaw("Vertical") < 0)
         {
-            attackArea.localRotation = Quaternion.Euler(0, 0, 0);
+            interactor.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
     
