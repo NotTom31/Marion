@@ -10168,6 +10168,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffa0517e95c81e4887bd029e4ad233d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1378633063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378633056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e702944ff016870418491e1410d35859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &1426902651
 GameObject:
   m_ObjectHideFlags: 0
@@ -35180,7 +35193,7 @@ MonoBehaviour:
   attackPoint: {fileID: 1660462736}
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   attackRange: 0.14
   attackDamage: 40
 --- !u!4 &6862585004051130386 stripped
