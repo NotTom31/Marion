@@ -12,16 +12,16 @@ public class DoorTakeInput : Collectable
     {
         if (Input.GetKeyDown("e"))
         {
-            if (!collected)
+            if (!collected) 
             {
                 collected = true;
-                DoorOn.Invoke();
+                DoorOn.Invoke(); //runs the unity events to disable the door
                 ActivatePortal.Invoke();
             }
             else
             {
                 collected = false;
-                DoorOff.Invoke();
+                DoorOff.Invoke(); //enables the door
                 ActivatePortal.Invoke();
             }
         }

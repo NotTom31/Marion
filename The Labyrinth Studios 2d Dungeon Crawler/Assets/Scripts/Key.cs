@@ -9,10 +9,10 @@ public class Key : Collectable
 
     protected override void OnCollect()
     {
-        if (!collected)
+        if (!collected) 
         {
             collected = true;
-            KeyCollect.Invoke();
+            KeyCollect.Invoke(); //runs the unity event to unlock whatever the key is linked to
         }
     }
 

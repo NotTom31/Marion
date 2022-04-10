@@ -17,18 +17,18 @@ public class Lever : Collectable
             if (!collected)
             {
                 collected = true;
-                GetComponent<SpriteRenderer>().sprite = onLever;
-                LeverOn.Invoke();
-                ActivatePortal.Invoke();
-                transform.localScale = Vector3.one;
+                GetComponent<SpriteRenderer>().sprite = onLever; 
+                LeverOn.Invoke(); //run unity events
+                ActivatePortal.Invoke(); //activate a warp if we want
+                transform.localScale = Vector3.one; //flip the sprite
             }
             else
             {
                 collected = false;
-                GetComponent<SpriteRenderer>().sprite = offLever;
-                LeverOff.Invoke();
-                ActivatePortal.Invoke();
-                transform.localScale = new Vector3(-1, 1, 1);
+                GetComponent<SpriteRenderer>().sprite = offLever; //if we ever get an off lever sprite this will change the sprite instead of mirroring it
+                LeverOff.Invoke(); //run unity events
+                ActivatePortal.Invoke(); 
+                transform.localScale = new Vector3(-1, 1, 1); //flip the sprite
             }
         }
     }
