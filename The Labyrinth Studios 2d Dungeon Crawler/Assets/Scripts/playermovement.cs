@@ -69,6 +69,7 @@ public class playermovement : MonoBehaviour
             }
         }
         // Code above belongs in player script file
+        movement = Vector2.zero;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
