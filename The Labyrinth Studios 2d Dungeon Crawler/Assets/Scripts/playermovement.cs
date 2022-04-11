@@ -44,9 +44,8 @@ public class playermovement : MonoBehaviour
     {
         if (health <= 0)
         {
-
             PlayerDied.Invoke();
-            Debug.Log("Player Died");
+            Debug.Log("Player Died"); //this runs every frame and gets stuck once you game over
         }
 
         // Code below belongs in player script file
