@@ -42,6 +42,13 @@ public class PlayerCombat : MonoBehaviour
             attackPoint.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Fighter"))
+        {
+            other.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+        }
+    }
 
     void Attack()
     { 
@@ -57,6 +64,9 @@ public class PlayerCombat : MonoBehaviour
             Debug.Log("We hit" + enemy.name);
             enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
         }
+
+        
+
     }
 
     void OnDrawGizmosSelected()

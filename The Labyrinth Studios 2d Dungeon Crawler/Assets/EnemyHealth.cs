@@ -11,11 +11,11 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
-
+    
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
+        Debug.Log("Enemy hit!");
         // Play hurt animation if we have the hurt sprites
 
         if (currentHealth <= 0)
