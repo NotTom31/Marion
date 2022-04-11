@@ -34,6 +34,7 @@ public class playermovement : MonoBehaviour
             
             PlayerDied.Invoke();
             Debug.Log("Player Died");
+            gameObject.GetComponent<GameOver>().Death();
         }
     }
 
@@ -42,12 +43,6 @@ public class playermovement : MonoBehaviour
     // Code above belongs in player, but player script is not applied to player yet
     void Update()
     {
-        if (health <= 0)
-        {
-            PlayerDied.Invoke();
-            Debug.Log("Player Died"); //this runs every frame and gets stuck once you game over
-        }
-
         // Code below belongs in player script file
         if (health > numOfHearts)
         {
@@ -109,4 +104,5 @@ public class playermovement : MonoBehaviour
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
+   
 }

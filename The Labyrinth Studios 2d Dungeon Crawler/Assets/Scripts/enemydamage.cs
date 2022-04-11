@@ -10,7 +10,7 @@ public class enemydamage : MonoBehaviour
 
     void Start()
     {
-        enemyRigidbody = GetComponent<Rigidbody2D>();
+        enemyRigidbody = GetComponent<Rigidbody2D>(); 
     }
 
     void Update()
@@ -36,3 +36,4 @@ public class enemydamage : MonoBehaviour
         }
     }
 }
+
