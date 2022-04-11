@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameOver : MonoBehaviour
 {
@@ -12,30 +13,36 @@ public class GameOver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("f")) //needs to be changed to if player 0 health 
-        {
-            if (GameIsOver)
-            {
-                Resume(); 
-            }
-            else
-            {
-                Pause();
-            }
-
-        }
+        //if (Input.GetKeyDown("f")) //needs to be changed to if player 0 health 
     }
 
-    public void Resume()
+    public void GameStatus()
+    {
+        /*GameIsOver = true;
+        if (GameIsOver)
+        {*/
+           
+            Death();
+            Debug.Log("Loading game over screen...");
+        //}
+       /*else
+        {
+            Alive();
+            Debug.Log("resume");
+        }*/
+    }
+
+
+    public void Alive()
     {
         gameOverMenuUI.SetActive(false);  //hides the menu
         Time.timeScale = 1f; //unfreeze time
         GameIsOver = false;
     }
 
-    void Pause()
+    void Death()
     {
-        gameOverMenuUI.SetActive(true); //shows the pause menu
+        gameOverMenuUI.SetActive(true); //shows the death menu
         Time.timeScale = 0f; //freeze time
         GameIsOver = true;
     }
