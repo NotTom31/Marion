@@ -101,6 +101,15 @@ MonoBehaviour:
   rb: {fileID: 8553901985322740021}
   moveSpeed: 1.25
   animator: {fileID: 8553901985322740030}
+  interactor: {fileID: 0}
+  PlayerDied:
+    m_PersistentCalls:
+      m_Calls: []
+  health: 0
+  numOfHearts: 0
+  hearts: []
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
 --- !u!50 &8553901985322740021
 Rigidbody2D:
   serializedVersion: 4

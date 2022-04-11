@@ -13,6 +13,7 @@ public class Key : Collectable
         {
             collected = true;
             KeyCollect.Invoke(); //runs the unity event to unlock whatever the key is linked to
+            Debug.Log("Key Grab");
         }
     }
 

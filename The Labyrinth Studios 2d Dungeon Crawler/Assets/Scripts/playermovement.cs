@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class playermovement : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class playermovement : MonoBehaviour
     Vector2 movement;
     public Animator animator;
     public Transform interactor;
+    public UnityEvent PlayerDied;
 
     // Code below belongs in player script, but cannot be applied to player
     public int health;
@@ -21,8 +23,18 @@ public class playermovement : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        Debug.Log("Lose heart");
+        if (health > 0)
+        {
+            
+            health -= damage;
+            Debug.Log("Lose heart");
+        }
+        else if (health <= 0)
+        {
+            
+            PlayerDied.Invoke();
+            Debug.Log("Player Died");
+        }
     }
 
     
@@ -30,6 +42,13 @@ public class playermovement : MonoBehaviour
     // Code above belongs in player, but player script is not applied to player yet
     void Update()
     {
+        if (health <= 0)
+        {
+
+            PlayerDied.Invoke();
+            Debug.Log("Player Died");
+        }
+
         // Code below belongs in player script file
         if (health > numOfHearts)
         {
