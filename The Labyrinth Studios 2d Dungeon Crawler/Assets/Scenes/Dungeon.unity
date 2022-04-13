@@ -8821,6 +8821,7 @@ GameObject:
   - component: {fileID: 1258485636}
   - component: {fileID: 1258485635}
   - component: {fileID: 1258485637}
+  - component: {fileID: 1258485638}
   m_Layer: 7
   m_Name: Pressure_Plate
   m_TagString: Untagged
@@ -8919,6 +8920,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1258485638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258485634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1241adeeab6fb4baad95e001777d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1305581672
 GameObject:
   m_ObjectHideFlags: 0
@@ -9180,11 +9193,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8553901985322740016, guid: ec8a9551c4fbcac4f818689757e6fe5b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.286
+      value: -0.046
       objectReference: {fileID: 0}
     - target: {fileID: 8553901985322740016, guid: ec8a9551c4fbcac4f818689757e6fe5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.196
+      value: -1.011
       objectReference: {fileID: 0}
     - target: {fileID: 8553901985322740016, guid: ec8a9551c4fbcac4f818689757e6fe5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9655,6 +9668,8 @@ MonoBehaviour:
           m_StringArgument: InteractableInFront
           m_BoolArgument: 0
         m_CallState: 2
+  LastFacingHorizontal: 0
+  LastFacingVertical: 0
 --- !u!61 &1864111660
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9740,7 +9755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864111658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.306, y: -1.47, z: 0}
+  m_LocalPosition: {x: -0.523, y: -1.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -13604,6 +13604,8 @@ MonoBehaviour:
           m_StringArgument: InteractableInFront
           m_BoolArgument: 0
         m_CallState: 2
+  LastFacingHorizontal: 0
+  LastFacingVertical: 0
 --- !u!61 &1643947311
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38911,11 +38913,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8553901985322740016, guid: ec8a9551c4fbcac4f818689757e6fe5b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.17
+      value: 0.218
       objectReference: {fileID: 0}
     - target: {fileID: 8553901985322740016, guid: ec8a9551c4fbcac4f818689757e6fe5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.75
+      value: -2.47
       objectReference: {fileID: 0}
     - target: {fileID: 8553901985322740016, guid: ec8a9551c4fbcac4f818689757e6fe5b, type: 3}
       propertyPath: m_LocalPosition.z
