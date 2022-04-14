@@ -6,7 +6,7 @@ using UnityEngine.UI;
 // Script is for a base enemy class, this will be the parent class to each enemy type's own script file
 public class BaseEnemy : MonoBehaviour
 {
-    // Setting variables for enemy combat
+
     public float maxHealth;
     protected float health;
     public Image healthImage;
@@ -14,31 +14,36 @@ public class BaseEnemy : MonoBehaviour
     public float runSpeed;
     public float chaseRange;
     public float attackRange;
-
-    // Setting enemy states (enemies will always be in "move" state by default
     public enum enemystates { move, chase, attack }
     public enemystates currentState = enemystates.move;
-    public float rayLength;
-
     protected Rigidbody2D enemyRigidbody;
 
-    protected PlayerCombat player;
+    public LayerMask wallLayer;
+    public float rayLength;
 
-    // Attack CD
+    public int direction; // 1 right, -1 left
+
+    protected SpriteRenderer rend;
+
+    protected float distance;
+    protected playermovement player;
+
     public float timeBetweenAttacks;
-    protected float attackCooldown;
+    protected float attackCools;
 
     protected Animator anim;
-
     private void OnEnable()
     {
         health = maxHealth;
-        attackCooldown = timeBetweenAttacks;
+        direction = (Random.value >= 0.5f) ? 1 : -1;
+        attackCools = timeBetweenAttacks;
     }
+
     void Awake()
     {
         enemyRigidbody = GetComponent<Rigidbody2D>();
-        player = FindObjectOfType<PlayerCombat>();
+        rend = GetComponent<SpriteRenderer>();
+        player = FindObjectOfType<playermovement>();
         anim = GetComponent<Animator>();
     }
 
@@ -51,6 +56,7 @@ public class BaseEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        rend.flipX = (direction == -1);
         switch (currentState)
         {
             case enemystates.move:
@@ -63,5 +69,8 @@ public class BaseEnemy : MonoBehaviour
                 Attack();
                 break;
         }
+
+        if (attackCools > 0) attackCools -= Time.deltaTime;
+        healthImage.fillAmount = health / maxHealth;
     }
 }
