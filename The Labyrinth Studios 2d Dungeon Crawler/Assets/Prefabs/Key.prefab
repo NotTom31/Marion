@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5995566769453684038}
   - component: {fileID: 5995566769453684039}
   - component: {fileID: 5995566769453684036}
+  - component: {fileID: 1824681547162873700}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -789466897
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 428b0c90d1aded640ae9307119824e89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -199,3 +200,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1824681547162873700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5995566769453684037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000a592b36e0dd4136eefb0f1d021a0b16e4f37a50b41bffcc7
+  m_ShapePath:
+  - {x: -0.12, y: -0.12, z: 0}
+  - {x: 0.12, y: -0.12, z: 0}
+  - {x: 0.12, y: 0.12, z: 0}
+  - {x: -0.12, y: 0.12, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -235682
