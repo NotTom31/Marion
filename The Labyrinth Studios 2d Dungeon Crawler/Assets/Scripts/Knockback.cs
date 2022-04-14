@@ -10,27 +10,27 @@ public class Knockback : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Fighter"))
+        if(other.gameObject.CompareTag("enemy"))
         {
-            Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();//initializes code with the enemy
-            if (enemy != null)//if enemy is still alive
+            Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
+            if (enemy != null)
             {
-
-                Vector2 difference = enemy.transform.position - transform.position;//causes the knockback of enemy
-                difference = difference.normalized * thrust;//controls the force of the knockback
-                enemy.AddForce(difference, ForceMode2D.Impulse);//is the force of the knockback
-                StartCoroutine(KnockCo(enemy));//see below
+                enemy.isKinematic = false;
+                Vector2 difference = enemy.transform.position = transform.position;
+                difference = difference.normalized * thrust;
+                enemy.AddForce(difference, ForceMode2D.Impulse);
+                StartCoroutine(KnockCo(enemy));
             }
         }
     }
 
     private IEnumerator KnockCo(Rigidbody2D enemy)
     {
-        if (enemy != null)//if enemy is still alive
+        if (enemy != null)
         {
-            yield return new WaitForSeconds(knockTime);//how long the knockback happens
-           
-            enemy.velocity = Vector2.zero;//stops the knockback
+            yield return new WaitForSeconds(knockTime);
+            enemy.velocity = Vector2.zero;
+            enemy.isKinematic = true;
         }
     }
 
