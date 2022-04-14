@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 8950361562287706816}
   - component: {fileID: 8950361562287706819}
   - component: {fileID: 8950361562287706818}
+  - component: {fileID: 2563532365378961121}
   m_Layer: 9
   m_Name: enemy_0
   m_TagString: Fighter
@@ -160,7 +161,7 @@ SpriteRenderer:
   m_SortingLayerID: 1250474913
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -3882825222101988194, guid: bc5ee75fb64885c48ab8348f7cfffb18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -188,7 +189,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.2}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -229,3 +230,29 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+--- !u!114 &2563532365378961121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8950361562287706845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000a592b36e0dd4136eefb0f1d021a0b16e4f37a50b41bffcc7
+  m_ShapePath:
+  - {x: -0.056523323, y: -0.044836182, z: 0}
+  - {x: 0.054653168, y: -0.04296622, z: 0}
+  - {x: 0.0574584, y: 0.06540574, z: 0}
+  - {x: -0.056990862, y: 0.063535795, z: 0}
+  m_ShapePathHash: -1827538275
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 76216

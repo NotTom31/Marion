@@ -47,6 +47,9 @@ TagManager:
   - name: Floor
     uniqueID: 1857262245
     locked: 0
+  - name: Shadow
+    uniqueID: 1846793229
+    locked: 0
   - name: Interactable
     uniqueID: 3505500399
     locked: 0
