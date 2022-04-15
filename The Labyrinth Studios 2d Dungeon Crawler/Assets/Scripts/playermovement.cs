@@ -24,10 +24,15 @@ public class playermovement : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (health > 0)
-        {
-            
+        {            
             health -= damage;
             Debug.Log("Lose heart");
+            if(health == 0)
+            {
+                PlayerDied.Invoke();
+                Debug.Log("Player Died");
+                gameObject.GetComponent<GameOver>().Death();
+            }
         }
         else if (health <= 0)
         {
@@ -37,9 +42,6 @@ public class playermovement : MonoBehaviour
             gameObject.GetComponent<GameOver>().Death();
         }
     }
-
-    
-
     // Code above belongs in player, but player script is not applied to player yet
     void Update()
     {
@@ -72,7 +74,11 @@ public class playermovement : MonoBehaviour
         movement = Vector2.zero;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-
+        
+        if(movement != Vector2.zero)
+        {
+            moveCharacter();
+        }
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
@@ -101,7 +107,7 @@ public class playermovement : MonoBehaviour
         }
     }
     
-    private void FixedUpdate()
+    private void moveCharacter()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }

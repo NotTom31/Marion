@@ -46,7 +46,11 @@ public class PlayerCombat : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Fighter"))
         {
-            other.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+            if (other != null)
+            {
+                other.GetComponent<Enemy1>().TakeDamage(attackDamage);
+            }
+            
         }
     }
 
@@ -56,14 +60,14 @@ public class PlayerCombat : MonoBehaviour
         animator.SetTrigger("Attack");
 
         //detect enemies in range of attack
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        //Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
         //damage them
-        foreach(Collider2D enemy in hitEnemies)
+        /*foreach(Collider2D enemy in hitEnemies)
         {
             Debug.Log("We hit" + enemy.name);
-            enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
-        }
+            enemy.GetComponent<Enemy1>().TakeDamage(attackDamage);
+        }*/
 
         
 
