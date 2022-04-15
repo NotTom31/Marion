@@ -16,6 +16,7 @@ public class DoorTakeInput : Collectable
             {
                 collected = true;
                 DoorOn.Invoke(); //runs the unity events to disable the door
+                GameObject.Find("Door Open SFX").GetComponent<AudioSource>().Play();//plays open door sfx
                 ActivatePortal.Invoke();
             }
             else

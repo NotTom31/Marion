@@ -29,8 +29,8 @@ public class Enemy1 : MonoBehaviour
     }
     public void TakeDamage(int damageTaken)
     {
+        GameObject.Find("Hit Sfx").GetComponent<AudioSource>().Play();
         health -= damageTaken;        // Play hurt animation if we have the hurt sprites
-
         if (health <= 0)
         {
             Die();

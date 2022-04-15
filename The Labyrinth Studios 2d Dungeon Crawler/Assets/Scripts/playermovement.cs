@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System.Security.Cryptography.X509Certificates;
 
 public class playermovement : MonoBehaviour
 {
@@ -20,13 +21,13 @@ public class playermovement : MonoBehaviour
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
-
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage)//this is where the player takes damage, needs to be moved out of playermovement
     {
         if (health > 0)
-        {            
+        {
+            GameObject.Find("Hit Sfx").GetComponent<AudioSource>().Play();
             health -= damage;
-            Debug.Log("Lose heart");
+            StartCoroutine(playerBlink(this.gameObject));            
             if(health == 0)
             {
                 PlayerDied.Invoke();
@@ -107,9 +108,29 @@ public class playermovement : MonoBehaviour
         }
     }
     
-    private void moveCharacter()
+    private void moveCharacter()//actually moves the player
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
-   
+
+    private IEnumerator playerBlink(GameObject other)//Coroutine to make the player blink whenever the player takes damage
+        //this code can probably be improved
+    {
+        other.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(.1f);
+        other.GetComponent<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(.1f);
+        other.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(.1f);
+        other.GetComponent<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(.1f);
+        other.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(.1f);
+        other.GetComponent<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(.1f);
+        other.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(.1f);
+        other.GetComponent<SpriteRenderer>().enabled = true;
+
+    }
 }
