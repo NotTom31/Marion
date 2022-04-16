@@ -21,15 +21,15 @@ public class GameOver : MonoBehaviour
         /*GameIsOver = true;
         if (GameIsOver)
         {*/
-           
-            Death();
-            Debug.Log("Loading game over screen...");
+
+        Death();
+        Debug.Log("Loading game over screen...");
         //}
-       /*else
-        {
-            Alive();
-            Debug.Log("resume");
-        }*/
+        /*else
+         {
+             Alive();
+             Debug.Log("resume");
+         }*/
     }
 
 
@@ -41,12 +41,14 @@ public class GameOver : MonoBehaviour
     }
 
     public void Death()
-    {     
-        gameOverMenuUI.SetActive(true); //shows the death menu
+    {
+        gameOverMenuUI.SetActive(true); //shows the death menu        
         Time.timeScale = 0f; //freeze time
+        Debug.Log("YUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUP");
         GameIsOver = true;
-        gameObject.GetComponent<playermovement>().health = 3;
+        gameObject.GetComponent<Player>().currentHealth = 3;
         
+
     }
 
     public void LoadMenu()
@@ -64,7 +66,7 @@ public class GameOver : MonoBehaviour
     }
     public void LoadGame() //sends you back to be the beginning of the game on game over
     {
-        Time.timeScale = 1f; 
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Dungeon"); //we will probably change this to send to start of current level or a checkpoint depending on how difficult we want the game
         Debug.Log("Loading Dungeon...");
         GameIsOver = false;
