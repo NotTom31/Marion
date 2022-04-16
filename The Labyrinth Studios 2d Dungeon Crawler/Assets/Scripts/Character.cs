@@ -39,8 +39,12 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
         if (temp.GetComponent<Character>().currentHealth > 0)//check if they still have health
         {
             StartCoroutine(Invincibility());
+            if (obj.CompareTag("Player"))//Player damaged, will  run the blink routine
+            {
+                StartCoroutine(temp.GetComponent<Player>().playerBlink(temp));//start coroutine
+            }
             temp.GetComponent<Character>().currentHealth -= damage;//compute damage            
-            if (temp.GetComponent<Character>().currentHealth == 0)//check if they should be dead
+            if (temp.GetComponent<Character>().currentHealth <= 0)//check if they should be dead
             { Kill(obj.gameObject); }//KILL THEM!!!!
         }            
     }
@@ -75,11 +79,6 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
                 character.AddForce(difference, ForceMode2D.Impulse);//the actual push occurs here
                 StartCoroutine(PushCo(character));
             }
-        if (obj.CompareTag("Player"))//Player damaged, will  run the blink routine
-        {
-            GameObject temp = obj.gameObject;//reference to the gameobject attatched to the rigidbody
-            StartCoroutine(temp.GetComponent<Player>().playerBlink(temp));//start coroutine
-        }
     }
     public IEnumerator PushCo(Rigidbody2D character)
     {

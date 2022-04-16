@@ -53,14 +53,14 @@ public class Enemy : Character
              && Vector2.Distance(transform.position, target.position) >= attackRadius)
         {
             //moves the lint enemy towards the player
-            temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+            temp = Vector2.MoveTowards(transform.position, target.position, Time.fixedDeltaTime);
             Move(thisBody, temp, moveSpeed);
         }
         else
         {
             //makes the lint enemy return to it's home position
-            temp = Vector2.MoveTowards(transform.position, homePosition, (moveSpeed / 1.2f) * Time.deltaTime);
-            Move(thisBody, temp, moveSpeed /1.5f);
+            temp = Vector2.MoveTowards(transform.position, homePosition, Time.fixedDeltaTime);
+            Move(thisBody, temp, moveSpeed / 1.5f);
         }
     }
    

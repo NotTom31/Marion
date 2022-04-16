@@ -104,7 +104,7 @@ public class Player : Character
     public IEnumerator playerBlink(GameObject other)//Coroutine to make the player blink whenever the player takes damage
                                                      //this code can probably be improved
     {
-        for(int i = 10; i > 0; i--)
+        for(int i = 6; i > 0; i--)
         {
             SpriteRenderer temp = other.GetComponent<SpriteRenderer>();
             temp.enabled = false;
