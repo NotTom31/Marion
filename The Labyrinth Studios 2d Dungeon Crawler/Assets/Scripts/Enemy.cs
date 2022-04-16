@@ -32,8 +32,8 @@ public class Enemy : Character
         target = GameObject.FindWithTag("Player").transform;//stores the player as the target
         homePosition = this.gameObject.transform.position;//stores the home position of the enemy
         currentHealth = 3;
-        thrust = 4;
-        pushTime = .1f;
+        thrust = 4.5f;
+        pushTime = .13f;
     }
 
     // Update is called once per frame

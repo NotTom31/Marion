@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
-using UnityEditorInternal;
 using UnityEngine;
 
 using UnityEngine.Events;
@@ -39,10 +38,15 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
         GameObject.Find("Hit Sfx").GetComponent<AudioSource>().Play();//sfx for getting hit 
         if (temp.GetComponent<Character>().currentHealth > 0)//check if they still have health
         {
-            temp.GetComponent<Character>().currentHealth -= damage;//compute damage
+            StartCoroutine(Invincibility());
+            temp.GetComponent<Character>().currentHealth -= damage;//compute damage            
             if (temp.GetComponent<Character>().currentHealth == 0)//check if they should be dead
             { Kill(obj.gameObject); }//KILL THEM!!!!
         }            
+    }
+     public IEnumerator Invincibility()
+    {
+        yield return new WaitForSeconds(.8f);
     }
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IKILLABLE***********************************************************************
@@ -54,7 +58,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
         {
            temp.GetComponent<Player>().PlayerDied.Invoke();//kills player
         }
-        else { Destroy(obj); }//kills everything else   
+        else { Destroy(temp); }//kills everything else   
     }
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IPUSHABLE***********************************************************************
@@ -103,8 +107,11 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
     {
         if (obj.CompareTag("Player") || obj.CompareTag("Fighter"))
         {
-            Push(obj);
-            Damage(attackDamage, obj);
+            if (obj.gameObject != null)
+            { 
+                Damage(attackDamage, obj);           
+                Push(obj);
+            }
         }
     }
 }
