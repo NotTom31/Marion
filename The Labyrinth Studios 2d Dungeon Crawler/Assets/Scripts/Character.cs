@@ -50,6 +50,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
     }
      public IEnumerator Invincibility()
     {
+        Debug.Log("Testing");
         yield return new WaitForSeconds(.8f);
     }
     //******************************************************************************************************************************************************
@@ -62,7 +63,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
         {
            temp.GetComponent<Player>().PlayerDied.Invoke();//kills player
         }
-        else { Destroy(temp); }//kills everything else   
+        else if (obj.CompareTag("Fighter")) { temp.gameObject.SetActive(false); }//kills everything else   
     }
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IPUSHABLE***********************************************************************

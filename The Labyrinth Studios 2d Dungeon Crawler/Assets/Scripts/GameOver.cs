@@ -45,9 +45,6 @@ public class GameOver : MonoBehaviour
         gameOverMenuUI.SetActive(true); //shows the death menu        
         Time.timeScale = 0f; //freeze time
         GameIsOver = true;
-        gameObject.GetComponent<Player>().currentHealth = 3;
-        
-
     }
 
     public void LoadMenu()

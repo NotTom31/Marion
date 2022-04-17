@@ -58,7 +58,6 @@ public class Enemy : Character
             //moves the lint enemy towards the player
             temp = Vector2.MoveTowards(transform.position, target.position, Time.fixedDeltaTime);
             Move(thisBody, temp, moveSpeed);
-            Debug.Log(thisBody.velocity);
             //*****************************************************************ENEMY ANIMATION**************************************************************************
             tempDir = transform.position - target.position;
             moveInDirection(tempDir);
