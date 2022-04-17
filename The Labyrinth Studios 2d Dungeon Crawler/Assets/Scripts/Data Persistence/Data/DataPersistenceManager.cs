@@ -67,7 +67,7 @@ public class DataPersistenceManager : MonoBehaviour
     //this should save the attributes we put in the list, but isn't working as intended
     private void OnApplicationQuit()
     {
-        SaveGame();
+       // SaveGame();
     }
     //this is the list where the game data will actually be stored.
     private List<IDataPersistence> FindAllDataPersistenceObjects()
