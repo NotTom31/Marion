@@ -33,8 +33,8 @@ public class Player : Character
         charType = CharacterType.player;//state machine, what is the type of player
         PlayerState currentState = PlayerState.walk;//initialize playerstate to walk
         currentHealth = 5;
-        thrust = 4.5f;
-        pushTime = .13f;
+        thrust = 5f;
+        pushTime = .16f;
     }
     //******************************************************************************************************************************************************
     //*****************************************************************ATTACKING INPUT**********************************************************************
