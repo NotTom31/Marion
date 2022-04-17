@@ -39,4 +39,8 @@ public interface ICollectable//reserved for collecting
 {
     void Collect();
 }
-
+public interface IDataPersistence//for loading or saving data
+{
+    void LoadData(GameData data);
+    void SaveData(GameData data);
+}

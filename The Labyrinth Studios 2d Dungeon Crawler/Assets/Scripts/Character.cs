@@ -9,8 +9,8 @@ public enum CharacterType//State machine for the type of character
 {
     player, enemy, npc
 }
-public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPushable
-{
+public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPushable 
+{    
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IMOVABLE************************************************************************
     //******************************************************************************************************************************************************
@@ -50,7 +50,6 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
     }
      public IEnumerator Invincibility()
     {
-        Debug.Log("Testing");
         yield return new WaitForSeconds(.8f);
     }
     //******************************************************************************************************************************************************
@@ -89,6 +88,8 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
             character.velocity = Vector2.zero;
         }
     }
+    
+
     //******************************************************************************************************************************************************
     //********************************************************CHARACTER CLASS ATTRIBUTES********************************************************************
     //******************************************************************************************************************************************************

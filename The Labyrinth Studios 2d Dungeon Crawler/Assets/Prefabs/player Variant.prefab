@@ -601,7 +601,7 @@ MonoBehaviour:
   moveSpeed: 1.25
   charType: 0
   attackDamage: 1
-  currentHealth: 0
+  currentHealth: 3
   currentState: 0
   hearts:
   - {fileID: 0}
@@ -656,4 +656,4 @@ MonoBehaviour:
   - {x: -0.06, y: 0, z: 0}
   m_ShapePathHash: -1113825389
   m_Mesh: {fileID: 0}
-  m_InstanceId: 45718
+  m_InstanceId: 37472
