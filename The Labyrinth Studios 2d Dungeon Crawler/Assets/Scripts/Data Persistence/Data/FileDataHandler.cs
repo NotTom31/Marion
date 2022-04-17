@@ -10,7 +10,7 @@ public class FileDataHandler
     private string dataDirPath = "";
     private string dataFileName = "";
 
-    public FileDataHandler(string dataDirPath, string dataFileName)//Constructor
+    public FileDataHandler(string dataDirPath, string dataFileName)//Constructor for our FileDataHandler class
     {
         this.dataDirPath = dataDirPath;
         this.dataFileName = dataFileName;
@@ -20,7 +20,7 @@ public class FileDataHandler
         //use Path.Combine to account for different OS's having different path separators
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         GameData loadedData = null;
-        if(File.Exists(fullPath))
+        if (File.Exists(fullPath))
         {
             try
             {
@@ -36,9 +36,9 @@ public class FileDataHandler
                 //deserialize the data from Json back into the C# object
                 loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
             }
-            catch
+            catch (Exception e)
             {
-
+                Debug.LogError("Error occured when trying to load data to file: " + fullPath + "\n" + e);
             }
         }
         return loadedData;

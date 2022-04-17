@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class Lever : Collectable , IDataPersistence
 {
+    //******************************************************************************************************************************************************
+    //***********************************************************************GUID***************************************************************************
+    //******************************************************************************************************************************************************
     [SerializeField] private string id;//will be used for saving game state
     [ContextMenu("Generate guid for id")]
     /*the context menu above uses the GenerateGuid() below to allow someone to generate a unique id for levers.
@@ -14,11 +17,16 @@ public class Lever : Collectable , IDataPersistence
     {
         id = System.Guid.NewGuid().ToString();
     }
+    //******************************************************************************************************************************************************
+    //************************************************************DECLARING IDATAPERSISTENCE****************************************************************
+    //******************************************************************************************************************************************************
     /*These methods load and savedata will be used to keep track of what levers have been activated*/
     public void LoadData(GameData data)
     {
         data.leversActivated.TryGetValue(id, out collected);
-        if(collected)
+        Debug.Log(id);
+        Debug.Log(collected);
+        if (collected)
         {
             LeverIsOn();
         }
@@ -30,8 +38,12 @@ public class Lever : Collectable , IDataPersistence
             data.leversActivated.Remove(id);
         }
         data.leversActivated.Add(id, collected);
+        Debug.Log(id);
+        Debug.Log(collected);
     }
-
+    //******************************************************************************************************************************************************
+    //************************************************************LEVER CLASS ATTRIBUTES********************************************************************
+    //******************************************************************************************************************************************************
     public Sprite onLever; 
     public Sprite offLever;
     public UnityEvent LeverOn;
