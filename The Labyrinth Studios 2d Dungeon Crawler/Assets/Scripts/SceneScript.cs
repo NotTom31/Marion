@@ -20,8 +20,7 @@ public class SceneScript : MonoBehaviour , IDataPersistence
     // Start is called before the first frame update
     void Start()
     {
-        currentScene = SceneManager.GetActiveScene().name;
-        Debug.Log(currentScene);
+        currentScene = SceneManager.GetActiveScene().name;        
     }
 
     // Update is called once per frame

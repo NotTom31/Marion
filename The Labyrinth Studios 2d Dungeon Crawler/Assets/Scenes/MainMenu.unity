@@ -1442,7 +1442,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1012349235}
+      - m_Target: {fileID: 1012349237}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: NewGameDialogYes
         m_Mode: 1
@@ -1919,7 +1919,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1012349235}
+      - m_Target: {fileID: 1012349237}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: LoadGameDialogYes
         m_Mode: 1
@@ -2122,7 +2122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1012349235}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: ExitButton
         m_Mode: 1
@@ -2375,6 +2375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1012349236}
   - component: {fileID: 1012349235}
+  - component: {fileID: 1012349237}
   m_Layer: 0
   m_Name: MenuController
   m_TagString: Untagged
@@ -2389,13 +2390,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012349234}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 871309bef5040be40b0ce13617fe0f5a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9255895f9129830499780bf6ca3bfc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _newGameLevel: Dungeon
-  noSavedGameDialog: {fileID: 1422447071}
+  newGameButton: {fileID: 888680794}
+  loadGameButton: {fileID: 2136779084}
 --- !u!4 &1012349236
 Transform:
   m_ObjectHideFlags: 0
@@ -2410,6 +2411,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1012349237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012349234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871309bef5040be40b0ce13617fe0f5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _newGameLevel: 
+  noSavedGameDialog: {fileID: 1422447071}
+  newGameButton: {fileID: 888680794}
+  loadGameButton: {fileID: 2136779084}
 --- !u!1 &1041827500
 GameObject:
   m_ObjectHideFlags: 0

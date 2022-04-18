@@ -20,6 +20,10 @@ public class Player : Character , IDataPersistence
     public void LoadData(GameData data)
     {
         this.currentHealth = data.currentHealth;
+        if(this.currentHealth == 0)
+        {
+            this.currentHealth = 3;
+        }
         this.transform.position = data.playerPosition;
     }
     public void SaveData(GameData data)
