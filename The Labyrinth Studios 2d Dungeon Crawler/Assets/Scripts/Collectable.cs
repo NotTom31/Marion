@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Collectable : Collidable
 {
+   
+
+
     //Logic
     protected bool collected;
 

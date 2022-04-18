@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 //******************************************************************************************************************************************************
 public enum PlayerState
 {
-    walk, attack, interact
+    walk, attack, interact, stagger, dead
 }
 public class Player : Character , IDataPersistence
 {
@@ -36,6 +36,7 @@ public class Player : Character , IDataPersistence
     public Sprite emptyHeart;
     public int numOfHearts;
     public UnityEvent PlayerDied;
+    GameObject[] inRange;//array that will hold all enemies, will be used to revive them
     //******************************************************************************************************************************************************
     //********************************************************INITIALIZATION********************************************************************************
     //******************************************************************************************************************************************************
@@ -45,9 +46,10 @@ public class Player : Character , IDataPersistence
         anim = this.GetComponent<Animator>();
         charType = CharacterType.player;//state machine, what is the type of player
         PlayerState currentState = PlayerState.walk;//initialize playerstate to walk
-        currentHealth = 5;
+        
         thrust = 5f;
         pushTime = .16f;
+        inRange = GameObject.FindGameObjectsWithTag("Fighter");
     }
     //******************************************************************************************************************************************************
     //*****************************************************************ATTACKING INPUT**********************************************************************
@@ -63,7 +65,7 @@ public class Player : Character , IDataPersistence
             getMoveInput();
         }
         heartGUI();
-       
+        ReviveInRange();
     }
     private IEnumerator AttackCo()
     {
@@ -123,5 +125,21 @@ public class Player : Character , IDataPersistence
             temp.enabled = true;
             yield return new WaitForSeconds(.05f);
         }
-    }   
+    }
+    void ReviveInRange()//method that revives an enemy once the player has reached a specific range. Range is determined by reviveRadius variable located in Enemy script
+    {        
+        for (int i = 0; i < inRange.Length; i++)//cycle through the array
+        {
+            GameObject temp = inRange[i];
+            
+            //check if the enemy is no longer active and the player is far enough away from spawn point
+            if (temp.GetComponent<Enemy>().currentState == EnemyState.dead && Vector2.Distance(transform.position, temp.GetComponent<Enemy>().homePosition) > temp.GetComponent<Enemy>().reviveRadius)
+            { 
+                temp.transform.position = temp.GetComponent<Enemy>().homePosition;//puts enemy back to spawn point
+                temp.GetComponent<Enemy>().currentHealth = 3;// resets its health back to 3
+                temp.GetComponent<Enemy>().currentState = EnemyState.idle;//resets the enemy state back to idle
+                temp.gameObject.SetActive(true);//re activates enemy within the scene
+            }
+        }
+    }
 }

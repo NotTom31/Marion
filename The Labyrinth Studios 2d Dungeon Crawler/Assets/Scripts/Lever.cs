@@ -8,14 +8,14 @@ public class Lever : Collectable , IDataPersistence
     //******************************************************************************************************************************************************
     //***********************************************************************GUID***************************************************************************
     //******************************************************************************************************************************************************
-    [SerializeField] private string id;//will be used for saving game state
+    [SerializeField] private string leverId;//will be used for saving game state
     [ContextMenu("Generate guid for id")]
     /*the context menu above uses the GenerateGuid() below to allow someone to generate a unique id for levers.
      All one has to do is click on a lever, expand the lever script in the inspector, right click the script and select
     Generate guid for id. This will create a unique id that will be used when the game's state is saved.*/
     private void GenerateGuid()
     {
-        id = System.Guid.NewGuid().ToString();
+        leverId = System.Guid.NewGuid().ToString();
     }
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IDATAPERSISTENCE****************************************************************
@@ -23,9 +23,7 @@ public class Lever : Collectable , IDataPersistence
     /*These methods load and savedata will be used to keep track of what levers have been activated*/
     public void LoadData(GameData data)
     {
-        data.leversActivated.TryGetValue(id, out collected);
-        Debug.Log(id);
-        Debug.Log(collected);
+        data.leversActivated.TryGetValue(leverId, out collected);
         if (collected)
         {
             LeverIsOn();
@@ -33,13 +31,11 @@ public class Lever : Collectable , IDataPersistence
     }
     public void SaveData(GameData data)
     {
-        if(data.leversActivated.ContainsKey(id))
+        if(data.leversActivated.ContainsKey(leverId))
         {
-            data.leversActivated.Remove(id);
+            data.leversActivated.Remove(leverId);
         }
-        data.leversActivated.Add(id, collected);
-        Debug.Log(id);
-        Debug.Log(collected);
+        data.leversActivated.Add(leverId, collected);
     }
     //******************************************************************************************************************************************************
     //************************************************************LEVER CLASS ATTRIBUTES********************************************************************

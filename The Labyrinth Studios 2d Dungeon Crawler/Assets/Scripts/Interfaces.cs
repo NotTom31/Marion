@@ -10,7 +10,6 @@ public interface IMoveable//this will be used to move an object
 public interface IDamageable//this will be used to do damage to a character
 {
     void Damage(int damage, Collider2D obj);
-    IEnumerator Invincibility();
 }
 
 public interface IKillable//this will be used to kill a character

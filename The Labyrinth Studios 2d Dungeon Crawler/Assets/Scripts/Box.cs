@@ -3,9 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Box : Collectable
-{
-    public UnityEvent BoxLift;
+public class Box : Collectable , IDataPersistence
+{    
+
+    //******************************************************************************************************************************************************
+    //************************************************************DECLARING IDATAPERSISTENCE****************************************************************
+    //******************************************************************************************************************************************************
+    /*These methods load and savedata will be used to keep track of what levers have been activated*/
+    public void LoadData(GameData data)
+    {
+        this.transform.position = data.boxPosition;
+    }
+    public void SaveData(GameData data)
+    {
+        data.boxPosition = this.transform.position;
+    }
+//******************************************************************************************************************************************************
+//***********************************************************BOX CLASS ATTRIBUTES***********************************************************************
+//******************************************************************************************************************************************************
+public UnityEvent BoxLift;
     public UnityEvent BoxLayer;
     public UnityEvent BoxLayerTwo;
     public float LastFacingHorizontal = 0;

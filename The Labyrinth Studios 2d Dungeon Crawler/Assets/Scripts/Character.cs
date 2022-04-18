@@ -37,8 +37,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
         GameObject temp = obj.gameObject;//reference to the gameobject attatched to obj
         GameObject.Find("Hit Sfx").GetComponent<AudioSource>().Play();//sfx for getting hit 
         if (temp.GetComponent<Character>().currentHealth > 0)//check if they still have health
-        {
-            StartCoroutine(Invincibility());
+        {            
             if (obj.CompareTag("Player"))//Player damaged, will  run the blink routine
             {
                 StartCoroutine(temp.GetComponent<Player>().playerBlink(temp));//start coroutine
@@ -48,10 +47,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
             { Kill(obj.gameObject); }//KILL THEM!!!!
         }            
     }
-     public IEnumerator Invincibility()
-    {
-        yield return new WaitForSeconds(.8f);
-    }
+     
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IKILLABLE***********************************************************************
     //******************************************************************************************************************************************************
@@ -62,7 +58,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
         {
            temp.GetComponent<Player>().PlayerDied.Invoke();//kills player
         }
-        else if (obj.CompareTag("Fighter")) { temp.gameObject.SetActive(false); }//kills everything else   
+        else if (obj.CompareTag("Fighter")) { temp.gameObject.SetActive(false); temp.GetComponent<Enemy>().currentState = EnemyState.dead; }//kills everything else   
     }
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IPUSHABLE***********************************************************************
@@ -106,10 +102,10 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
 
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.CompareTag("Player") || obj.CompareTag("Fighter"))
+        if ((this.CompareTag("Player") && obj.CompareTag("Fighter")) || (obj.CompareTag("Player") && this.CompareTag("Fighter")))//check to make sure either player hits enemy or enemy hits player
         {
             if (obj.gameObject != null)
-            { 
+            {
                 Damage(attackDamage, obj);           
                 Push(obj);
             }

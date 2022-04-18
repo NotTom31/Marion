@@ -7,7 +7,7 @@ using UnityEngine;
 //**********************************************************************************************************************************************************************
 public enum EnemyState
 {
-    idle, walk, attack, stagger
+    idle, walk, attack, stagger, dead
 }
 
 
@@ -21,7 +21,7 @@ public class Enemy : Character
     public Transform target;//will be our player
     public float chaseRadius;//the radius in which the enemy will activate and chase the player
     public float attackRadius;//how far away we want the enemy to stop from the player
-    public float knockBackRadius;//this will initiate the knockback routine
+    public float reviveRadius;//this will initiate the Revive routine
     public Vector2 homePosition;//the enemy's home position so it can return after chasing
     //*******************************************************************************************************************************************************************
     //********************************************************INITIALIZATION*********************************************************************************************
@@ -32,16 +32,17 @@ public class Enemy : Character
         thisBody = this.GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;//stores the player as the target
         homePosition = this.gameObject.transform.position;//stores the home position of the enemy
-        currentHealth = 3;
         thrust = 5f;
         pushTime = .16f;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        awakeAndMove();
+        awakeAndMove();        
     }
+   
     //*******************************************************************************************************************************************************************
     //*****************************************************************ENEMY MOVEMENT************************************************************************************
     //*******************************************************************************************************************************************************************
@@ -52,36 +53,38 @@ public class Enemy : Character
         Vector2 castV3;
         //this checks to see if player is in chase range but outside of "attack range"
         //attack range is used so the enemy doesn't try to go through the player
-        if (Vector2.Distance(transform.position, target.position) <= chaseRadius
+        if (currentState != EnemyState.dead && Vector2.Distance(transform.position, target.position) <= chaseRadius
              && Vector2.Distance(transform.position, target.position) >= attackRadius)
         {
             //moves the lint enemy towards the player
             temp = Vector2.MoveTowards(transform.position, target.position, Time.fixedDeltaTime);
             Move(thisBody, temp, moveSpeed);
+            currentState = EnemyState.walk;
             //*****************************************************************ENEMY ANIMATION**************************************************************************
             tempDir = transform.position - target.position;
-            moveInDirection(tempDir);
+            MoveInDirection(tempDir);
         }
-        else
+        else if(currentState != EnemyState.dead)
         {
             //makes the lint enemy return to it's home position
             temp = Vector2.MoveTowards(transform.position, homePosition, Time.fixedDeltaTime);
             Move(thisBody, temp, moveSpeed / 1.5f);
             castV3 = transform.position;
             tempDir = castV3 - homePosition;
-            moveInDirection(tempDir);
+            MoveInDirection(tempDir);
+            currentState = EnemyState.walk;
             if(castV3 == homePosition)
             {
                 anim.SetBool("moving", false);
+                currentState = EnemyState.idle;
             }
         }
-    }
-    
-    void moveInDirection(Vector2 tempDir)
+    }    
+    void MoveInDirection(Vector2 tempDir)
     {
         anim.SetFloat("moveX", -tempDir.normalized.x);//allows movement animation
         anim.SetFloat("moveY", -tempDir.normalized.y);//allows movement animation
         anim.SetBool("moving", true);//moving set true in animator
     }
-   
+    
 }

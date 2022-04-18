@@ -12,14 +12,14 @@ public class GameData
     public int currentHealth;
     public Vector3 playerPosition;
     public SerializableDictionary<string, bool> leversActivated;
+    public Vector3 boxPosition;
     public string currentScene;
     public GameData()//New Game values will be stored in this method
     {
         this.currentHealth = 3;//current health is loaded and saved in the player script.
-        playerPosition = Vector3.zero;//player position is loaded and saved in the player script
-
-        //for things like levers, we use the string to create a Guid and the bool for whether or not its been activated. 
+        playerPosition = Vector3.zero;//player position is loaded and saved in the player script        
         leversActivated = new SerializableDictionary<string, bool>();//levers activated are loaded and saved in the lever script
+        boxPosition = Vector3.zero;//box position is loaded and saved in box script
         this.currentScene = "";//This is where the name of the current scene will be kept
     }
 }
