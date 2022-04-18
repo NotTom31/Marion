@@ -48,7 +48,7 @@ public class GameOver : MonoBehaviour
     public void LoadGame() //sends you back to be the beginning of the game on game over
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Dungeon"); //we will probably change this to send to start of current level or a checkpoint depending on how difficult we want the game
+        SceneManager.LoadScene("Level_1"); //we will probably change this to send to start of current level or a checkpoint depending on how difficult we want the game
         Debug.Log("Loading Dungeon...");
         GameIsOver = false;
     }

@@ -3,46 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PressurePlate : Collectable
+public class PressurePlate : Collectable 
 {
     public UnityEvent PlatePushed;
     public UnityEvent PlateReleased;
 
-/*    void FixedUpdate()
+    private void OnTriggerEnter2D(Collider2D obj)
     {
-        if (!collected)
-        {
-            PlateReleased.Invoke();
-        }
-    }*/
-
-   /* private void OnTriggerStay(Collider PressurePlate)
-    {
-        collected = true;
-        PlatePushed.Invoke();
-        Debug.Log("Plate Pushed");
+        this.GetComponent<Animator>().SetBool("on", true);
     }
-
-    private void OnTriggerExit(Collider PressurePlate)
+    private void OnTriggerExit2D(Collider2D obj)
     {
-        collected = false;
-        PlateReleased.Invoke();
-        Debug.Log("Plate Released");
-    }*/
-
-    protected override void OnCollect()
-    {
-        if (!collected && transform.parent == null)
-        {
-            collected = true;
-            PlatePushed.Invoke(); 
-            Debug.Log("Plate Pushed");
-        }
-        else 
-        {
-            collected = false;
-            PlateReleased.Invoke();
-            Debug.Log("Plate Released");
-        }
+     this.GetComponent<Animator>().SetBool("on", false);
+        
     }
 }

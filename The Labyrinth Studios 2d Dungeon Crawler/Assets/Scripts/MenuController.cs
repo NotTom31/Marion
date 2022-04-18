@@ -16,7 +16,7 @@ public class MenuController : MonoBehaviour
 
     public void NewGameDialogYes()
     {
-        SceneManager.LoadScene("Dungeon");
+        SceneManager.LoadScene(_newGameLevel);
     }
 
     public void LoadGameDialogYes()

@@ -56,16 +56,26 @@ public UnityEvent BoxLift;
             else
             {
                 collected = false;
-                
+
                 if (Input.GetAxisRaw("Horizontal") > 0 || LastFacingHorizontal > 0)
                 {
-                    transform.localPosition = new Vector3(0.1f, -0.2f, 0);
+                    transform.localPosition = new Vector3(.1f, -.1f, 0);
                     BoxLayer.Invoke();
                 }
                 if (Input.GetAxisRaw("Horizontal") < 0 || LastFacingHorizontal < 0)
                 {
-                    transform.localPosition = new Vector3(-0.1f, -0.2f, 0);
+                    transform.localPosition = new Vector3(-.1f, -.1f, 0);
                     BoxLayer.Invoke();
+                }
+                if (Input.GetAxisRaw("Vertical") > 0 || LastFacingVertical > 0)
+                {
+                    transform.localPosition = new Vector3(0, .1f, 0);
+                    BoxLayer.Invoke(); //sets the box behind the player
+                }
+                if (Input.GetAxisRaw("Vertical") < 0 || LastFacingVertical < 0)
+                {
+                    transform.localPosition = new Vector3(0, -.1f, 0);
+                    BoxLayerTwo.Invoke(); //sets the box in front of the player
                 }
                 BoxLayer.Invoke();
                 transform.parent = null; //detatches the box

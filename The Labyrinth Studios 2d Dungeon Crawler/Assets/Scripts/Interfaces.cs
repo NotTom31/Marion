@@ -31,6 +31,7 @@ public interface IInteractable//reserved for interaction
 
 public interface IActivatable//reserved for activation
 {
+    string activated { get; }
     void Activate(Collider2D other);
 }
 
@@ -42,5 +43,10 @@ public interface IDataPersistence//for loading or saving data
 {
     void LoadData(GameData data);
     void SaveData(GameData data);
+}
+public interface IAnimate//used to turn animations on or off
+{
+    string animateOn { get; }
+    void Animate();
 }
 

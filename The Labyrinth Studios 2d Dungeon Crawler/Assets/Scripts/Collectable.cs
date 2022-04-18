@@ -8,7 +8,7 @@ public class Collectable : Collidable
 
 
     //Logic
-    protected bool collected;
+    public bool collected;
 
     protected override void OnCollide(Collider2D coll)
     {

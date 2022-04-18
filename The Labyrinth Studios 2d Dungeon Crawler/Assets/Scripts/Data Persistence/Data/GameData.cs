@@ -20,7 +20,7 @@ public class GameData
         playerPosition = Vector3.zero;//player position is loaded and saved in the player script        
         leversActivated = new SerializableDictionary<string, bool>();//levers activated are loaded and saved in the lever script
         boxPosition = Vector3.zero;//box position is loaded and saved in box script
-        this.currentScene = "";//This is where the name of the current scene will be kept
+        this.currentScene = "Dungeon";//This is where the name of the current scene will be kept
     }
 }
 

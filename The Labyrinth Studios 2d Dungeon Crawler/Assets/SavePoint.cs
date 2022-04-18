@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class SavePoint : MonoBehaviour
-{
+using UnityEngine.WSA;
 
+public class SavePoint : MonoBehaviour 
+{
     public GameObject saveGame;
     private void OnTriggerEnter2D(Collider2D obj)
     {
