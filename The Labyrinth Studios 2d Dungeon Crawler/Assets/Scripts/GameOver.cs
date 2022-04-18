@@ -11,25 +11,10 @@ public class GameOver : MonoBehaviour
     public GameObject gameOverMenuUI;
 
     // Update is called once per frame
-    void Update()
+      public void GameStatus()
     {
-        //if (Input.GetKeyDown("f")) //needs to be changed to if player 0 health 
-    }
-
-    public void GameStatus()
-    {
-        /*GameIsOver = true;
-        if (GameIsOver)
-        {*/
-
         Death();
         Debug.Log("Loading game over screen...");
-        //}
-        /*else
-         {
-             Alive();
-             Debug.Log("resume");
-         }*/
     }
 
 

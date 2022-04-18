@@ -86,11 +86,12 @@ public class DataPersistenceManager : MonoBehaviour
 
         //save the data to a file using the data handler
         dataHandler.Save(gameData);
+        Debug.Log("YUP IT GOT HERE");
     }
     //Right now we are saving when the application quits, we want to save when we choose to save
     private void OnApplicationQuit()
     {
-       SaveGame();
+      // SaveGame();
     }
     //this is the list where the game data will actually be stored.
     private List<IDataPersistence> FindAllDataPersistenceObjects()

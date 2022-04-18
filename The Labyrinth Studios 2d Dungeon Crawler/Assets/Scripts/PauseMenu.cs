@@ -39,7 +39,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
-
+    //\/\/\/Methods used for the buttons\/\/\/
     public void LoadMenu()
     {
         Time.timeScale = 1f;
@@ -57,5 +57,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("Dungeon");
         Debug.Log("Loading menu...");
+    }
+    public void SaveGame()
+    {
+        this.GetComponent<DataPersistenceManager>().SaveGame();       
     }
 }

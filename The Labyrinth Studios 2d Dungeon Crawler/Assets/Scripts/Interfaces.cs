@@ -31,7 +31,7 @@ public interface IInteractable//reserved for interaction
 
 public interface IActivatable//reserved for activation
 {
-    void Activate();
+    void Activate(Collider2D other);
 }
 
 public interface ICollectable//reserved for collecting
