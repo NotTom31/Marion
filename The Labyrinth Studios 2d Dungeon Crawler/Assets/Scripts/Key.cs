@@ -3,8 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Key : Collectable
+public class Key : Collectable, IDataPersistence
 {
+    //******************************************************************************************************************************************************
+    //************************************************************DECLARING IDATAPERSISTENCE****************************************************************
+    //******************************************************************************************************************************************************
+    public void LoadData(GameData data)
+    {
+        this.collected = data.keyCollected; 
+        if (this.collected)
+        {
+            KeyCollect.Invoke();
+        }
+    }
+    public void SaveData(GameData data)
+    {
+        data.keyCollected = this.collected;
+    }
+
     public UnityEvent KeyCollect;
 
     protected override void OnCollect()

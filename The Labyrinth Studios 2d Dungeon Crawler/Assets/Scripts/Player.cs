@@ -57,20 +57,20 @@ public class Player : Character , IDataPersistence
         inRange = GameObject.FindGameObjectsWithTag("Fighter");
     }
     //******************************************************************************************************************************************************
-    //*****************************************************************ATTACKING INPUT**********************************************************************
+    //*****************************************************************UPDATE*******************************************************************************
     //******************************************************************************************************************************************************
     void Update()
     {
-        if (Input.GetButtonDown("attack") && currentState != PlayerState.attack)
+        if (Input.GetButtonDown("attack") && currentState != PlayerState.attack)//checks for user input to attack
         {
             StartCoroutine(AttackCo());
         }
-        else if (currentState == PlayerState.walk)
+        else if (currentState == PlayerState.walk)//checks for player movement
         {
             getMoveInput();
         }
-        heartGUI();
-        ReviveInRange();
+        heartGUI();//manages heart display
+        ReviveInRange();//revives enemies once out of a certain range
     }
     private IEnumerator AttackCo()
     {
@@ -104,14 +104,11 @@ public class Player : Character , IDataPersistence
     private void heartGUI()
     {
         if (currentHealth > numOfHearts)
-        {
-            currentHealth = numOfHearts;
-        }
+        { currentHealth = numOfHearts; }
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < currentHealth) { hearts[i].sprite = fullHeart; }
             else {  hearts[i].sprite = emptyHeart; }
-
             if (i < numOfHearts) { hearts[i].enabled = true; }
             else{ hearts[i].enabled = false; }
         }
@@ -120,18 +117,29 @@ public class Player : Character , IDataPersistence
     //*****************************************************************VISUAL EFFECTS***********************************************************************
     //******************************************************************************************************************************************************
     public IEnumerator playerBlink(GameObject other)//Coroutine to make the player blink whenever the player takes damage
-                                                     //this code can probably be improved
     {
-        for(int i = 6; i > 0; i--)
+        for(int i = 10; i > 0; i--)
         {
             SpriteRenderer temp = other.GetComponent<SpriteRenderer>();
             temp.enabled = false;
-            yield return new WaitForSeconds(.05f);
+            yield return new WaitForSeconds(.01f);
             temp.enabled = true;
-            yield return new WaitForSeconds(.05f);
+            yield return new WaitForSeconds(.015f);
         }
+        this.currentState = PlayerState.walk;
     }
-    void ReviveInRange()//method that revives an enemy once the player has reached a specific range. Range is determined by reviveRadius variable located in Enemy script
+
+    public IEnumerator playerInvulnerable(GameObject obj)
+    {
+        this.currentState = PlayerState.stagger;
+        yield return new WaitForSeconds(.35f);
+    }
+    //******************************************************************************************************************************************************
+    //*****************************************************************ENEMY MANAGEMENT*********************************************************************
+    //******************************************************************************************************************************************************
+    //ReviveInRange() revives an enemy once the player has reached a specific range. Range is determined by reviveRadius variable located in Enemy script
+    //this method is needed here because once we disable an enemy, that enemy's script is also disabled thus it is unable to revive itself
+    void ReviveInRange()
     {        
         for (int i = 0; i < inRange.Length; i++)//cycle through the array
         {

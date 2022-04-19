@@ -36,7 +36,6 @@ public UnityEvent BoxLift;
         }
 
     }
-
     protected override void OnCollect()
     {
         if (collected)
@@ -59,22 +58,22 @@ public UnityEvent BoxLift;
 
                 if (Input.GetAxisRaw("Horizontal") > 0 || LastFacingHorizontal > 0)
                 {
-                    transform.localPosition = new Vector3(.1f, -.1f, 0);
+                    transform.localPosition = new Vector3(.15f, -.15f, 0);
                     BoxLayer.Invoke();
                 }
                 if (Input.GetAxisRaw("Horizontal") < 0 || LastFacingHorizontal < 0)
                 {
-                    transform.localPosition = new Vector3(-.1f, -.1f, 0);
+                    transform.localPosition = new Vector3(-.15f, -.15f, 0);
                     BoxLayer.Invoke();
                 }
                 if (Input.GetAxisRaw("Vertical") > 0 || LastFacingVertical > 0)
                 {
-                    transform.localPosition = new Vector3(0, .1f, 0);
+                    transform.localPosition = new Vector3(0, .3f, 0);
                     BoxLayer.Invoke(); //sets the box behind the player
                 }
                 if (Input.GetAxisRaw("Vertical") < 0 || LastFacingVertical < 0)
                 {
-                    transform.localPosition = new Vector3(0, -.1f, 0);
+                    transform.localPosition = new Vector3(0, -.3f, 0);
                     BoxLayerTwo.Invoke(); //sets the box in front of the player
                 }
                 BoxLayer.Invoke();

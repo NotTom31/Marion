@@ -31,23 +31,26 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IDamageable*********************************************************************
     //******************************************************************************************************************************************************
-
     public void Damage(int damage, Collider2D obj)
     {
         GameObject temp = obj.gameObject;//reference to the gameobject attatched to obj
         GameObject.Find("Hit Sfx").GetComponent<AudioSource>().Play();//sfx for getting hit 
         if (temp.GetComponent<Character>().currentHealth > 0)//check if they still have health
         {            
-            if (obj.CompareTag("Player"))//Player damaged, will  run the blink routine
+            if (obj.CompareTag("Player") && obj.GetComponent<Player>().currentState != PlayerState.stagger)//Player damaged, will  run the blink routine and set to stagger
             {
+                StartCoroutine(temp.GetComponent<Player>().playerInvulnerable(temp));
                 StartCoroutine(temp.GetComponent<Player>().playerBlink(temp));//start coroutine
             }
-            temp.GetComponent<Character>().currentHealth -= damage;//compute damage            
+            if (obj.CompareTag("Fighter"))//Enemy damaged, will set state to stagger
+            {
+                temp.GetComponent<Enemy>().currentState = EnemyState.stagger;
+            }
+            temp.GetComponent<Character>().currentHealth -= damage;//compute damage 
             if (temp.GetComponent<Character>().currentHealth <= 0)//check if they should be dead
             { Kill(obj.gameObject); }//KILL THEM!!!!
         }            
     }
-     
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IKILLABLE***********************************************************************
     //******************************************************************************************************************************************************
@@ -84,8 +87,6 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
             character.velocity = Vector2.zero;
         }
     }
-    
-
     //******************************************************************************************************************************************************
     //********************************************************CHARACTER CLASS ATTRIBUTES********************************************************************
     //******************************************************************************************************************************************************
@@ -99,7 +100,6 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
     //******************************************************************************************************************************************************
     //*****************************************************************ATTACKING TRIGGERED******************************************************************
     //******************************************************************************************************************************************************
-
     private void OnTriggerEnter2D(Collider2D obj)
     {
         if ((this.CompareTag("Player") && obj.CompareTag("Fighter")) || (obj.CompareTag("Player") && this.CompareTag("Fighter")))//check to make sure either player hits enemy or enemy hits player

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DoorTakeInput : Collectable
+public class DoorTakeInput : Collectable 
 {
     public UnityEvent DoorOn;
     public UnityEvent DoorOff;
