@@ -56,7 +56,7 @@ public UnityEvent BoxLift;
             else
             {
                 collected = false;
-
+                //determines where the box will be set down
                 if (Input.GetAxisRaw("Horizontal") > 0 || LastFacingHorizontal > 0)
                 {
                     transform.localPosition = new Vector3(.1f, -.1f, 0);
@@ -77,6 +77,7 @@ public UnityEvent BoxLift;
                     transform.localPosition = new Vector3(0, -.1f, 0);
                     BoxLayerTwo.Invoke(); //sets the box in front of the player
                 }
+
                 BoxLayer.Invoke();
                 transform.parent = null; //detatches the box
             }
