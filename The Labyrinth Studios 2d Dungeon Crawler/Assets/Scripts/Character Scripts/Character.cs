@@ -14,7 +14,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IMOVABLE************************************************************************
     //******************************************************************************************************************************************************
-    public void Move(Rigidbody2D thisBody, Vector2 movement, float moveSpeed)
+    public void Move(Rigidbody2D thisBody, Vector2 movement, float moveSpeed)//Author Johnathan Bates
     {
         if (thisBody.CompareTag("Player"))//checks to see if this is the player moving
         {
@@ -31,7 +31,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IDamageable*********************************************************************
     //******************************************************************************************************************************************************
-    public void Damage(int damage, Collider2D obj)
+    public void Damage(int damage, Collider2D obj)//Author Johnathan Bates
     {
         GameObject temp = obj.gameObject;//reference to the gameobject attatched to obj
         GameObject.Find("Hit Sfx").GetComponent<AudioSource>().Play();//sfx for getting hit 
@@ -54,7 +54,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IKILLABLE***********************************************************************
     //******************************************************************************************************************************************************
-    public void Kill(GameObject obj)
+    public void Kill(GameObject obj)//Author Johnathan Bates
     {
         GameObject temp = obj;//reference to the gameobject
         if(obj.CompareTag("Player"))//check if it is the player that has died
@@ -68,7 +68,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
     //******************************************************************************************************************************************************
     public float thrust { get;  set; }//how hard an object is pushed back
     public float pushTime { get; set; }//how long the push back last
-    public void Push(Collider2D obj)
+    public void Push(Collider2D obj)//Author Johnathan Bates
     {
         Rigidbody2D character = obj.GetComponent<Rigidbody2D>();//reference to the Rigidbody component
             if (character != null)//makes sure the object hasn't already been destroyed
@@ -79,7 +79,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
                 StartCoroutine(PushCo(character));
             }
     }
-    public IEnumerator PushCo(Rigidbody2D character)
+    public IEnumerator PushCo(Rigidbody2D character)//Author Johnathan Bates
     {
         if (character != null)
         {

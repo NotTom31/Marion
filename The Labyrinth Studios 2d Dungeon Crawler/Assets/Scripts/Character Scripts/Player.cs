@@ -119,8 +119,9 @@ public class Player : Character , IDataPersistence
     //*****************************************************************VISUAL EFFECTS***********************************************************************
     //******************************************************************************************************************************************************
     public IEnumerator playerBlink(GameObject other)//Coroutine to make the player blink whenever the player takes damage
+                                                    //Author Johnathan Bates
     {
-        for(int i = 10; i > 0; i--)
+        for (int i = 10; i > 0; i--)
         {
             SpriteRenderer temp = other.GetComponent<SpriteRenderer>();
             temp.enabled = false;
@@ -131,7 +132,7 @@ public class Player : Character , IDataPersistence
         this.currentState = PlayerState.walk;
     }
 
-    public IEnumerator playerInvulnerable(GameObject obj)
+    public IEnumerator playerInvulnerable(GameObject obj)//Author Johnathan Bates
     {
         this.currentState = PlayerState.stagger;
         yield return new WaitForSeconds(.35f);
@@ -141,7 +142,7 @@ public class Player : Character , IDataPersistence
     //******************************************************************************************************************************************************
     //ReviveInRange() revives an enemy once the player has reached a specific range. Range is determined by reviveRadius variable located in Enemy script
     //this method is needed here because once we disable an enemy, that enemy's script is also disabled thus it is unable to revive itself
-    void ReviveInRange()
+    void ReviveInRange()//Author Johnathan Bates
     {        
         for (int i = 0; i < inRange.Length; i++)//cycle through the array
         {
