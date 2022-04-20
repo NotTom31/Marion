@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShadowGroup: 0
-  m_HasRenderer: 0
+  m_HasRenderer: 1
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
@@ -223,6 +223,6 @@ MonoBehaviour:
   - {x: 0.12, y: -0.12, z: 0}
   - {x: 0.12, y: 0.12, z: 0}
   - {x: -0.12, y: 0.12, z: 0}
-  m_ShapePathHash: 0
+  m_ShapePathHash: 877041825
   m_Mesh: {fileID: 0}
-  m_InstanceId: -235682
+  m_InstanceId: 31298
