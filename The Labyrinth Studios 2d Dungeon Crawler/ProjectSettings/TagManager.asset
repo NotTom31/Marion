@@ -12,6 +12,7 @@ TagManager:
   - SavePoint
   - Box
   - PressurePlate
+  - Projectile
   layers:
   - Default
   - TransparentFX

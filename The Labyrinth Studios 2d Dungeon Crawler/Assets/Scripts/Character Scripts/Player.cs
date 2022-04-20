@@ -54,7 +54,7 @@ public class Player : Character , IDataPersistence
         charType = CharacterType.player;//state machine, what is the type of player
         PlayerState currentState = PlayerState.walk;//initialize playerstate to walk
         
-        thrust = 5f;
+        thrust = 15f;
         pushTime = .16f;
         inRange = GameObject.FindGameObjectsWithTag("Fighter");
     }

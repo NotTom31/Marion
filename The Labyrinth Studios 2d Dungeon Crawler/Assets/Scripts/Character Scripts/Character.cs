@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public enum CharacterType//State machine for the type of character
 {
-    player, enemy, npc
+    player, meleeEnemy, rangedEnemy, npc
 }
 public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPushable 
 {    
@@ -69,8 +69,8 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
     public float thrust { get;  set; }//how hard an object is pushed back
     public float pushTime { get; set; }//how long the push back last
     public void Push(Collider2D obj)
-    {        
-            Rigidbody2D character = obj.GetComponent<Rigidbody2D>();//reference to the Rigidbody component
+    {
+        Rigidbody2D character = obj.GetComponent<Rigidbody2D>();//reference to the Rigidbody component
             if (character != null)//makes sure the object hasn't already been destroyed
             {
                 Vector2 difference = character.transform.position - transform.position;//not sure lol
@@ -90,15 +90,15 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
     //******************************************************************************************************************************************************
     //********************************************************CHARACTER CLASS ATTRIBUTES********************************************************************
     //******************************************************************************************************************************************************
-    public Rigidbody2D thisBody;
-    protected Animator anim;
-    protected Vector2 movement;
-    public float moveSpeed;
-    public CharacterType charType;
-    public int attackDamage;
-    public int currentHealth;
+    public Rigidbody2D thisBody;//Use this in a child class or inspector to initialize RigidBody
+    protected Animator anim;//Use this in a child class or inspector to initialize Animator
+    protected Vector2 movement;//Use this in a child class to control movement 
+    public float moveSpeed;//Use this in a child class or inspector tocontrol movement speed
+    public CharacterType charType;//Use this in the Inspector to initialize what type of character it is
+    public int attackDamage;//Use this in a child class or inspector to initialize RigidBody
+    public int currentHealth;//Use this in a child class or inspector to initialize health
     //******************************************************************************************************************************************************
-    //*****************************************************************ATTACKING TRIGGERED******************************************************************
+    //*****************************************************************MELEE ATTACKING TRIGGERED************************************************************
     //******************************************************************************************************************************************************
     private void OnTriggerEnter2D(Collider2D obj)
     {
@@ -106,9 +106,10 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
         {
             if (obj.gameObject != null)
             {
+                
                 Damage(attackDamage, obj);           
                 Push(obj);
             }
         }
-    }
+    }    
 }
