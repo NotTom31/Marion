@@ -14,7 +14,7 @@ public class DoorTakeInput : Collectable
     {
         if (Input.GetKeyDown("e") && Locked == false)
         {
-            if (!collected) 
+            if (!collected)
             {
                 collected = true;
                 DoorOn.Invoke(); //runs the unity events to disable the door
@@ -38,6 +38,16 @@ public class DoorTakeInput : Collectable
     public void DoorLocked()
     {
         DisplayText.Invoke();
+    }
+
+    public void UnlockDoor()
+    {
+        Locked = false;
+    }
+
+    public void LockDoor()
+    {
+        Locked = true;
     }
 }
 
