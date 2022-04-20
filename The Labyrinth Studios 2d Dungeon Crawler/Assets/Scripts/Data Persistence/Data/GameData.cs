@@ -19,12 +19,12 @@ public class GameData
     public GameData()//New Game values will be stored in this method
     {
         this.currentHealth = 3;//current health is loaded and saved in the player script.
-        playerPosition = Vector3.zero;//player position is loaded and saved in the player script        
+        playerPosition = new Vector3(0.14f, -3.72f,0f);//player position is loaded and saved in the player script        
         leversActivated = new SerializableDictionary<string, bool>();//levers activated are loaded and saved in the lever script
         bool plateOn = false;//pressure plate in the on or off stated
         bool keyCollected = false;//keys that have been collected 
-        boxPosition = Vector3.zero;//box position is loaded and saved in box script
-        this.currentScene = "Dungeon";//This is where the name of the current scene will be kept
+        boxPosition = new Vector3(-2.432f, -2.098f,0);//box position is loaded and saved in box script
+        this.currentScene = "Level_1";//This is where the name of the current scene will be kept
     }
 }
 

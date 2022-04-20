@@ -25,11 +25,13 @@ public class Player : Character , IDataPersistence
             this.currentHealth = 3;
         }
         this.transform.position = data.playerPosition;
+        Debug.Log(data.playerPosition);
     }
     public void SaveData(GameData data)
     {
         data.currentHealth = this.currentHealth;
         data.playerPosition = this.transform.position;
+        Debug.Log(data.playerPosition);
     }   
 
     //******************************************************************************************************************************************************

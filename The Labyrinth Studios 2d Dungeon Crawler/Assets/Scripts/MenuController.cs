@@ -16,16 +16,14 @@ public class MenuController : MonoBehaviour
 
     public void NewGameDialogYes()
     {
-        SceneManager.LoadScene(_newGameLevel);
+        DataPersistenceManager.instance.NewGame();
+        SceneManager.LoadSceneAsync("Level_1");
     }
 
     public void LoadGameDialogYes()
     {
         DisableMenuButtons();
-        // load the next scene - which will in turn load the game because of 
-        // OnSceneLoaded() in the DataPersistenceManager
         SceneManager.LoadSceneAsync("Level_1");
-
     }
 
     public void ExitButton()
