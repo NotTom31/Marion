@@ -199,7 +199,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 406d0935299c2344db98cdde9f2de283, type: 2}
     m_Threshold: 3
-    m_Position: {x: 1.02, y: -0.01}
+    m_Position: {x: 1, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Horizontal
