@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 //******************************************************************************************************************************************************
 public enum PlayerState
 {
-    walk, attack, interact, stagger, dead
+    walk, attack, interact, stagger, dead, holdingBox, holdingBow
 }
 public class Player : Character , IDataPersistence 
 {
@@ -54,7 +54,7 @@ public class Player : Character , IDataPersistence
         charType = CharacterType.player;//state machine, what is the type of player
         PlayerState currentState = PlayerState.walk;//initialize playerstate to walk
         
-        thrust = 15f;
+        thrust = 5f;
         pushTime = .16f;
         inRange = GameObject.FindGameObjectsWithTag("Fighter");
     }
@@ -65,7 +65,10 @@ public class Player : Character , IDataPersistence
     {
         if (Input.GetButtonDown("attack") && currentState != PlayerState.attack)//checks for user input to attack
         {
-            StartCoroutine(AttackCo());
+            if (this.currentState != PlayerState.holdingBox)
+            {
+                StartCoroutine(AttackCo());
+            }
         }
         else if (currentState == PlayerState.walk)//checks for player movement
         {

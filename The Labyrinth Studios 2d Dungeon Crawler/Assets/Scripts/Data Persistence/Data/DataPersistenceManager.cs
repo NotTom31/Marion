@@ -95,6 +95,10 @@ public class DataPersistenceManager : MonoBehaviour
         // save that data to a file using the data handler
         dataHandler.Save(gameData);
     }
+    private void OnApplicationQuit()
+    {
+        //SaveGame();
+    }
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>()

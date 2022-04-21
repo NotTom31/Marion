@@ -70,7 +70,7 @@ public class BaseEnemy : MonoBehaviour
         }
 
         if (attackCools > 0) attackCools -= Time.deltaTime;
-        healthImage.fillAmount = health / maxHealth;
+       // healthImage.fillAmount = health / maxHealth;
     }
 }
 
