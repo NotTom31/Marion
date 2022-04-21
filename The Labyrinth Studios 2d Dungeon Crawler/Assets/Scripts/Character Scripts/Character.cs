@@ -5,12 +5,25 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
+
+
 public enum CharacterType//State machine for the type of character
 {
     player, meleeEnemy, rangedEnemy, npc
 }
 public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPushable 
-{    
+{
+    // Variables
+    // Variables
+    bool hurt;
+    public float maxHealth;
+    [SerializeField]
+    float health;
+    public float timeBetweenHurt;
+    float iframe;
+    public GameObject gameoverUI;
+    bool gameover;
+
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IMOVABLE************************************************************************
     //******************************************************************************************************************************************************
@@ -50,6 +63,30 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
             if (temp.GetComponent<Character>().currentHealth <= 0)//check if they should be dead
             { Kill(obj.gameObject); }//KILL THEM!!!!
         }            
+    }
+
+    // idoa;sfkj
+    public void Damage(float amt)
+    {
+        if (iframe < 0)
+        {
+            health -= amt;
+            hurt = true;
+            Invoke("ResetHurt", 0.2f);
+            if (health <= 0)
+            {
+                GameOver();
+            }
+            iframe = timeBetweenHurt;
+        }
+    }
+
+    // asdjfhadsof
+    private void GameOver()
+    {
+        gameover = true;
+        gameoverUI.SetActive(true);
+        Time.timeScale = 0f;
     }
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IKILLABLE***********************************************************************
