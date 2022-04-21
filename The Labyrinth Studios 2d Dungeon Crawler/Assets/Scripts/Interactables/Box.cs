@@ -36,6 +36,7 @@ public UnityEvent BoxLift;
         }
 
     }
+
     protected override void OnCollect()
     {
         if (collected)
@@ -54,32 +55,37 @@ public UnityEvent BoxLift;
             }
             else
             {
-                collected = false;
-
-                if (Input.GetAxisRaw("Horizontal") > 0 || LastFacingHorizontal > 0)
-                {
-                    transform.localPosition = new Vector3(.15f, -.15f, 0);
-                    BoxLayerTwo.Invoke(); //sets the box in front of the player
-                }
-                if (Input.GetAxisRaw("Horizontal") < 0 || LastFacingHorizontal < 0)
-                {
-                    transform.localPosition = new Vector3(-.15f, -.15f, 0);
-                    BoxLayerTwo.Invoke(); //sets the box in front of the player
-                }
-                if (Input.GetAxisRaw("Vertical") > 0 || LastFacingVertical > 0)
-                {
-                    transform.localPosition = new Vector3(0, .15f, 0);
-                    BoxLayerTwo.Invoke(); //sets the box in front of the player
-                }
-                if (Input.GetAxisRaw("Vertical") < 0 || LastFacingVertical < 0)
-                {
-                    transform.localPosition = new Vector3(0, -.3f, 0);
-                    BoxLayerTwo.Invoke(); //sets the box in front of the player
-                }
-                BoxLayer.Invoke();
-                transform.parent = null; //detatches the box
+                BoxDrop();
             }
         }
+    }
+
+    protected void BoxDrop()
+    {
+        collected = false;
+
+        if (Input.GetAxisRaw("Horizontal") > 0 || LastFacingHorizontal > 0)
+        {
+            transform.localPosition = new Vector3(0.1f, -0.2f, 0);
+            BoxLayer.Invoke();
+        }
+        if (Input.GetAxisRaw("Horizontal") < 0 || LastFacingHorizontal < 0)
+        {
+            transform.localPosition = new Vector3(-0.1f, -0.2f, 0);
+            BoxLayer.Invoke();
+        }
+        if (Input.GetAxisRaw("Vertical") > 0 || LastFacingVertical > 0)
+        {
+            transform.localPosition = new Vector3(0, 0.1f, 0);
+            BoxLayer.Invoke(); //sets the box behind the player
+        }
+        if (Input.GetAxisRaw("Vertical") < 0 || LastFacingVertical < 0)
+        {
+            transform.localPosition = new Vector3(0, -0.44f, 0);
+            BoxLayerTwo.Invoke(); //sets the box in front of the player
+        }
+        BoxLayer.Invoke();
+        transform.parent = null; //detatches the box
     }
 
     protected void BoxFacing() //checks if you're holding the box, and moves the box relative to the players local position based on button inputs
