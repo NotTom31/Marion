@@ -15,7 +15,7 @@ public class EnemyProjectile : MonoBehaviour
         thisBody = GetComponent<Rigidbody2D>();
     }
    
-    private void OnTriggerEnter2D(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("THIS HITTTTTTTT");
         if (this.CompareTag("Projectile") && other.CompareTag("Player"))

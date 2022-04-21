@@ -7,6 +7,7 @@ public class DialogueManager : MonoBehaviour
 {
 
     public Text nameText;
+    public Text contText;
     public Text dialogueText;
 
     public Animator animator;
@@ -26,6 +27,7 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Starting conversation with" + dialogue.name);
 
         nameText.text = dialogue.name;
+        contText.text = dialogue.contButton;
 
         sentences.Clear();
 
