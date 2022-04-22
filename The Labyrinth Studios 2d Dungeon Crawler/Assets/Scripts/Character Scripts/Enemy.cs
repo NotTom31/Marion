@@ -25,6 +25,7 @@ public class Enemy : Character
     public Vector2 homePosition;//the enemy's home position so it can return after chasing
     public float rangedRadius;
     public GameObject projectile;
+    public GameObject heart;
     public float projectileForce;
     public float attCooldown = 2.5f;
     private float lastAttack = -9999f;
@@ -73,7 +74,7 @@ public class Enemy : Character
                 MoveInDirection(tempDir);
             
         }
-
+        // Author Joel Monteon
         else if (Vector2.Distance(transform.position, target.transform.position) <= attackRadius && Time.time > lastAttack + attCooldown) 
         {
             RangedAttack();
@@ -118,6 +119,7 @@ public class Enemy : Character
                 if ((Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) < .02f) || (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) < .02f))
                 {
                     //This will fire a projectile along the x axis
+                    // Author Joel Monteon
                     if (transform.position.x < target.position.x && (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) < .2f)
                         && (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) > -.2f))
                     {

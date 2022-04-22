@@ -98,7 +98,11 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
         {
            temp.GetComponent<Player>().PlayerDied.Invoke();//kills player
         }
-        else if (obj.CompareTag("Fighter")) { temp.gameObject.SetActive(false); temp.GetComponent<Enemy>().currentState = EnemyState.dead; }//kills everything else   
+        else if (obj.CompareTag("Fighter")) 
+        
+        { 
+            temp.gameObject.SetActive(false); temp.GetComponent<Enemy>().currentState = EnemyState.dead; 
+        }   //kills everything else   
     }
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IPUSHABLE***********************************************************************
@@ -148,5 +152,22 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
                 Push(obj);
             }
         }
+        // Author Joel Monteon
+        if (this.CompareTag("Player") && obj.CompareTag("Heart"))
+        {
+            if (this.currentHealth < this.maxHealth)
+            {
+                
+
+                this.currentHealth += 1;
+                Destroy(obj.gameObject);
+            }
+            
+        }
+
+        
+
+
     }    
+
 }
