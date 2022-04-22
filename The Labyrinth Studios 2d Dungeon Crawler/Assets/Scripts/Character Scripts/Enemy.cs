@@ -45,8 +45,8 @@ public class Enemy : Character
     void Update()
     {
         awakeAndMove();
-        if(Time.time > lastAttack +attCooldown)
-        { RangedAttack(); lastAttack = Time.time; }
+        
+       
         
     }
    
@@ -62,7 +62,7 @@ public class Enemy : Character
         //attack range is used so the enemy doesn't try to go through the player
 
         if (currentState != EnemyState.dead && Vector2.Distance(transform.position, target.position) <= chaseRadius
-             && Vector2.Distance(transform.position, target.position) >= attackRadius)
+             && Vector2.Distance(transform.position, target.position) >= attackRadius && Time.time > lastAttack + attCooldown)
         {
             
                 //moves the enemy towards the player
@@ -73,6 +73,14 @@ public class Enemy : Character
                 MoveInDirection(tempDir);
             
         }
+
+        else if (Vector2.Distance(transform.position, target.transform.position) <= attackRadius && Time.time > lastAttack + attCooldown) 
+        {
+            RangedAttack();
+            lastAttack = Time.time;
+        }
+
+
         else if (currentState != EnemyState.dead)
         {
             //makes the enemy return to it's home position
@@ -105,36 +113,40 @@ public class Enemy : Character
         if (this.charType == CharacterType.rangedEnemy)
         {
 
-            if (Vector2.Distance(transform.position, target.position) <= rangedRadius)//RayCast to check the line of sight to target
+            if (Vector2.Distance(transform.position, target.position) <= rangedRadius)
             {
-                if ((Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) < .002f) || (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) < .002f))
+                if ((Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) < .02f) || (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) < .02f))
                 {
                     //This will fire a projectile along the x axis
-                    if (transform.position.x < target.position.x && (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) < .05f)
-                        && (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) > -.05f))
+                    if (transform.position.x < target.position.x && (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) < .2f)
+                        && (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) > -.2f))
                     {
                         GameObject newProjectile = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 180f));
                         newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(projectileForce, 0f));
                     }
-                    if (transform.position.x > target.position.x && (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) < .05f)
-                        && (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) > -.05f))
+                    if (transform.position.x > target.position.x && (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) < .2f)
+                        && (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) > -.2f))
                     {
                         GameObject newProjectile = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
                         newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(-projectileForce, 0f));
                     }
                     //This will fire a projectile along the y axis
-                    if (transform.position.y < target.position.y && (Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) < .05f)
-                       && (Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) > -.05f))
+                    if (transform.position.y < target.position.y && (Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) < .2f)
+                       && (Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) > -.2f))
                     {
                         GameObject newProjectile = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0f, 0f,-90f));
                         newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, projectileForce));
                     }
-                    if (transform.position.y > target.position.y && (Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) < .05f)
-                        && (Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) > -.05f))
+                    if (transform.position.y > target.position.y && (Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) < .2f)
+                        && (Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) > -.2f))
                     {
                         GameObject newProjectile = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0f, 0f,90f));
                         newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -projectileForce));
                     }
+
+
+
+
                 }
                 
 

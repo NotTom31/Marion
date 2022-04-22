@@ -21,6 +21,22 @@ public class EnemyProjectile : MonoBehaviour
         if (this.CompareTag("Projectile") && other.CompareTag("Player"))
         {
             other.GetComponent<Character>().Damage(damage, other.GetComponent<BoxCollider2D>());
+            Destroy(this.gameObject);
         }
+        if (other.CompareTag("Wall"))
+        {
+            Destroy(this.gameObject);
+        }
+
     }
+
+    /*private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Hits wall");
+        if (this.CompareTag("Projectile") && other.CompareTag("Blocking"))
+        {
+            Destroy(gameObject);
+        }
+    }*/
+
 }
