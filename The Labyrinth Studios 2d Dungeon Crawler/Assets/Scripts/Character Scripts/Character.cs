@@ -50,7 +50,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
         GameObject.Find("Hit Sfx").GetComponent<AudioSource>().Play();//sfx for getting hit 
         if (temp.GetComponent<Character>().currentHealth > 0)//check if they still have health
         {            
-            if (obj.CompareTag("Player") && obj.GetComponent<Player>().currentState != PlayerState.stagger)//Player damaged, will  run the blink routine and set to stagger
+            if (obj.CompareTag("Player") && obj.GetComponent<Player>().currentState != PlayerState.stagger && damage > 0)//Player damaged, will  run the blink routine and set to stagger
             {
                 StartCoroutine(temp.GetComponent<Player>().playerInvulnerable(temp));
                 StartCoroutine(temp.GetComponent<Player>().playerBlink(temp));//start coroutine
@@ -146,8 +146,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
         if ((this.CompareTag("Player") && obj.CompareTag("Fighter")) || (obj.CompareTag("Player") && this.CompareTag("Fighter")))//check to make sure either player hits enemy or enemy hits player
         {
             if (obj.gameObject != null)
-            {
-                
+            {                
                 Damage(attackDamage, obj);           
                 Push(obj);
             }
@@ -157,9 +156,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
         {
             if (this.currentHealth < this.maxHealth)
             {
-                
-
-                this.currentHealth += 1;
+                Damage(-1, this.GetComponent<Collider2D>());
                 Destroy(obj.gameObject);
             }
             
