@@ -17,7 +17,6 @@ public class EnemyProjectile : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("THIS HITTTTTTTT");
         if (this.CompareTag("Projectile") && other.CompareTag("Player"))
         {
             other.GetComponent<Character>().Damage(damage, other.GetComponent<BoxCollider2D>());

@@ -43,7 +43,7 @@ public class Player : Character , IDataPersistence
     public Sprite emptyHeart;
     public int numOfHearts;
     public UnityEvent PlayerDied;
-    GameObject[] inRange;//array that will hold all enemies, will be used to revive them
+    protected GameObject[] inRange;//array that will hold all enemies, will be used to revive them
     //******************************************************************************************************************************************************
     //********************************************************INITIALIZATION********************************************************************************
     //******************************************************************************************************************************************************
@@ -97,10 +97,12 @@ public class Player : Character , IDataPersistence
         if (movement != Vector2.zero)
         {
             Move(thisBody, movement, moveSpeed);
+            currentState = PlayerState.walk;
         }
         else
         {
             anim.SetBool("moving", false);
+            currentState = PlayerState.walk;
         }
     }     
     //******************************************************************************************************************************************************

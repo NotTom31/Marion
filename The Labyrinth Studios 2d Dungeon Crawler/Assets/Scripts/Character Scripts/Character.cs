@@ -98,8 +98,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
         {
            temp.GetComponent<Player>().PlayerDied.Invoke();//kills player
         }
-        else if (obj.CompareTag("Fighter")) 
-        
+        else if (obj.CompareTag("Fighter"))         
         { 
             temp.gameObject.SetActive(false); temp.GetComponent<Enemy>().currentState = EnemyState.dead; 
         }   //kills everything else   
@@ -111,6 +110,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
     public float pushTime { get; set; }//how long the push back last
     public void Push(Collider2D obj)//Author Johnathan Bates
     {
+        Debug.Log("UEWILHJEWKLJH");
         Rigidbody2D character = obj.GetComponent<Rigidbody2D>();//reference to the Rigidbody component
             if (character != null)//makes sure the object hasn't already been destroyed
             {
@@ -131,7 +131,7 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
     //******************************************************************************************************************************************************
     //********************************************************CHARACTER CLASS ATTRIBUTES********************************************************************
     //******************************************************************************************************************************************************
-    public Rigidbody2D thisBody;//Use this in a child class or inspector to initialize RigidBody
+    protected Rigidbody2D thisBody;//Use this in a child class or inspector to initialize RigidBody
     protected Animator anim;//Use this in a child class or inspector to initialize Animator
     protected Vector2 movement;//Use this in a child class to control movement 
     public float moveSpeed;//Use this in a child class or inspector tocontrol movement speed
@@ -161,10 +161,5 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
             }
             
         }
-
-        
-
-
-    }    
-
+    }
 }
