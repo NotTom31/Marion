@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -789466897
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 01277fa67a29c0643889c071d246f17d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -195,7 +195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5626566799053344359, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5626566799053344360, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
       propertyPath: m_RootOrder
@@ -242,6 +242,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5626566799053344361, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
+      propertyPath: Locked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626566799053344361, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
       propertyPath: DoorOn.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6585003619352875027}
@@ -259,8 +263,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
+--- !u!1 &2398441583490796097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5626566799053344359, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
+  m_PrefabInstance: {fileID: 8024690339072328742}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2398441583490796110 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5626566799053344360, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
   m_PrefabInstance: {fileID: 8024690339072328742}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1685967537209418130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2398441583490796097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5ae5868fd385c41bb92e343813384e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Locked door
+    contButton: Continue>>
+    sentences:
+    - I'm Locked!!!
