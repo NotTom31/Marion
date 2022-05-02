@@ -230,13 +230,13 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 00000000a592b36e0dd4136eefb0f1d021a0b16e4f37a50b41bffcc7
   m_ShapePath:
-  - {x: -0.056523323, y: -0.044836182, z: 0}
-  - {x: 0.054653168, y: -0.04296622, z: 0}
-  - {x: 0.0574584, y: 0.06540574, z: 0}
-  - {x: -0.056990862, y: 0.063535795, z: 0}
-  m_ShapePathHash: -1827538275
+  - {x: -0.23251216, y: -0.06263297, z: 0}
+  - {x: 0.2168006, y: -0.068672456, z: 0}
+  - {x: 0.18401463, y: 0.207779, z: 0}
+  - {x: -0.20134065, y: 0.20986363, z: 0}
+  m_ShapePathHash: -479501217
   m_Mesh: {fileID: 0}
-  m_InstanceId: 19940
+  m_InstanceId: 35334
 --- !u!114 &6561063668368375183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +249,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1621ded23a852c41acd0129bb7a30b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisBody: {fileID: 0}
+  maxHealth: 0
+  health: 0
+  timeBetweenHurt: 0
+  gameoverUI: {fileID: 0}
   moveSpeed: 0.5
   charType: 0
   attackDamage: 1
@@ -261,3 +264,8 @@ MonoBehaviour:
   attackRadius: 0.1
   reviveRadius: 0.1
   homePosition: {x: 0, y: 0}
+  rangedRadius: 0
+  projectile: {fileID: 0}
+  heart: {fileID: 0}
+  projectileForce: 0
+  attCooldown: 2.5

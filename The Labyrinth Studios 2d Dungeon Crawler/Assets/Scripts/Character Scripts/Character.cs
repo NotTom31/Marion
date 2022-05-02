@@ -110,7 +110,6 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
     public float pushTime { get; set; }//how long the push back last
     public void Push(Collider2D obj)//Author Johnathan Bates
     {
-        Debug.Log("UEWILHJEWKLJH");
         Rigidbody2D character = obj.GetComponent<Rigidbody2D>();//reference to the Rigidbody component
             if (character != null)//makes sure the object hasn't already been destroyed
             {
