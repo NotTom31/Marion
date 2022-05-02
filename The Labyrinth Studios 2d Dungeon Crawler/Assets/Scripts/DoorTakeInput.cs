@@ -8,6 +8,7 @@ public class DoorTakeInput : Collectable
     public UnityEvent DoorOn;
     public UnityEvent DoorOff;
     public UnityEvent DisplayText;
+    public UnityEvent CloseText;
     public bool Locked = false;
     public UnityEvent ActivatePortal;
     protected override void OnCollect()
@@ -48,6 +49,15 @@ public class DoorTakeInput : Collectable
     public void LockDoor()
     {
         Locked = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D obj)
+    {
+        if (obj.CompareTag("Player"))
+        {
+            CloseText.Invoke();
+            Debug.Log("Im here.");
+        }
     }
 }
 
