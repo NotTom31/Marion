@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 6561063668368375186}
   - component: {fileID: 6561063668368375185}
   - component: {fileID: 6561063668368375184}
-  - component: {fileID: 6561063668368375183}
+  - component: {fileID: 3795625760213046637}
   m_Layer: 0
   m_Name: LintEnemy
   m_TagString: Fighter
@@ -236,8 +236,8 @@ MonoBehaviour:
   - {x: -0.20134065, y: 0.20986363, z: 0}
   m_ShapePathHash: -479501217
   m_Mesh: {fileID: 0}
-  m_InstanceId: 35334
---- !u!114 &6561063668368375183
+  m_InstanceId: 73186
+--- !u!114 &3795625760213046637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,26 +246,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6561063668368375181}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1621ded23a852c41acd0129bb7a30b2, type: 3}
+  m_Script: {fileID: 11500000, guid: dbd74db209078db4fbbd459a73b1c468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 0
   health: 0
   timeBetweenHurt: 0
   gameoverUI: {fileID: 0}
-  moveSpeed: 0.5
+  thisBody: {fileID: 0}
+  moveSpeed: 0
   charType: 0
-  attackDamage: 1
-  currentHealth: 3
+  attackDamage: 0
+  currentHealth: 0
   currentState: 0
-  enemyName: Test Lint
-  target: {fileID: 0}
-  chaseRadius: 1.3
-  attackRadius: 0.1
-  reviveRadius: 0.1
+  reviveRadius: 0
   homePosition: {x: 0, y: 0}
-  rangedRadius: 0
-  projectile: {fileID: 0}
   heart: {fileID: 0}
-  projectileForce: 0
-  attCooldown: 2.5
