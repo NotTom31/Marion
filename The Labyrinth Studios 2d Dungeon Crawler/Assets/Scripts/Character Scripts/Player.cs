@@ -8,11 +8,11 @@ using System.Runtime.CompilerServices;
 //******************************************************************************************************************************************************
 //********************************************************PLAYER STATE MACHINE**************************************************************************
 //******************************************************************************************************************************************************
-public enum PlayerState
+public enum PlayerState//Different states the player can have
 {
     walk, attack, interact, stagger, dead, holdingBox, holdingBow
 }
-public class Player : Character , IDataPersistence 
+public class Player : Character , IDataPersistence, IMoveable
 {
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IDATAPERSISTENCE****************************************************************
@@ -39,24 +39,22 @@ public class Player : Character , IDataPersistence
     //******************************************************************************************************************************************************
     public PlayerState currentState;//variable for player state machine
     public Image[] hearts;//array to hold hearts gui
-    public Sprite fullHeart;
-    public Sprite emptyHeart;
-    public int numOfHearts;
-    public UnityEvent PlayerDied;
+    public Sprite fullHeart;//image of a heart for the health bar
+    public Sprite emptyHeart;//image of an empty heart for the health bar
+    public int numOfHearts;//how many hearts are in the health bar
+    public UnityEvent PlayerDied;//when the player dies, the event will kick off, which will be the game over screen
     protected GameObject[] inRange;//array that will hold all enemies, will be used to revive them
     //******************************************************************************************************************************************************
     //********************************************************INITIALIZATION********************************************************************************
     //******************************************************************************************************************************************************
     void Start()
-    {
-        thisBody = this.GetComponent<Rigidbody2D>();
-        anim = this.GetComponent<Animator>();
-        charType = CharacterType.player;//state machine, what is the type of player
-        PlayerState currentState = PlayerState.walk;//initialize playerstate to walk
-        
-        thrust = 5f;
-        pushTime = .16f;
+    {          
+        charType = CharacterType.player;//state machine, what is the type of character
+        PlayerState currentState = PlayerState.walk;//initialize playerstate to walk        
+        anim = this.GetComponent<Animator>();//Initializes the animator component
+        thisBody = this.GetComponent<Rigidbody2D>();//Initializes the Rigidbody2d component        
         inRange = GameObject.FindGameObjectsWithTag("Fighter");
+        moveSpeed = 1.25f;
     }
     //******************************************************************************************************************************************************
     //*****************************************************************UPDATE*******************************************************************************
@@ -72,7 +70,7 @@ public class Player : Character , IDataPersistence
         }
         else if (currentState == PlayerState.walk)//checks for player movement
         {
-            getMoveInput();
+            Move();
         }
         heartGUI();//manages heart display
         ReviveInRange();//revives enemies once out of a certain range
@@ -87,16 +85,19 @@ public class Player : Character , IDataPersistence
         currentState = PlayerState.walk;//resetting player state machine
     }
     //******************************************************************************************************************************************************
-    //*****************************************************************MOVEMENT*****************************************************************************
+    //************************************************************DECLARING IMOVABLE************************************************************************
     //******************************************************************************************************************************************************
-    private void getMoveInput()
+    public void Move()
     {
         movement = Vector2.zero;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         if (movement != Vector2.zero)
         {
-            Move(thisBody, movement, moveSpeed);
+            thisBody.MovePosition(thisBody.position + movement * moveSpeed * Time.fixedDeltaTime);//actually moves the player
+            anim.SetFloat("moveX", movement.x);//allows movement animation
+            anim.SetFloat("moveY", movement.y);//allows movement animation
+            anim.SetBool("moving", true);//moving set true in animator
             currentState = PlayerState.walk;
         }
         else
@@ -161,6 +162,35 @@ public class Player : Character , IDataPersistence
                 temp.GetComponent<Enemy>().currentState = EnemyState.idle;//resets the enemy state back to idle
                 temp.gameObject.SetActive(true);//re activates enemy within the scene
             }
+        }
+    }
+    //******************************************************************************************************************************************************
+    //*****************************************************************MELEE ATTACKING TRIGGERED************************************************************
+    //******************************************************************************************************************************************************
+    private void OnTriggerEnter2D(Collider2D obj)
+    {
+        if ( obj.CompareTag("Fighter"))//check to make sure either player hits enemy or enemy hits player
+        {
+            if (obj.gameObject != null)
+            {
+                Damage(attackDamage, obj);
+                Push(obj);
+            }
+        }
+        // Author Joel Monteon
+        if (obj.CompareTag("Heart"))
+        {
+            if (this.currentHealth < this.maxHealth)
+            {
+                Damage(-1, this.GetComponent<Collider2D>());
+                Destroy(obj.gameObject);
+            }
+        }
+        if(obj.CompareTag("Projectile"))
+        {
+            Debug.Log(this.tag);
+            Damage(1, this.GetComponent<Collider2D>());
+            Push(this.GetComponent<Collider2D>());
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IMoveable//this will be used to move an object
 {
-    void Move(Rigidbody2D thisBody, Vector2 movement, float moveSpeed);
+    void Move();
 }
 
 public interface IDamageable//this will be used to do damage to a character
