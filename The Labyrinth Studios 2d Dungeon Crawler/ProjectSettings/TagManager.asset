@@ -13,6 +13,7 @@ TagManager:
   - Box
   - PressurePlate
   - Projectile
+  - Heart
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - NoInteract
   - NoBlocking
   - Blocking
   - Actor
