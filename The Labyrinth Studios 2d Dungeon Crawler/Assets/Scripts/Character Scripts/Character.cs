@@ -119,7 +119,28 @@ public class Character : MonoBehaviour, IMoveable, IDamageable , IKillable, IPus
                 StartCoroutine(PushCo(character));
             }
     }
+    public void Push(Collider2D obj, float thrust, float pushtime)//Author Johnathan Bates
+    {
+        Rigidbody2D character = obj.GetComponent<Rigidbody2D>();//reference to the Rigidbody component
+        if (character != null)//makes sure the object hasn't already been destroyed
+        {
+            Vector2 difference = character.transform.position - this.transform.position;//not sure lol
+            Debug.Log(character.transform.position);
+            Debug.Log(this.transform.position);
+            difference = difference.normalized * thrust;//this is where the thrust will change how far something is pushed back
+            character.AddForce(difference, ForceMode2D.Impulse);//the actual push occurs here            
+            StartCoroutine(PushCo(character, pushtime));
+        }
+    }
     public IEnumerator PushCo(Rigidbody2D character)//Author Johnathan Bates
+    {
+        if (character != null)
+        {
+            yield return new WaitForSeconds(pushTime);
+            character.velocity = Vector2.zero;
+        }
+    }
+    public IEnumerator PushCo(Rigidbody2D character, float pushtime)//Author Johnathan Bates
     {
         if (character != null)
         {
