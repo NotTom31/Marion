@@ -7,6 +7,7 @@ public class Chest : Collectable
 {
     public Sprite emptyChest;
     public int pesosAmount = 5;
+    public bool HasKey = false;
     public UnityEvent ChestOpened;
 
     protected override void OnCollect()
@@ -15,6 +16,7 @@ public class Chest : Collectable
         {
             collected = true;
             ChestOpened.Invoke();
+            GameObject.Find("Door Open SFX").GetComponent<AudioSource>().Play();//I thought this might sound good for the chest but we can change it 
             GetComponent<SpriteRenderer>().sprite = emptyChest;
             Debug.Log("Grant " + pesosAmount + " pesos!");
         }
