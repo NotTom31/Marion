@@ -1,0 +1,924 @@
+fileFormatVersion: 2
+guid: a52cd464e44054c4c831a4c8710901e4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5775530888984810810
+    second: player_crossbow_walking_right_1
+  - first:
+      213: -2298115110555370982
+    second: player_crossbow_walking_right_2
+  - first:
+      213: 5563007008172666042
+    second: player_crossbow_walking_right_3
+  - first:
+      213: -8666658701846683924
+    second: player_crossbow_walking_right_4
+  - first:
+      213: -9204638313409150742
+    second: player_crossbow_walking_right_5
+  - first:
+      213: -2622568854513385545
+    second: player_crossbow_walking_right_6
+  - first:
+      213: 7301014602331459562
+    second: player_crossbow_walking_right_7
+  - first:
+      213: -139789224040766871
+    second: player_crossbow_walking_right_8
+  - first:
+      213: -4079291706965459617
+    second: player_crossbow_walking_left_1
+  - first:
+      213: 5644079796679644745
+    second: player_crossbow_walking_left_2
+  - first:
+      213: -8292695417539123024
+    second: player_crossbow_walking_left_3
+  - first:
+      213: 768027165106928864
+    second: player_crossbow_walking_left_4
+  - first:
+      213: 7879275867326228784
+    second: player_crossbow_walking_left_5
+  - first:
+      213: -1990758916594576246
+    second: player_crossbow_walking_left_6
+  - first:
+      213: -8066463476239537985
+    second: player_crossbow_walking_left_7
+  - first:
+      213: 3171286829683426330
+    second: player_crossbow_walking_left_8
+  - first:
+      213: -1072800336673962269
+    second: player_crossbow_walking_up_1
+  - first:
+      213: -569908151079733808
+    second: player_crossbow_walking_up_2
+  - first:
+      213: -7464470629783650000
+    second: player_crossbow_walking_up_3
+  - first:
+      213: 9180492504492778540
+    second: player_crossbow_walking_up_4
+  - first:
+      213: 5445536453687445687
+    second: player_crossbow_walking_up_5
+  - first:
+      213: -2756768275322333862
+    second: player_crossbow_walking_up_6
+  - first:
+      213: -1749651724607542388
+    second: player_crossbow_walking_up_7
+  - first:
+      213: 5161434018625236946
+    second: player_crossbow_walking_up_8
+  - first:
+      213: -175884575308688396
+    second: player_crossbow_walking_down_1
+  - first:
+      213: -4879253964334769119
+    second: player_crossbow_walking_down_2
+  - first:
+      213: -8251620373936237779
+    second: player_crossbow_walking_down_3
+  - first:
+      213: 4161166382273566086
+    second: player_crossbow_walking_down_4
+  - first:
+      213: -4511812796815979556
+    second: player_crossbow_walking_down_5
+  - first:
+      213: 7857538862075168839
+    second: player_crossbow_walking_down_6
+  - first:
+      213: 1394378291704902412
+    second: player_crossbow_walking_down_7
+  - first:
+      213: -1331631002344404628
+    second: player_crossbow_walking_down_8
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player_crossbow_walking_right_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 196
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6caa3cca14139dfa0800000000000000
+      internalID: -5775530888984810810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_right_2
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 196
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1ab36e9b747b10e0800000000000000
+      internalID: -2298115110555370982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_right_3
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 196
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abce32d5665c33d40800000000000000
+      internalID: 5563007008172666042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_right_4
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 196
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cee51ee14d7d9b780800000000000000
+      internalID: -8666658701846683924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_right_5
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 196
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae00c43e83e824080800000000000000
+      internalID: -9204638313409150742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_right_6
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 196
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bff9b39583ca9bd0800000000000000
+      internalID: -2622568854513385545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_right_7
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 196
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aef08ef291a625560800000000000000
+      internalID: 7301014602331459562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_right_8
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 196
+        width: 30
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9626f9df07e5f0ef0800000000000000
+      internalID: -139789224040766871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_left_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 131
+        width: 30
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5d70273ec17367c0800000000000000
+      internalID: -4079291706965459617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_left_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 131
+        width: 30
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9469c05ebacc35e40800000000000000
+      internalID: 5644079796679644745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_left_3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 131
+        width: 30
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b8221f447d6aec80800000000000000
+      internalID: -8292695417539123024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_left_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 131
+        width: 30
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ec7c0233a498aa00800000000000000
+      internalID: 768027165106928864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_left_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 131
+        width: 30
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 039a947b7afc85d60800000000000000
+      internalID: 7879275867326228784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_left_6
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 131
+        width: 30
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8450f610576f54e0800000000000000
+      internalID: -1990758916594576246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_left_7
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 131
+        width: 30
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb86411d43a2e0090800000000000000
+      internalID: -8066463476239537985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_left_8
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 131
+        width: 30
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a14c724c19ca20c20800000000000000
+      internalID: 3171286829683426330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_up_1
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 66
+        width: 27
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e601a917c5ac11f0800000000000000
+      internalID: -1072800336673962269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_up_2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 66
+        width: 27
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d5fa4c5e874718f0800000000000000
+      internalID: -569908151079733808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_up_3
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 66
+        width: 27
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 031c86bb28fd86890800000000000000
+      internalID: -7464470629783650000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_up_4
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 66
+        width: 27
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c24ad61ea49a76f70800000000000000
+      internalID: 9180492504492778540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_up_5
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 66
+        width: 27
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b80b7d8d8e629b40800000000000000
+      internalID: 5445536453687445687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_up_6
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 67
+        width: 27
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a55985d0cddfdb9d0800000000000000
+      internalID: -2756768275322333862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_up_7
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 66
+        width: 27
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8b2e1ac60df7b7e0800000000000000
+      internalID: -1749651724607542388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_up_8
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 66
+        width: 27
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2df26cbb4e811a740800000000000000
+      internalID: 5161434018625236946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_down_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 27
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f3514f19e12f8df0800000000000000
+      internalID: -175884575308688396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_down_2
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 1
+        width: 27
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12cd8eeee58694cb0800000000000000
+      internalID: -4879253964334769119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_down_3
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 1
+        width: 27
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2397262dfa5c7d80800000000000000
+      internalID: -8251620373936237779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_down_4
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 1
+        width: 27
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68596b227ce6fb930800000000000000
+      internalID: 4161166382273566086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_down_5
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 1
+        width: 27
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdbc8b87a22d261c0800000000000000
+      internalID: -4511812796815979556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_down_6
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 1
+        width: 27
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74841dac6f59b0d60800000000000000
+      internalID: 7857538862075168839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_down_7
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 1
+        width: 27
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0336972ba3d95310800000000000000
+      internalID: 1394378291704902412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_crossbow_walking_down_8
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 1
+        width: 27
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c694d5d98a8158de0800000000000000
+      internalID: -1331631002344404628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
