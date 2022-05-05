@@ -38,20 +38,20 @@ public class EnemyMelee : Enemy, IDamageable, IKillable, IMoveable
         if (currentState != EnemyState.dead && Vector2.Distance(transform.position, target.position) <= chaseRadius
              && Vector2.Distance(transform.position, target.position) >= attackRadius)
         {//moves the enemy towards the player           
-            temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed);
-            thisBody.MovePosition(temp);//moves the enemy
-            currentState = EnemyState.walk;
+            currentState = EnemyState.attack;            
             tempDir = transform.position - target.position;
             MoveInDirection(tempDir);
+            temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed);
+            thisBody.MovePosition(temp);//moves the enemy
         }
         else if(currentState != EnemyState.dead)
         {//makes the enemy return to it's home position            
-            temp = Vector2.MoveTowards(transform.position, homePosition, moveSpeed);
-            thisBody.MovePosition(temp);//moves the enemy
+            currentState = EnemyState.walk;            
             castV3 = transform.position;
             tempDir = castV3 - homePosition;
             MoveInDirection(tempDir);
-            currentState = EnemyState.walk;
+            temp = Vector2.MoveTowards(transform.position, homePosition, moveSpeed);
+            thisBody.MovePosition(temp);//moves the enemy
             if (castV3 == homePosition)
             {
                 anim.SetBool("moving", false);
@@ -63,7 +63,17 @@ public class EnemyMelee : Enemy, IDamageable, IKillable, IMoveable
     {
         anim.SetFloat("moveX", -tempDir.normalized.x);//allows movement animation
         anim.SetFloat("moveY", -tempDir.normalized.y);//allows movement animation
-        anim.SetBool("moving", true);//moving set true in animator
+        if(currentState == EnemyState.walk)
+        {
+            anim.SetBool("attack", false);//attack set true in animator
+            anim.SetBool("moving", true);//moving set true in animator
+        }
+        else if(currentState == EnemyState.attack)
+        {
+            anim.SetBool("moving", false);//moving set true in animator
+            anim.SetBool("attack", true);//attack set true in animator
+        }
+        
     }
     //******************************************************************************************************************************************************
     //*****************************************************************MELEE ATTACKING TRIGGERED************************************************************
