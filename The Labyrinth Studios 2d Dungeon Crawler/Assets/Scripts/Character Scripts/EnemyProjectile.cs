@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour 
 {
-    private float autoDestroyTime = 3f;
-    private float moveSpeed = 2;
-    private int damage = 1;
     public Rigidbody2D thisBody;
 
     private void Awake()

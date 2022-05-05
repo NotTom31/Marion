@@ -15,10 +15,10 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
         charType = CharacterType.rangedEnemy;
         attackDamage = 1;
         currentHealth = 3;
-        chaseRadius = 3.5f;
+        chaseRadius = 4.5f;
         attackRadius = .8f;
         reviveRadius = 5f;
-        rangedRadius = 3;
+        rangedRadius = 4;
         projectileForce = 80;
         attCooldown = 1;
         //-----------------------------
@@ -40,19 +40,31 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
         Vector2 castV3;//Stores the vector that will make enemy face it's home position
         //this checks to see if player is in chase range but outside of "attack range", attack range is used so the enemy doesn't try to go through the player
         if (currentState != EnemyState.dead && Vector2.Distance(transform.position, target.position) <= chaseRadius
-             && Vector2.Distance(transform.position, target.position) >= attackRadius)
-        {//moves the enemy towards the player           
+             && Vector2.Distance(transform.position, target.position) > attackRadius)
+        {//moves the enemy towards the player
             temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed);
             thisBody.MovePosition(temp);//moves the enemy
             currentState = EnemyState.walk;
             tempDir = transform.position - target.position;
             MoveInDirection(tempDir);
+            if (Vector2.Distance(transform.position, target.transform.position) <= rangedRadius && Time.time > lastAttack + attCooldown)
+            {
+                RangedAttack();
+                lastAttack = Time.time;
+            }
+        }        
+        else if(currentState != EnemyState.dead && Vector2.Distance(transform.position, target.position) <= attackRadius)
+        {            
+            temp = Vector2.MoveTowards(transform.position, -target.position , moveSpeed * 2f);
+            thisBody.MovePosition(temp);
+            castV3 = transform.position;
+            tempDir = target.position;
+            temp = castV3 - tempDir;
+            MoveInDirection(-temp);
         }
-        // Author Joel Monteon
-        else if (Vector2.Distance(transform.position, target.transform.position) <= attackRadius && Time.time > lastAttack + attCooldown)
+        else if(currentState != EnemyState.dead && Vector2.Distance(transform.position, target.position) == attackRadius)
         {
-            RangedAttack();
-            lastAttack = Time.time;
+            attackRadius = 3.5f;
         }
         else if (currentState != EnemyState.dead)
         {//makes the enemy return to it's home position            
