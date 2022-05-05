@@ -140,4 +140,15 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
         anim.SetBool("attack", false);//allow animation to continue        
         currentState = EnemyState.walk;//resetting player state machine
     }
+    private void OnTriggerEnter2D(Collider2D obj)
+    {
+        if (obj.CompareTag("Player"))//check to make sure either player hits enemy or enemy hits player
+        {
+            if (obj.gameObject != null)
+            {
+                Damage(attackDamage, obj);
+                Push(obj);
+            }
+        }
+    }
 }
