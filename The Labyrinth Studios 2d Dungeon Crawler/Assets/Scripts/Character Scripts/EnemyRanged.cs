@@ -39,7 +39,7 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
         Vector2 tempDir;//Stores the vector that will make enemy face the player, also used in conjunction with castV3 to face home position
         Vector2 castV3;//Stores the vector that will make enemy face it's home position
         //this checks to see if player is in chase range but outside of "attack range", attack range is used so the enemy doesn't try to go through the player
-        if (currentState != EnemyState.dead && Vector2.Distance(transform.position, target.position) <= chaseRadius
+        if ((currentState != EnemyState.dead || currentState != EnemyState.attack) && Vector2.Distance(transform.position, target.position) <= chaseRadius
              && Vector2.Distance(transform.position, target.position) > attackRadius)
         {//moves the enemy towards the player
             temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed);
@@ -53,16 +53,17 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
                 lastAttack = Time.time;
             }
         }        
-        else if(currentState != EnemyState.dead && Vector2.Distance(transform.position, target.position) <= attackRadius)
+        else if ((currentState != EnemyState.dead || currentState != EnemyState.attack) && Vector2.Distance(transform.position, target.position) <= attackRadius)
         {            
             temp = Vector2.MoveTowards(transform.position, -target.position , moveSpeed * 2f);
             thisBody.MovePosition(temp);
+            currentState = EnemyState.walk;
             castV3 = transform.position;
             tempDir = target.position;
             temp = castV3 - tempDir;
             MoveInDirection(-temp);
         }
-        else if(currentState != EnemyState.dead && Vector2.Distance(transform.position, target.position) == attackRadius)
+        else if((currentState != EnemyState.dead || currentState != EnemyState.attack) && Vector2.Distance(transform.position, target.position) == attackRadius)
         {
             attackRadius = 3.5f;
         }
@@ -70,10 +71,10 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
         {//makes the enemy return to it's home position            
             temp = Vector2.MoveTowards(transform.position, homePosition, moveSpeed);
             thisBody.MovePosition(temp);//moves the enemy
+            currentState = EnemyState.walk;
             castV3 = transform.position;
             tempDir = castV3 - homePosition;
             MoveInDirection(tempDir);
-            currentState = EnemyState.walk;
             if (castV3 == homePosition)
             {
                 anim.SetBool("moving", false);
@@ -99,6 +100,7 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
             {
                 if ((Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) < .02f) || (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) < .02f))
                 {
+                    StartCoroutine(AttackCo());
                     //This will fire a projectile along the x axis
                     // Author Joel Monteon
                     if (transform.position.x < target.position.x && (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) < .2f)
@@ -129,5 +131,13 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
                 }
             }
         }
+    }
+    private IEnumerator AttackCo()
+    {
+        anim.SetBool("attack", true);//allow animation
+        currentState = EnemyState.attack;//player state machine
+        yield return new WaitForSeconds(.3f);//wait for a third of a second
+        anim.SetBool("attack", false);//allow animation to continue        
+        currentState = EnemyState.walk;//resetting player state machine
     }
 }
