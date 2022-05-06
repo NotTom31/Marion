@@ -20,7 +20,7 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
         reviveRadius = 5f;
         rangedRadius = 4;
         projectileForce = 80;
-        attCooldown = 1;
+        attCooldown = 2;
         //-----------------------------
         /*Attributes from Enemy script*/
         //-----------------------------
@@ -42,11 +42,10 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
         if ((currentState != EnemyState.dead || currentState != EnemyState.attack) && Vector2.Distance(transform.position, target.position) <= chaseRadius
              && Vector2.Distance(transform.position, target.position) > attackRadius)
         {//moves the enemy towards the player
+            attackRadius = .8f;//resetting attack radius           
             if (Vector2.Distance(transform.position, target.transform.position) <= rangedRadius && Time.time > lastAttack + attCooldown)
             {
-                StartCoroutine(AttackCo());
                 RangedAttack();
-                lastAttack = Time.time;
             }
             else
             {
@@ -57,20 +56,29 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
                 MoveInDirection(tempDir);//changes what direction the enemy is facing
             }
            
-        }        
-        else if ((currentState != EnemyState.dead || currentState != EnemyState.attack) && Vector2.Distance(transform.position, target.position) <= attackRadius)
-        {            
-            temp = Vector2.MoveTowards(transform.position, -target.position , moveSpeed * 2f);
+        }   
+        else if(Vector2.Distance(transform.position, target.position) == attackRadius && Time.time > lastAttack + attCooldown)
+        {
+            if (attackRadius != 2f)
+            {
+                RangedAttack();
+            }
+            else 
+            {
+                attackRadius = .8f;
+            }
+            
+        }
+        else if ((currentState != EnemyState.dead || currentState != EnemyState.attack) && Vector2.Distance(transform.position, target.position) < attackRadius)
+        {//move away from the player
+            attackRadius = 2f;//resetting attack range so the enemy backs off a good distance
+            temp = Vector2.MoveTowards(transform.position, target.position * -1f, moveSpeed * 2f);
             thisBody.MovePosition(temp);
             currentState = EnemyState.walk;
             castV3 = transform.position;
             tempDir = target.position;
             temp = castV3 - tempDir;
             MoveInDirection(-temp);
-        }
-        else if(currentState != EnemyState.dead && Vector2.Distance(transform.position, target.position) == attackRadius)
-        {
-            attackRadius = 3.5f;
         }
         else if (currentState != EnemyState.dead)
         {//makes the enemy return to it's home position            
@@ -80,7 +88,7 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
             castV3 = transform.position;
             tempDir = castV3 - homePosition;
             MoveInDirection(tempDir);
-            if (castV3 == homePosition)
+            if ((castV3) == homePosition)
             {
                 anim.SetBool("moving", false);
                 currentState = EnemyState.idle;
@@ -101,50 +109,67 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
         anim.SetBool("moving", false);
         anim.SetBool("attack", true);//allow animation
         currentState = EnemyState.attack;//player state machine
-        yield return new WaitForSeconds(.93f);//wait for a third of a second
+        yield return null;//wait for a third of a second
         anim.SetBool("attack", false);//allow animation to continue
         anim.SetBool("moving", true);
         currentState = EnemyState.walk;//resetting player state machine
+        yield return new WaitForSeconds(1.4f);
     }
     //*******************************************************************************************************************************************************************
     //*****************************************************************RANGED ATTACK*************************************************************************************
     //*******************************************************************************************************************************************************************
     void RangedAttack()//Author Johnathan Bates
     {
+        Vector3 offset;
         //This code looks like it could be condensed
         if (this.charType == CharacterType.rangedEnemy)
         {
             if (Vector2.Distance(transform.position, target.position) <= rangedRadius)
             {
                 if ((Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) < .02f) || (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) < .02f))
-                {                    
+                {
+                    
                     //This will fire a projectile along the x axis
                     // Author Joel Monteon
                     if (transform.position.x < target.position.x && (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) < .2f)
                         && (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) > -.2f))
                     {
-                        GameObject newProjectile = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 180f));
-                        newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(projectileForce, 0f));
+                        StartCoroutine(AttackCo());
+                        offset = new Vector3(.2f, 0, 0);
+                        GameObject newProjectile = Instantiate(projectile, transform.position + offset, transform.rotation * Quaternion.Euler(0f, 0f, 180f));
+                        newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(projectileForce, 0f));                        
+                        lastAttack = Time.time;
                     }
                     if (transform.position.x > target.position.x && (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) < .2f)
                         && (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) > -.2f))
                     {
-                        GameObject newProjectile = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+                        StartCoroutine(AttackCo());
+                        offset = new Vector3(-.2f, 0, 0);
+                        GameObject newProjectile = Instantiate(projectile, transform.position + offset, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
                         newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(-projectileForce, 0f));
+                        
+                        lastAttack = Time.time;
                     }
                     //This will fire a projectile along the y axis
                     if (transform.position.y < target.position.y && (Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) < .2f)
                        && (Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) > -.2f))
                     {
-                        GameObject newProjectile = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0f, 0f, -90f));
+                        StartCoroutine(AttackCo());
+                        offset = new Vector3(0, .2f, 0);
+                        GameObject newProjectile = Instantiate(projectile, transform.position + offset, transform.rotation * Quaternion.Euler(0f, 0f, -90f));
                         newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, projectileForce));
+                        lastAttack = Time.time;
                     }
                     if (transform.position.y > target.position.y && (Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) < .2f)
                         && (Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) > -.2f))
                     {
-                        GameObject newProjectile = Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 90f));
+                        StartCoroutine(AttackCo());
+                        offset = new Vector3(0, -.2f, 0);
+                        GameObject newProjectile = Instantiate(projectile, transform.position + offset, transform.rotation * Quaternion.Euler(0f, 0f, 90f));
                         newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -projectileForce));
+                        lastAttack = Time.time;
                     }
+                    
                 }
             }
         }
