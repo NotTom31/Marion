@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8024690339884066555}
   - component: {fileID: 8024690339884066552}
   - component: {fileID: 8024690339884066553}
+  - component: {fileID: -8726030479107637083}
   m_Layer: 0
   m_Name: LockedDoor
   m_TagString: Untagged
@@ -111,6 +112,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!95 &-8726030479107637083
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8024690339884066551}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d8f5aafcc99d5d241be5a7e0b5c736f7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8024690338053296754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -172,11 +192,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39758acdbaa095b43883c164415faccf, type: 3}
---- !u!1 &6585003619352875027 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3764952936902132321, guid: 39758acdbaa095b43883c164415faccf, type: 3}
-  m_PrefabInstance: {fileID: 8024690338053296754}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6585003619352875039 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3764952936902132333, guid: 39758acdbaa095b43883c164415faccf, type: 3}
@@ -242,25 +257,33 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5626566799053344361, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
-      propertyPath: Locked
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5626566799053344361, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
       propertyPath: DoorOn.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6585003619352875027}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626566799053344361, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
+      propertyPath: DoorOn.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8024690339884066553}
     - target: {fileID: 5626566799053344361, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
       propertyPath: DoorOff.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6585003619352875027}
-    - target: {fileID: 5626566799053344361, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
-      propertyPath: DoorOn.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 5626566799053344361, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
-      propertyPath: DoorOff.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
+      propertyPath: DoorOff.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8024690339884066553}
+    - target: {fileID: 5626566799053344361, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
+      propertyPath: DoorOff.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 8024690339884066551}
+    - target: {fileID: 5626566799053344361, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
+      propertyPath: CloseText.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1685967537209418130}
+    - target: {fileID: 5626566799053344361, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
+      propertyPath: DisplayText.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1685967537209418130}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8544ec0b904e0146919e2589b87c37a, type: 3}
 --- !u!1 &2398441583490796097 stripped

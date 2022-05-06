@@ -30,6 +30,7 @@ public class DoorTakeInput : Collectable
                 collected = false;
                 DoorOff.Invoke(); //enables the door
                 ActivatePortal.Invoke();
+                anim.SetBool("DoorOpen", false);
             }
         }
         else if (Input.GetKeyDown("e") && Locked == true)
