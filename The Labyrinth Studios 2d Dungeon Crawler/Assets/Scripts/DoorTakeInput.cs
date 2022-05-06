@@ -15,8 +15,10 @@ public class DoorTakeInput : Collectable
 
     protected override void OnCollect()
     {
+        anim = this.gameObject.GetComponentInParent<Animator>();
         if (Input.GetKeyDown("e") && Locked == false)
         {
+            anim.SetBool("DoorUnlock", true);
             if (!collected)
             {
                 collected = true;
@@ -45,8 +47,7 @@ public class DoorTakeInput : Collectable
         if (KeyManager.instance.KeyCount >= 1 && Locked == true)
         {
             UnlockDoor();
-            KeyManager.instance.SubtractKey();
-            anim = GameObject.Find("LockedDoor").GetComponent<Animator>();            
+            KeyManager.instance.SubtractKey();         
             anim.SetBool("DoorUnlock", true);
         }
         else
