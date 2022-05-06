@@ -11,6 +11,8 @@ public class DoorTakeInput : Collectable
     public UnityEvent CloseText;
     public bool Locked = false;
     public UnityEvent ActivatePortal;
+    private Animator anim;   
+    
     protected override void OnCollect()
     {
         if (Input.GetKeyDown("e") && Locked == false)
@@ -21,6 +23,7 @@ public class DoorTakeInput : Collectable
                 DoorOn.Invoke(); //runs the unity events to disable the door
                 GameObject.Find("Door Open SFX").GetComponent<AudioSource>().Play();//plays open door sfx
                 ActivatePortal.Invoke();
+                anim.SetBool("DoorOpen", true);
             }
             else
             {
@@ -40,7 +43,9 @@ public class DoorTakeInput : Collectable
     {
         if (KeyManager.instance.KeyCount >= 1 && Locked == true)
         {
-            UnlockDoor();
+            UnlockDoor();            
+            anim = GameObject.Find("LockedDoor").GetComponent<Animator>();            
+            anim.SetBool("DoorUnlock", true);
         }
         else
             DisplayText.Invoke();
