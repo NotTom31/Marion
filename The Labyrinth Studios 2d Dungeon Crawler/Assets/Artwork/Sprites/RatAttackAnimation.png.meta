@@ -1,0 +1,540 @@
+fileFormatVersion: 2
+guid: ca08a485a26dda94598fba98a23daded
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5271534966456586517
+    second: RatAttackAnimation_0
+  - first:
+      213: 9211278232905801747
+    second: RatAttackAnimation_1
+  - first:
+      213: -8621084140351680922
+    second: RatAttackAnimation_2
+  - first:
+      213: -9176170055086453299
+    second: RatAttackAnimation_3
+  - first:
+      213: 7811642508448752739
+    second: RatAttackAnimation_4
+  - first:
+      213: -1047441461313431738
+    second: RatAttackAnimation_5
+  - first:
+      213: 7323677365083207309
+    second: RatAttackAnimation_6
+  - first:
+      213: -2558210321850223646
+    second: RatAttackAnimation_7
+  - first:
+      213: 3422573045010103156
+    second: RatAttackAnimation_8
+  - first:
+      213: -6399884191773895418
+    second: RatAttackAnimation_9
+  - first:
+      213: 8794734986625252535
+    second: RatAttackAnimation_10
+  - first:
+      213: 8835172275696299756
+    second: RatAttackAnimation_11
+  - first:
+      213: 5872349524478586830
+    second: RatAttackAnimation_12
+  - first:
+      213: 3525942541738306046
+    second: RatAttackAnimation_13
+  - first:
+      213: -2654587232321546938
+    second: RatAttackAnimation_14
+  - first:
+      213: -1708422710745237051
+    second: RatAttackAnimation_15
+  - first:
+      213: 2096771271110437933
+    second: RatAttackAnimation_16
+  - first:
+      213: 116077751720056599
+    second: RatAttackAnimation_17
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RatAttackAnimation_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 196
+        width: 30
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beeed47b0eeb7d6b0800000000000000
+      internalID: -5271534966456586517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 196
+        width: 43
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31063a7dfb805df70800000000000000
+      internalID: 9211278232905801747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_2
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 196
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66e859b96a1cb5880800000000000000
+      internalID: -8621084140351680922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_3
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 196
+        width: 35
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcdcefbc3f1b7a080800000000000000
+      internalID: -9176170055086453299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_4
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 196
+        width: 30
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 364ed6c3977886c60800000000000000
+      internalID: 7811642508448752739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_5
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 131
+        width: 30
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 647956f5a8db671f0800000000000000
+      internalID: -1047441461313431738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_6
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 131
+        width: 43
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d867a53d2cde2a560800000000000000
+      internalID: 7323677365083207309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_7
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 131
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e3316924496f7cd0800000000000000
+      internalID: -2558210321850223646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_8
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 131
+        width: 35
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47b77a50d0c6f7f20800000000000000
+      internalID: 3422573045010103156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_9
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 131
+        width: 30
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 605dda15c3b0f27a0800000000000000
+      internalID: -6399884191773895418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_10
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 66
+        width: 30
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc7f73bfdc2d0a70800000000000000
+      internalID: 8794734986625252535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_11
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 65
+        width: 37
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceee14ebf56dc9a70800000000000000
+      internalID: 8835172275696299756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_12
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 65
+        width: 37
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecfea7b87c6ce7150800000000000000
+      internalID: 5872349524478586830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_13
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 67
+        width: 30
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef9efba7f0aaee030800000000000000
+      internalID: 3525942541738306046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_14
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 30
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 645df201af2092bd0800000000000000
+      internalID: -2654587232321546938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_15
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 0
+        width: 37
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c9f1df98967a48e0800000000000000
+      internalID: -1708422710745237051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_16
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 0
+        width: 33
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2c28c5ac5a391d10800000000000000
+      internalID: 2096771271110437933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatAttackAnimation_17
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 1
+        width: 30
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7179995a9146c9100800000000000000
+      internalID: 116077751720056599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

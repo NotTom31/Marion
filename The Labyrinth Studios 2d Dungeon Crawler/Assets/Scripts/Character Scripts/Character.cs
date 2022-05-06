@@ -9,7 +9,7 @@ using UnityEngine.Events;
 
 public enum CharacterType//State machine for the type of character
 {
-    player, meleeEnemy, rangedEnemy, npc
+    player, lintEnemy, ratEnemy, spiderEnemy, npc
 }
 public class Character : MonoBehaviour, IDamageable, IKillable, IPushable 
 {

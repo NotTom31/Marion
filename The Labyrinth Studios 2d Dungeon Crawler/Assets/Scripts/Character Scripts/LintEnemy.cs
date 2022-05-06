@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMelee : Enemy, IDamageable, IKillable, IMoveable
+public class LintEnemy : Enemy, IDamageable, IKillable, IMoveable
 {
     // Start is called before the first frame update
     void Awake()
@@ -13,7 +13,7 @@ public class EnemyMelee : Enemy, IDamageable, IKillable, IMoveable
         moveSpeed = .014f;
         charType = CharacterType.lintEnemy;
         attackDamage = 1;
-        currentHealth = 3;       
+        currentHealth = 3;
         //-----------------------------
         /*Attributes from Enemy script*/
         //-----------------------------
@@ -38,15 +38,15 @@ public class EnemyMelee : Enemy, IDamageable, IKillable, IMoveable
         if (currentState != EnemyState.dead && Vector2.Distance(transform.position, target.position) <= chaseRadius
              && Vector2.Distance(transform.position, target.position) >= attackRadius)
         {//moves the enemy towards the player           
-            currentState = EnemyState.attack;            
+            currentState = EnemyState.attack;
             tempDir = transform.position - target.position;
             MoveInDirection(tempDir);
             temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed);
             thisBody.MovePosition(temp);//moves the enemy
         }
-        else if(currentState != EnemyState.dead)
+        else if (currentState != EnemyState.dead)
         {//makes the enemy return to it's home position            
-            currentState = EnemyState.walk;            
+            currentState = EnemyState.walk;
             castV3 = transform.position;
             tempDir = castV3 - homePosition;
             MoveInDirection(tempDir);
@@ -63,17 +63,17 @@ public class EnemyMelee : Enemy, IDamageable, IKillable, IMoveable
     {
         anim.SetFloat("moveX", -tempDir.normalized.x);//allows movement animation
         anim.SetFloat("moveY", -tempDir.normalized.y);//allows movement animation
-        if(currentState == EnemyState.walk)
+        if (currentState == EnemyState.walk)
         {
             anim.SetBool("attack", false);//attack set true in animator
             anim.SetBool("moving", true);//moving set true in animator
         }
-        else if(currentState == EnemyState.attack)
+        else if (currentState == EnemyState.attack)
         {
             anim.SetBool("moving", false);//moving set true in animator
             anim.SetBool("attack", true);//attack set true in animator
         }
-        
+
     }
     //******************************************************************************************************************************************************
     //*****************************************************************MELEE ATTACKING TRIGGERED************************************************************

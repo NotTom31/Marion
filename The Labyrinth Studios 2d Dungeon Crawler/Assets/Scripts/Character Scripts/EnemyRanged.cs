@@ -12,7 +12,7 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
     void Awake()
     {
         moveSpeed = .005f;
-        charType = CharacterType.rangedEnemy;
+        charType = CharacterType.spiderEnemy;
         attackDamage = 1;
         currentHealth = 3;
         chaseRadius = 4.5f;
@@ -122,8 +122,6 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
     {
         Vector3 offset;
         //This code looks like it could be condensed
-        if (this.charType == CharacterType.rangedEnemy)
-        {
             if (Vector2.Distance(transform.position, target.position) <= rangedRadius)
             {
                 if ((Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x) < .02f) || (Mathf.Abs(transform.position.y) - Mathf.Abs(target.position.y) < .02f))
@@ -172,7 +170,6 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
                     
                 }
             }
-        }
     }    
     private void OnTriggerEnter2D(Collider2D obj)
     {
