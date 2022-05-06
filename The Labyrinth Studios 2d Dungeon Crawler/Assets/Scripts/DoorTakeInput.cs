@@ -38,12 +38,19 @@ public class DoorTakeInput : Collectable
 
     public void DoorLocked()
     {
-        DisplayText.Invoke();
+        if (KeyManager.instance.KeyCount >= 1 && Locked == true)
+        {
+            UnlockDoor();
+        }
+        else
+            DisplayText.Invoke();
     }
 
     public void UnlockDoor()
     {
         Locked = false;
+        KeyManager.instance.SubtractKey();
+        DoorOff.Invoke();
     }
 
     public void LockDoor()

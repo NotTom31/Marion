@@ -9,6 +9,7 @@ public class Chest : Collectable
     public int pesosAmount = 5;
     public bool HasKey = false;
     public UnityEvent ChestOpened;
+    public UnityEvent KeyAnimation;
 
     protected override void OnCollect()
     {
@@ -19,6 +20,11 @@ public class Chest : Collectable
             GameObject.Find("Door Open SFX").GetComponent<AudioSource>().Play();//I thought this might sound good for the chest but we can change it 
             GetComponent<SpriteRenderer>().sprite = emptyChest;
             Debug.Log("Grant " + pesosAmount + " pesos!");
+            if (HasKey == true)
+            {
+                KeyManager.instance.AddKey();
+                KeyAnimation.Invoke();
+            }
         }
     }
     
