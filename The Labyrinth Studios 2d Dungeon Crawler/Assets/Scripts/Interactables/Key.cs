@@ -28,6 +28,7 @@ public class Key : Collectable, IDataPersistence
         if (!collected) 
         {
             collected = true;
+            KeyManager.instance.AddKey();
             KeyCollect.Invoke(); //runs the unity event to unlock whatever the key is linked to
             Debug.Log("Key Grab");
         }
