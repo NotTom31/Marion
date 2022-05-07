@@ -73,7 +73,6 @@ public class Player : Character , IDataPersistence, IMoveable
             Move();
         }
         heartGUI();//manages heart display
-        ReviveInRange();//revives enemies once out of a certain range
         ReviveInRange();//revives enemies once out of a certain range        
     }
     private IEnumerator AttackCo()
