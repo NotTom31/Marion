@@ -1,12 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using UnityEngine.UI;
 
-public class KeyManager : MonoBehaviour
+public class KeyManager : MonoBehaviour, IDataPersistence
 {
+    public void LoadData(GameData data)
+    {
+        this.KeyCount = data.keyCount;
+        keyText.text = KeyCount.ToString(); //Sets initial UI key count
+    }
+    public void SaveData(GameData data)
+    {
+        data.keyCount = this.KeyCount;
+    }
+
     public static KeyManager instance;
-    public Text keyText;
+    public UnityEngine.UI.Text keyText;
 
     public int KeyCount = 0;
 

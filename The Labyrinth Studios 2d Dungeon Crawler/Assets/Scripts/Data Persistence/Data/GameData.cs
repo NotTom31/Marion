@@ -10,19 +10,25 @@ using UnityEngine.SceneManagement;
 public class GameData
 {
     public int currentHealth;
+    public int keyCount;
     public Vector3 playerPosition;
     public SerializableDictionary<string, bool> leversActivated;
     public bool plateOn;
     public bool keyCollected;
+    public SerializableDictionary<string, bool> doorUnlocked;
+    public SerializableDictionary<string, bool> doorOpened;
     public Vector3 boxPosition;
     public string currentScene;
     public GameData()//New Game values will be stored in this method
     {
         this.currentHealth = 3;//current health is loaded and saved in the player script.
+        this.keyCount = 0;
         playerPosition = new Vector3(0.14f, -3.72f,0f);//player position is loaded and saved in the player script        
         leversActivated = new SerializableDictionary<string, bool>();//levers activated are loaded and saved in the lever script
         bool plateOn = false;//pressure plate in the on or off stated
         bool keyCollected = false;//keys that have been collected 
+        doorUnlocked = new SerializableDictionary<string, bool>();
+        doorOpened = new SerializableDictionary<string, bool>();
         boxPosition = new Vector3(-2.432f, -2.098f,0);//box position is loaded and saved in box script
         this.currentScene = "Level_1";//This is where the name of the current scene will be kept
     }

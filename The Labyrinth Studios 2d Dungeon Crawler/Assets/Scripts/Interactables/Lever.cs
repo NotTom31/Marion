@@ -45,6 +45,8 @@ public class Lever : Collectable , IDataPersistence
     public UnityEvent LeverOn;
     public UnityEvent LeverOff;
     public UnityEvent ActivatePortal;
+
+    
     protected override void OnCollect()
     {
         if (Input.GetKeyDown("e"))
