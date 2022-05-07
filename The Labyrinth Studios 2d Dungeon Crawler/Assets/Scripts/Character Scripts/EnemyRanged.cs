@@ -173,6 +173,11 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
     }    
     private void OnTriggerEnter2D(Collider2D obj)
     {
+        if (obj.CompareTag("Arrow"))
+        {
+            Damage(attackDamage, this.GetComponent<Collider2D>());
+            Push(this.GetComponent<Collider2D>());
+        }
         if (obj.CompareTag("Player"))//check to make sure either player hits enemy or enemy hits player
         {
             if (obj.gameObject != null)

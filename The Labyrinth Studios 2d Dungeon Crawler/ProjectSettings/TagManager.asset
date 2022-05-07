@@ -15,6 +15,7 @@ TagManager:
   - Projectile
   - Heart
   - Door
+  - Arrow
   layers:
   - Default
   - TransparentFX
