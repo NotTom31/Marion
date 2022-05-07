@@ -59,7 +59,13 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
         }
         else if (obj.CompareTag("Fighter"))
         {
+            /*if (dropChance >= 0)
+            {
+                Instantiate(dropHeart, transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+            }*/
+            //Instantiate(dropHeart, transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
             temp.gameObject.SetActive(false); temp.GetComponent<Enemy>().currentState = EnemyState.dead;
+            
         }   //kills everything else   
     }
     //******************************************************************************************************************************************************
@@ -124,6 +130,12 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
     public CharacterType charType;//Use this in the Inspector to initialize what type of character it is
     public int attackDamage;//Use this in a child class or inspector to initialize RigidBody
     public int currentHealth;//Use this in a child class or inspector to initialize health
+    public GameObject dropHeart;
+    private int dropChance;
+    System.Random random = new System.Random();
     
-    
+    void Awake()
+    {
+        dropChance = random.Next(0,100);
+    }
 }

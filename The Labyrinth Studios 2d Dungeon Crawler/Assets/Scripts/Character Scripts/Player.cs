@@ -44,10 +44,12 @@ public class Player : Character , IDataPersistence, IMoveable
     public int numOfHearts;//how many hearts are in the health bar
     public UnityEvent PlayerDied;//when the player dies, the event will kick off, which will be the game over screen
     protected GameObject[] inRange;//array that will hold all enemies, will be used to revive them
+    public GameObject arrow;
+    private float projectileForce;
     //******************************************************************************************************************************************************
     //********************************************************INITIALIZATION********************************************************************************
     //******************************************************************************************************************************************************
-    void Start()
+    void Awake()
     {          
         charType = CharacterType.player;//state machine, what is the type of character
         PlayerState currentState = PlayerState.walk;//initialize playerstate to walk        
@@ -55,35 +57,112 @@ public class Player : Character , IDataPersistence, IMoveable
         thisBody = this.GetComponent<Rigidbody2D>();//Initializes the Rigidbody2d component        
         inRange = GameObject.FindGameObjectsWithTag("Fighter");
         moveSpeed = 1.25f;
+        projectileForce = 80;
+    }
+
+    void Start()
+    {
+        anim.SetBool("holdingDagger", true);
     }
     //******************************************************************************************************************************************************
     //*****************************************************************UPDATE*******************************************************************************
     //******************************************************************************************************************************************************
     void Update()
     {
-        if (Input.GetButtonDown("attack") && currentState != PlayerState.attack)//checks for user input to attack
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (this.currentState != PlayerState.holdingBox)
+            anim.SetBool("holdingDagger", true);
+            anim.SetBool("holdingCrossbow", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            anim.SetBool("holdingDagger", false);
+            anim.SetBool("holdingCrossbow", true);
+        }
+
+        if (anim.GetBool("holdingDagger"))
+        {
+            if (Input.GetButtonDown("attack") && currentState != PlayerState.attack)//checks for user input to attack
             {
-                StartCoroutine(AttackCo());
+                if (this.currentState != PlayerState.holdingBox)
+                {
+                    StartCoroutine(AttackCo());
+                }
+            }
+            else if (currentState == PlayerState.walk)//checks for player movement
+            {
+                Move();
             }
         }
-        else if (currentState == PlayerState.walk)//checks for player movement
+        if (anim.GetBool("holdingCrossbow"))
         {
-            Move();
+            if (Input.GetButtonDown("attack") && currentState != PlayerState.attack)//checks for user input to attack
+            {
+                if (this.currentState != PlayerState.holdingBox)
+                {
+
+                    StartCoroutine(AttackCo());
+                }
+            }
+            else if (currentState == PlayerState.walk)//checks for player movement
+            {
+                Move();
+            }
         }
+
         heartGUI();//manages heart display
-        ReviveInRange();//revives enemies once out of a certain range
+            ReviveInRange();//revives enemies once out of a certain range
     }
-    private IEnumerator AttackCo()
-    {
-        anim.SetBool("attacking", true);//allow animation
-        currentState = PlayerState.attack;//player state machine
-        yield return null;//wait for a frame
-        anim.SetBool("attacking", false);//allow animation to continue
-        yield return new WaitForSeconds(.33f);//wait for a third of a second
-        currentState = PlayerState.walk;//resetting player state machine
-    }
+        private IEnumerator AttackCo()
+        {
+
+        if (anim.GetBool("holdingCrossbow"))
+            {
+
+            Vector2 offset = new Vector2(0, 0);
+            Vector3 castv;
+            offset.x = anim.GetFloat("moveX");
+            if (offset.x == 1f)
+            {
+                offset.x = .1f;
+                castv = offset;
+                GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+                newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(projectileForce, 0f));
+            }
+            if (offset.x == -1f)
+            {
+                offset.x = -.1f;
+                castv = offset;
+                GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 180f));
+                newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(-projectileForce, 0f));
+            }
+            offset.y = anim.GetFloat("moveY");
+            if (offset.y == 1f)
+            {
+                offset.y = .1f;
+                castv = offset;
+                GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 90f));
+                newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, projectileForce));
+            }
+            if (offset.y == -1f)
+            {
+                offset.y = -.1f;
+                castv = offset;
+                GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, -90f));
+                newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -projectileForce));
+            }
+            castv = offset;
+
+            }
+
+            anim.SetBool("attacking", true);//allow animation
+            currentState = PlayerState.attack;//player state machine
+            yield return null;//wait for a frame
+            anim.SetBool("attacking", false);//allow animation to continue
+            yield return new WaitForSeconds(.33f);//wait for a third of a second
+            currentState = PlayerState.walk;//resetting player state machine
+        }
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IMOVABLE************************************************************************
     //******************************************************************************************************************************************************
