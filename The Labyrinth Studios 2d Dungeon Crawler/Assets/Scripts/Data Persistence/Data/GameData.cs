@@ -15,7 +15,7 @@ public class GameData
     public SerializableDictionary<string, bool> leversActivated;
     public bool plateOn;
     public bool keyCollected;
-    public SerializableDictionary<string, bool> doorUnlocked;
+    public SerializableDictionary<string, bool> doorLocked;
     public SerializableDictionary<string, bool> doorOpened;
     public Vector3 boxPosition;
     public string currentScene;
@@ -27,7 +27,7 @@ public class GameData
         leversActivated = new SerializableDictionary<string, bool>();//levers activated are loaded and saved in the lever script
         bool plateOn = false;//pressure plate in the on or off stated
         bool keyCollected = false;//keys that have been collected 
-        doorUnlocked = new SerializableDictionary<string, bool>();
+        doorLocked = new SerializableDictionary<string, bool>();
         doorOpened = new SerializableDictionary<string, bool>();
         boxPosition = new Vector3(-2.432f, -2.098f,0);//box position is loaded and saved in box script
         this.currentScene = "Level_1";//This is where the name of the current scene will be kept

@@ -22,44 +22,54 @@ public class DoorTakeInput : Collectable , IDataPersistence
     //******************************************************************************************************************************************************
     public void LoadData(GameData data)
     {
-        data.doorOpened.TryGetValue(doorId, out collected);
-        if (collected)
+        data.doorLocked.TryGetValue(this.name, out Locked);
+        if(Locked)
         {
-            DoorOn.Invoke(); //runs the unity events to disable the door
-            ActivatePortal.Invoke();
-            anim.SetBool("DoorOpen", true);
+            LockDoor();
+            anim.SetBool("DoorUnlock", false);
         }
-        data.doorUnlocked.TryGetValue(doorId, out Locked);
-        if(Locked == false)
+        else
         {
             UnlockDoor();
             anim.SetBool("DoorUnlock", true);
         }
+        data.doorOpened.TryGetValue(this.name, out collected);
+        if(collected)
+        {
+            DoorOn.Invoke();
+            ActivatePortal.Invoke();
+            anim.SetBool("DoorOpen", true);
+        }
+        else
+        {
+            anim.SetBool("DoorOpen", false);
+        }
+        
     }
     public void SaveData(GameData data)
     {
-        if(data.doorOpened.ContainsKey(doorId))
+        if(data.doorLocked.ContainsKey(doorId))
         {
-            data.doorOpened.Remove(doorId);
+            data.doorLocked.Remove(doorId);
         }
-        data.doorOpened.Add(doorId, collected);
-        if(data.doorUnlocked.ContainsKey(doorId))
-        {
-            data.doorUnlocked.Remove(doorId);
-        }
-        data.doorUnlocked.Add(doorId, Locked);
+        data.doorOpened.Add(this.name, collected);
+        data.doorLocked.Add(this.name, Locked);
     }
     public UnityEvent DoorOn;
     public UnityEvent DoorOff;
     public UnityEvent DisplayText;
     public UnityEvent CloseText;
-    public bool Locked = false;
+    public bool Locked = true;
     public UnityEvent ActivatePortal;
     private Animator anim;
+    private void Awake()
+    {
+        anim = this.gameObject.GetComponentInParent<Animator>();
+    }
 
     protected override void OnCollect()
     {
-        anim = this.gameObject.GetComponentInParent<Animator>();
+        
         if (Input.GetKeyDown("e") && Locked == false)
         {
             anim.SetBool("DoorUnlock", true);

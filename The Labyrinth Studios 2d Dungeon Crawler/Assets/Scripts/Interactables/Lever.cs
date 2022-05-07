@@ -23,10 +23,14 @@ public class Lever : Collectable , IDataPersistence
     /*These methods load and savedata will be used to keep track of what levers have been activated*/
     public void LoadData(GameData data)
     {
-        data.leversActivated.TryGetValue(leverId, out collected);
+        data.leversActivated.TryGetValue(this.name, out collected);
         if (collected)
         {
             LeverIsOn();
+        }
+        else
+        {
+            LeverIsOff();
         }
     }
     public void SaveData(GameData data)
@@ -35,7 +39,7 @@ public class Lever : Collectable , IDataPersistence
         {
             data.leversActivated.Remove(leverId);
         }
-        data.leversActivated.Add(leverId, collected);
+        data.leversActivated.Add(this.name, collected);
     }
     //******************************************************************************************************************************************************
     //************************************************************LEVER CLASS ATTRIBUTES********************************************************************

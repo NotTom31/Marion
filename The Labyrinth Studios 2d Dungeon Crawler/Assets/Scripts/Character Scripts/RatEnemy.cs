@@ -89,15 +89,15 @@ public class RatEnemy : Enemy, IDamageable, IKillable, IMoveable
     {
         if (obj.CompareTag("Arrow"))
         {
-            Damage(attackDamage, this.GetComponent<Collider2D>());
             Push(this.GetComponent<Collider2D>());
+            Damage(attackDamage, this.GetComponent<Collider2D>());            
         }
         if (obj.CompareTag("Player"))//check to make sure either player hits enemy or enemy hits player
         {
             if (obj.gameObject != null)
             {
-                Damage(attackDamage, obj);
                 Push(obj);
+                Damage(attackDamage, obj);                
             }
         }
     }

@@ -252,8 +252,8 @@ public class Player : Character , IDataPersistence, IMoveable
         {
             if (obj.gameObject != null)
             {
-                Damage(attackDamage, obj);
                 Push(obj);
+                Damage(attackDamage, obj);                
             }
         }
         // Author Joel Monteon
@@ -267,9 +267,8 @@ public class Player : Character , IDataPersistence, IMoveable
         }
         if(obj.CompareTag("Projectile"))
         {
-            Debug.Log(this.tag);
-            Damage(1, this.GetComponent<Collider2D>());
             Push(this.GetComponent<Collider2D>());
+            Damage(1, this.GetComponent<Collider2D>());           
         }
     }
 }
