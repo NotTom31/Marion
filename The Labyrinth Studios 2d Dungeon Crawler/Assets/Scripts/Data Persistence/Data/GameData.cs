@@ -18,7 +18,6 @@ public class GameData
     public SerializableDictionary<string, bool> plateOn;
     public bool keyCollected;
     public SerializableDictionary<string, Vector3> boxPosition;
-    public Vector3 boxStartingPosition;
     public string currentScene;
     public GameData()//New Game values will be stored in this method
     {
@@ -30,7 +29,6 @@ public class GameData
         doorOpened = new SerializableDictionary<string, bool>();//Doors that have been opened, **IN DOORTAKEINPUT.cs**
         plateOn = new SerializableDictionary<string, bool>();//pressure plate in the on or off stated ** IN PRESSUREPLATE.cs**
         bool keyCollected = false;//keys that have been collected 
-        boxStartingPosition = new Vector3(2.694f, 2.036f, 0);
         boxPosition = new SerializableDictionary<string, Vector3>();//box's position is loaded and saved in box script
         this.currentScene = "Level_1";//This is where the name of the current scene will be kept
     }

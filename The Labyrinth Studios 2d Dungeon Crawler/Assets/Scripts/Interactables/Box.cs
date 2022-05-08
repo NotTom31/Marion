@@ -43,7 +43,7 @@ public UnityEvent BoxLift;
     public UnityEvent BoxLayerTwo;
     public float LastFacingHorizontal = 0;
     public float LastFacingVertical = 0;
-    private Vector3 currentPosition;
+    protected Vector3 currentPosition;
 
     void FixedUpdate()
     {
@@ -51,7 +51,8 @@ public UnityEvent BoxLift;
         {
             LastFacingHorizontal = Input.GetAxisRaw("Horizontal");
             LastFacingVertical = Input.GetAxisRaw("Vertical");
-        }        
+        }
+        currentPosition = this.transform.position;
     }
 
     protected override void OnCollect()
