@@ -9,6 +9,7 @@ public class Box : Collectable , IDataPersistence
     //***********************************************************************GUID***************************************************************************
     //******************************************************************************************************************************************************
     [SerializeField] public string boxId;//will be used for saving game state
+    [SerializeField] public string boxHeldId;//will be used for saving game state
     [ContextMenu("Generate guid for id")]
     /*the context menu above uses the GenerateGuid() below to allow someone to generate a unique id for levers.
      All one has to do is click on a lever, expand the lever script in the inspector, right click the script and select
@@ -16,6 +17,7 @@ public class Box : Collectable , IDataPersistence
     private void GenerateGuid()
     {
         boxId = System.Guid.NewGuid().ToString();
+        boxHeldId = System.Guid.NewGuid().ToString();
     }
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IDATAPERSISTENCE****************************************************************
@@ -23,20 +25,35 @@ public class Box : Collectable , IDataPersistence
     /*These methods load and savedata will be used to keep track of what levers have been activated*/
     public void LoadData(GameData data)
     {
+        this.LastFacingHorizontal = data.LastHorizontalBox;
+        this.LastFacingVertical = data.LastVerticalBox;
         data.boxPosition.TryGetValue(boxId, out currentPosition);
         if(currentPosition != Vector3.zero)
         {
             this.transform.position = currentPosition;
-        }        
+        }
+        data.boxHeld.TryGetValue(boxHeldId, out collected);
+        if(collected)
+        {
+            BoxLift.Invoke(); //attaches the box to the player
+            BoxLayer.Invoke(); //initial setting the boxes local position and layer to keep it consistant
+        }
     }
     public void SaveData(GameData data)
     {
+        data.LastHorizontalBox = this.LastFacingHorizontal;
+        data.LastVerticalBox = this.LastFacingVertical;
         currentPosition = this.transform.position;
         if (data.boxPosition.ContainsKey(boxId))
         {
             data.boxPosition.Remove(boxId);
         }
         data.boxPosition.Add(boxId, currentPosition);
+        if(data.boxHeld.ContainsKey(boxHeldId))
+        {
+            data.boxHeld.Remove(boxHeldId);
+        }
+        data.boxHeld.Add(boxHeldId, collected);
     }
 //******************************************************************************************************************************************************
 //***********************************************************BOX CLASS ATTRIBUTES***********************************************************************
