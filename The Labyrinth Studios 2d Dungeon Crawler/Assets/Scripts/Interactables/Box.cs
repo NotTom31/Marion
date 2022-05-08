@@ -24,7 +24,10 @@ public class Box : Collectable , IDataPersistence
     public void LoadData(GameData data)
     {
         data.boxPosition.TryGetValue(boxId, out currentPosition);
-        this.transform.position = currentPosition;
+        if(currentPosition != Vector3.zero)
+        {
+            this.transform.position = currentPosition;
+        }        
     }
     public void SaveData(GameData data)
     {

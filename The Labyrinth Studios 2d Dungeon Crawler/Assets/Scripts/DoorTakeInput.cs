@@ -61,14 +61,12 @@ public class DoorTakeInput : Collectable , IDataPersistence
     public UnityEvent DoorOff;
     public UnityEvent DisplayText;
     public UnityEvent CloseText;
-    public bool Locked = true;
-    protected bool unLocked;
+    public bool unLocked;
     public UnityEvent ActivatePortal;
     private Animator anim;
     private void Awake()
     {
         anim = this.gameObject.GetComponentInParent<Animator>();
-        unLocked = false;
         Debug.Log(this.GetInstanceID().ToString());
     }
 
