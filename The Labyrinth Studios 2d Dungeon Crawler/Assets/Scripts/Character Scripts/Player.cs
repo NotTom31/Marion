@@ -25,12 +25,21 @@ public class Player : Character , IDataPersistence, IMoveable
             this.currentHealth = 3;
         }
         this.transform.position = data.playerPosition;
-        Debug.Log(data.playerPosition);
+        this.lastFacingHorizontal = data.lastHorizontalPlayer;
+        this.lastFacingVertical = data.LastVerticalBox;
+        Debug.Log(lastFacingHorizontal);
+        Debug.Log(lastFacingVertical);
+        anim.SetFloat("moveX", lastFacingHorizontal);//allows movement animation
+        anim.SetFloat("moveY", lastFacingVertical);//allows movement animation
     }
     public void SaveData(GameData data)
     {
         data.currentHealth = this.currentHealth;
         data.playerPosition = this.transform.position;
+        data.lastHorizontalPlayer = this.lastFacingHorizontal;
+        data.lastVerticalPlayer = this.lastFacingVertical;
+        Debug.Log(lastFacingHorizontal);
+        Debug.Log(lastFacingVertical);
     }   
 
     //******************************************************************************************************************************************************
@@ -45,6 +54,8 @@ public class Player : Character , IDataPersistence, IMoveable
     protected GameObject[] inRange;//array that will hold all enemies, will be used to revive them
     public GameObject arrow;
     private float projectileForce;
+    private float lastFacingVertical;
+    private float lastFacingHorizontal;
     //******************************************************************************************************************************************************
     //********************************************************INITIALIZATION********************************************************************************
     //******************************************************************************************************************************************************
@@ -170,6 +181,11 @@ public class Player : Character , IDataPersistence, IMoveable
         movement = Vector2.zero;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)
+        {
+            lastFacingHorizontal = Input.GetAxisRaw("Horizontal");
+            lastFacingVertical = Input.GetAxisRaw("Vertical");
+        }           
         if (movement != Vector2.zero)
         {
             thisBody.MovePosition(thisBody.position + movement * moveSpeed * Time.fixedDeltaTime);//actually moves the player

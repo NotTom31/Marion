@@ -21,6 +21,8 @@ public class GameData
     public SerializableDictionary<string, bool> boxHeld;
     public float LastHorizontalBox;
     public float LastVerticalBox;
+    public float lastHorizontalPlayer;
+    public float lastVerticalPlayer;
     public string currentScene;
     public GameData()//New Game values will be stored in this method
     {
@@ -36,6 +38,8 @@ public class GameData
         boxHeld = new SerializableDictionary<string, bool>();//will remember if the box is being held by player when the game is saved
         this.LastHorizontalBox = 0f;
         this.LastVerticalBox = 0f;
+        this.lastHorizontalPlayer = 0f;
+        this.lastVerticalPlayer = 0f;
         this.currentScene = "Level_1";//This is where the name of the current scene will be kept
     }
 }

@@ -72,7 +72,6 @@ public UnityEvent BoxLift;
             LastFacingHorizontal = Input.GetAxisRaw("Horizontal");
             LastFacingVertical = Input.GetAxisRaw("Vertical");
         }
-        currentPosition = this.transform.position;
     }
 
     protected override void OnCollect()

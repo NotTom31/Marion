@@ -67,7 +67,6 @@ public class DoorTakeInput : Collectable , IDataPersistence
     private void Awake()
     {
         anim = this.gameObject.GetComponentInParent<Animator>();
-        Debug.Log(this.GetInstanceID().ToString());
     }
 
     protected override void OnCollect()
