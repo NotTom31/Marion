@@ -4,19 +4,36 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class Box : Collectable , IDataPersistence
-{    
-
+{
+    //******************************************************************************************************************************************************
+    //***********************************************************************GUID***************************************************************************
+    //******************************************************************************************************************************************************
+    [SerializeField] public string boxId;//will be used for saving game state
+    [ContextMenu("Generate guid for id")]
+    /*the context menu above uses the GenerateGuid() below to allow someone to generate a unique id for levers.
+     All one has to do is click on a lever, expand the lever script in the inspector, right click the script and select
+    Generate guid for id. This will create a unique id that will be used when the game's state is saved.*/
+    private void GenerateGuid()
+    {
+        boxId = System.Guid.NewGuid().ToString();
+    }
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IDATAPERSISTENCE****************************************************************
     //******************************************************************************************************************************************************
     /*These methods load and savedata will be used to keep track of what levers have been activated*/
     public void LoadData(GameData data)
     {
-        this.transform.position = data.boxPosition;
+        data.boxPosition.TryGetValue(boxId, out currentPosition);
+        this.transform.position = currentPosition;
     }
     public void SaveData(GameData data)
     {
-        data.boxPosition = this.transform.position;
+        currentPosition = this.transform.position;
+        if (data.boxPosition.ContainsKey(boxId))
+        {
+            data.boxPosition.Remove(boxId);
+        }
+        data.boxPosition.Add(boxId, currentPosition);
     }
 //******************************************************************************************************************************************************
 //***********************************************************BOX CLASS ATTRIBUTES***********************************************************************
@@ -26,6 +43,7 @@ public UnityEvent BoxLift;
     public UnityEvent BoxLayerTwo;
     public float LastFacingHorizontal = 0;
     public float LastFacingVertical = 0;
+    private Vector3 currentPosition;
 
     void FixedUpdate()
     {
@@ -33,8 +51,7 @@ public UnityEvent BoxLift;
         {
             LastFacingHorizontal = Input.GetAxisRaw("Horizontal");
             LastFacingVertical = Input.GetAxisRaw("Vertical");
-        }
-
+        }        
     }
 
     protected override void OnCollect()

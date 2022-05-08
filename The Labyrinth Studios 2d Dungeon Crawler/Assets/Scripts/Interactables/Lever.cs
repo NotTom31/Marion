@@ -15,7 +15,7 @@ public class Lever : Collectable , IDataPersistence
     Generate guid for id. This will create a unique id that will be used when the game's state is saved.*/
     private void GenerateGuid()
     {
-        leverId = System.Guid.NewGuid().ToString();
+        this.leverId = System.Guid.NewGuid().ToString();
     }
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IDATAPERSISTENCE****************************************************************
@@ -23,7 +23,7 @@ public class Lever : Collectable , IDataPersistence
     /*These methods load and savedata will be used to keep track of what levers have been activated*/
     public void LoadData(GameData data)
     {
-        data.leversActivated.TryGetValue(this.name, out collected);
+        data.leversActivated.TryGetValue(leverId, out collected);
         if (collected)
         {
             LeverIsOn();
@@ -32,6 +32,7 @@ public class Lever : Collectable , IDataPersistence
         {
             LeverIsOff();
         }
+
     }
     public void SaveData(GameData data)
     {
@@ -39,7 +40,7 @@ public class Lever : Collectable , IDataPersistence
         {
             data.leversActivated.Remove(leverId);
         }
-        data.leversActivated.Add(this.name, collected);
+        data.leversActivated.Add(leverId, collected);
     }
     //******************************************************************************************************************************************************
     //************************************************************LEVER CLASS ATTRIBUTES********************************************************************
@@ -49,8 +50,7 @@ public class Lever : Collectable , IDataPersistence
     public UnityEvent LeverOn;
     public UnityEvent LeverOff;
     public UnityEvent ActivatePortal;
-
-    
+        
     protected override void OnCollect()
     {
         if (Input.GetKeyDown("e"))

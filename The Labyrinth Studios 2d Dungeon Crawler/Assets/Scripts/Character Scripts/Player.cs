@@ -31,7 +31,6 @@ public class Player : Character , IDataPersistence, IMoveable
     {
         data.currentHealth = this.currentHealth;
         data.playerPosition = this.transform.position;
-        Debug.Log(data.playerPosition);
     }   
 
     //******************************************************************************************************************************************************
