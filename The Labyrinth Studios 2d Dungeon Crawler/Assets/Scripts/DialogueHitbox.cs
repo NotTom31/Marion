@@ -11,12 +11,9 @@ public class DialogueHitbox : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D obj)
     {
-        if (obj.CompareTag("Player"))
+        if (obj.CompareTag("Player") && Input.GetKeyDown("e"))
         {
-            if (Input.GetKeyDown("e"))
-            {
-                DisplayText.Invoke();
-            }
+            DisplayText.Invoke();
         }
     }
 
