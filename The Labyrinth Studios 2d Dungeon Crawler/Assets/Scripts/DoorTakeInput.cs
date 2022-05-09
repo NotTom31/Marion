@@ -8,8 +8,8 @@ public class DoorTakeInput : Collectable , IDataPersistence
     //******************************************************************************************************************************************************
     //***********************************************************************GUID***************************************************************************
     //******************************************************************************************************************************************************
-    [SerializeField] public string doorLockId;//will be used for saving game state
-    [SerializeField] public string doorOpenId;//will be used for saving game state
+    [SerializeField] private string doorLockId;//will be used for saving game state
+    [SerializeField] private string doorOpenId;//will be used for saving game state
     [ContextMenu("Generate guid for id")]
     /*the context menu above uses the GenerateGuid() below to allow someone to generate a unique id for levers.
      All one has to do is click on a lever, expand the lever script in the inspector, right click the script and select
@@ -29,18 +29,24 @@ public class DoorTakeInput : Collectable , IDataPersistence
      */
     public void LoadData(GameData data)
     {
-        data.doorUnlocked.TryGetValue(doorLockId, out unLocked);
-        if(unLocked)
+        if (data.doorUnlocked.ContainsKey(doorLockId))
         {
-            UnlockDoor();
-            anim.SetBool("DoorUnlock", true);
+            data.doorUnlocked.TryGetValue(doorLockId, out unLocked);
+            if (unLocked)
+            {
+                UnlockDoor();
+                anim.SetBool("DoorUnlock", true);
+            }
         }
-        data.doorOpened.TryGetValue(doorOpenId, out collected);
-        if(collected)
+        if (data.doorOpened.ContainsKey(doorOpenId))
         {
-            DoorOn.Invoke();
-            ActivatePortal.Invoke();
-            anim.SetBool("DoorOpen", true);
+            data.doorOpened.TryGetValue(doorOpenId, out collected);
+            if (collected)
+            {
+                DoorOn.Invoke();
+                ActivatePortal.Invoke();
+                anim.SetBool("DoorOpen", true);
+            }
         }
     }
     public void SaveData(GameData data)
@@ -56,17 +62,16 @@ public class DoorTakeInput : Collectable , IDataPersistence
         }
         data.doorOpened.Add(doorOpenId, collected);
     }
-
+    public bool unLocked;
     public UnityEvent DoorOn;
     public UnityEvent DoorOff;
     public UnityEvent DisplayText;
     public UnityEvent CloseText;
-    public bool unLocked;
     public UnityEvent ActivatePortal;
     private Animator anim;
     private void Awake()
     {
-        anim = this.gameObject.GetComponentInParent<Animator>();
+        anim = this.gameObject.GetComponentInParent<Animator>();       
     }
 
     protected override void OnCollect()

@@ -8,8 +8,8 @@ public class Box : Collectable , IDataPersistence
     //******************************************************************************************************************************************************
     //***********************************************************************GUID***************************************************************************
     //******************************************************************************************************************************************************
-    [SerializeField] public string boxId;//will be used for saving game state
-    [SerializeField] public string boxHeldId;//will be used for saving game state
+    [SerializeField] private string boxId;//will be used for saving game state
+    [SerializeField] private string boxHeldId;//will be used for saving game state
     [ContextMenu("Generate guid for id")]
     /*the context menu above uses the GenerateGuid() below to allow someone to generate a unique id for levers.
      All one has to do is click on a lever, expand the lever script in the inspector, right click the script and select
@@ -27,16 +27,22 @@ public class Box : Collectable , IDataPersistence
     {
         this.LastFacingHorizontal = data.LastHorizontalBox;
         this.LastFacingVertical = data.LastVerticalBox;
-        data.boxPosition.TryGetValue(boxId, out currentPosition);
-        if(currentPosition != Vector3.zero)
+        if (data.boxPosition.ContainsKey(boxId))
         {
-            this.transform.position = currentPosition;
+            data.boxPosition.TryGetValue(boxId, out currentPosition);
+            if (currentPosition != Vector3.zero)
+            {
+                this.transform.position = currentPosition;
+            }
         }
-        data.boxHeld.TryGetValue(boxHeldId, out collected);
-        if(collected)
+        if (data.boxPosition.ContainsKey(boxHeldId))
         {
-            BoxLift.Invoke(); //attaches the box to the player
-            BoxLayer.Invoke(); //initial setting the boxes local position and layer to keep it consistant
+            data.boxHeld.TryGetValue(boxHeldId, out collected);
+            if (collected)
+            {
+                BoxLift.Invoke(); //attaches the box to the player
+                BoxLayer.Invoke(); //initial setting the boxes local position and layer to keep it consistant
+            }
         }
     }
     public void SaveData(GameData data)

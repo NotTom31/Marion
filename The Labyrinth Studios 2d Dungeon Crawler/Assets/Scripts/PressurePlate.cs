@@ -22,10 +22,13 @@ public class PressurePlate : MonoBehaviour, IDataPersistence
     //******************************************************************************************************************************************************
     public void LoadData(GameData data)
     {
-        data.plateOn.TryGetValue(pressurePlateId, out plateOn);
-        if(plateOn)
+        if (data.plateOn.ContainsKey(pressurePlateId))
         {
-            this.GetComponent<Animator>().SetBool("on", true);
+            data.plateOn.TryGetValue(pressurePlateId, out plateOn);
+            if (plateOn)
+            {
+                this.GetComponent<Animator>().SetBool("on", true);
+            }
         }
     }
     public void SaveData(GameData data)
@@ -45,7 +48,7 @@ public class PressurePlate : MonoBehaviour, IDataPersistence
     public bool plateOn;
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if (!plateOn)
+        if (!plateOn && obj.CompareTag("Box"))
         {
             this.GetComponent<Animator>().SetBool("on", true);
             plateOn = true;
@@ -53,7 +56,7 @@ public class PressurePlate : MonoBehaviour, IDataPersistence
     }
     private void OnTriggerExit2D(Collider2D obj)
     {
-        if (plateOn)
+        if (plateOn && obj.CompareTag("Box"))
         {
             this.GetComponent<Animator>().SetBool("on", false);
             plateOn = false;

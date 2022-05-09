@@ -11,7 +11,7 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
     private float lastAttack = -9999f;//this will be used in conjunction with attCooldown to control how fast the ranged enemy attacks
     void Awake()
     {
-        moveSpeed = .005f;
+        moveSpeed = .01f;
         charType = CharacterType.spiderEnemy;
         attackDamage = 1;
         currentHealth = 3;
@@ -40,45 +40,33 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
         Vector2 castV3;//Stores the vector that will make enemy face it's home position
         //this checks to see if player is in chase range but outside of "attack range", in this case it is used to keep a certain distance from the player
         if ((currentState != EnemyState.dead || currentState != EnemyState.attack) && Vector2.Distance(transform.position, target.position) <= chaseRadius
-             && Vector2.Distance(transform.position, target.position) > attackRadius)
+             && Vector2.Distance(transform.position, target.position) >= attackRadius)
         {//moves the enemy towards the player
-            attackRadius = .8f;//resetting attack radius           
-            if (Vector2.Distance(transform.position, target.transform.position) <= rangedRadius && Time.time > lastAttack + attCooldown)
-            {
-                RangedAttack();
-            }
-            else
-            {
+            if (attackRadius == 1.5f)
+            { attackRadius = .8f; }//resetting attack radius           
+           
                 temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed);//creates a vector that points at the player
                 thisBody.MovePosition(temp);//moves the enemy towards the player
                 currentState = EnemyState.walk;//sets enemy state to walk
                 tempDir = transform.position - target.position;//creates a vector that generally faces the player
                 MoveInDirection(tempDir);//changes what direction the enemy is facing
-            }
-           
+            if (Vector2.Distance(transform.position, target.transform.position) <= rangedRadius && Time.time > lastAttack + attCooldown)
+            { RangedAttack(); }
+            Debug.Log("Stuck in running at ");
         }   
-        else if(Vector2.Distance(transform.position, target.position) == attackRadius && Time.time > lastAttack + attCooldown)
-        {
-            if (attackRadius != 2f)
-            {
-                RangedAttack();
-            }
-            else 
-            {
-                attackRadius = .8f;
-            }
-            
-        }
+        
         else if ((currentState != EnemyState.dead || currentState != EnemyState.attack) && Vector2.Distance(transform.position, target.position) < attackRadius)
         {//move away from the player
-            attackRadius = 2f;//resetting attack range so the enemy backs off a good distance
-            temp = Vector2.MoveTowards(transform.position, target.position * -1f, moveSpeed * 2f);
+            if(attackRadius == .8f)
+            { attackRadius = 1.5f; }//resetting attack range so the enemy backs off a good distance
+            temp = Vector2.MoveTowards(transform.position, target.position,-1f * moveSpeed);
             thisBody.MovePosition(temp);
             currentState = EnemyState.walk;
             castV3 = transform.position;
             tempDir = target.position;
             temp = castV3 - tempDir;
             MoveInDirection(-temp);
+            Debug.Log("Stuck in running away");
         }
         else if (currentState != EnemyState.dead)
         {//makes the enemy return to it's home position            

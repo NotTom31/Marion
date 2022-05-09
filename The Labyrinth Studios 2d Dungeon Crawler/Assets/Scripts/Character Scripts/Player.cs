@@ -27,8 +27,6 @@ public class Player : Character , IDataPersistence, IMoveable
         this.transform.position = data.playerPosition;
         this.lastFacingHorizontal = data.lastHorizontalPlayer;
         this.lastFacingVertical = data.LastVerticalBox;
-        Debug.Log(lastFacingHorizontal);
-        Debug.Log(lastFacingVertical);
         anim.SetFloat("moveX", lastFacingHorizontal);//allows movement animation
         anim.SetFloat("moveY", lastFacingVertical);//allows movement animation
     }

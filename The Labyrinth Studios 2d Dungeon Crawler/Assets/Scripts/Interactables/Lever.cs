@@ -23,16 +23,18 @@ public class Lever : Collectable , IDataPersistence
     /*These methods load and savedata will be used to keep track of what levers have been activated*/
     public void LoadData(GameData data)
     {
-        data.leversActivated.TryGetValue(leverId, out collected);
-        if (collected)
+        if (data.leversActivated.ContainsKey(leverId))
         {
-            LeverIsOn();
+            data.leversActivated.TryGetValue(leverId, out collected);
+            if (collected)
+            {
+                LeverIsOn();
+            }
+            else
+            {
+                LeverIsOff();
+            }
         }
-        else
-        {
-            LeverIsOff();
-        }
-
     }
     public void SaveData(GameData data)
     {

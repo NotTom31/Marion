@@ -13,6 +13,7 @@ public class GameData
     public int keyCount;
     public Vector3 playerPosition;
     public bool keyCollected;
+    public SerializableDictionary<string, bool> chestOpened;
     public SerializableDictionary<string, bool> leversActivated;
     public SerializableDictionary<string, bool> doorUnlocked;
     public SerializableDictionary<string, bool> doorOpened;
@@ -30,6 +31,7 @@ public class GameData
         this.keyCount = 0;//How many keys does the player current have **IN KEYMANAGER.cs**
         playerPosition = new Vector3(0.14f, -3.72f,0f);//player position is loaded and saved in the player script **IN PLAYER.cs** 
         bool keyCollected = false;//keys that have been collected
+        chestOpened = new SerializableDictionary<string, bool>();//chest that have been opened
         leversActivated = new SerializableDictionary<string, bool>();//levers activated are loaded and saved in the lever script **IN LEVER.cs**
         doorUnlocked = new SerializableDictionary<string, bool>();//Doors that have been unlocked **IN DOORTAKEINPUT.cs**
         doorOpened = new SerializableDictionary<string, bool>();//Doors that have been opened, **IN DOORTAKEINPUT.cs**
