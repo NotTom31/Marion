@@ -52,12 +52,9 @@ public class Lever : Collectable , IDataPersistence
     public UnityEvent LeverOn;
     public UnityEvent LeverOff;
     public UnityEvent ActivatePortal;
-    public UnityEvent InteractIconOn;
-    public UnityEvent InteractIconOff;
-
+        
     protected override void OnCollect()
     {
-        InteractIconOn.Invoke();
         if (Input.GetKeyDown("e"))
         {
             if (!collected)
@@ -88,15 +85,6 @@ public class Lever : Collectable , IDataPersistence
         transform.localScale = Vector3.one; //flip the sprite
     }
 
-
-    private void OnTriggerExit2D(Collider2D obj)
-    {
-        if (obj.CompareTag("Player"))
-        {
-            Debug.Log("Im here.");
-            InteractIconOff.Invoke();
-        }
-    }
 }
 
 
