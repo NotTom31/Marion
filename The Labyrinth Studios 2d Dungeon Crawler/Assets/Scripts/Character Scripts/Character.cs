@@ -9,7 +9,7 @@ using UnityEngine.Events;
 
 public enum CharacterType//State machine for the type of character
 {
-    player, lintEnemy, ratEnemy, spiderEnemy, npc
+    player, lintEnemy, ratEnemy, ratBoss, spiderEnemy, npc
 }
 public class Character : MonoBehaviour, IDamageable, IKillable, IPushable 
 {
@@ -30,7 +30,10 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
     public void Damage(int damage, Collider2D obj)//Author Johnathan Bates
     {
         GameObject temp = obj.gameObject;//reference to the gameobject attatched to obj
-        GameObject.Find("Hit Sfx").GetComponent<AudioSource>().Play();//sfx for getting hit 
+        if(damage > 0)
+        {
+            GameObject.Find("Hit Sfx").GetComponent<AudioSource>().Play();//sfx for getting hit 
+        }        
         if (temp.GetComponent<Character>().currentHealth > 0)//check if they still have health
         {
             if (obj.CompareTag("Player") && obj.GetComponent<Player>().currentState != PlayerState.stagger && damage > 0)//Player damaged, will  run the blink routine and set to stagger
@@ -59,11 +62,10 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
         }
         else if (obj.CompareTag("Fighter"))
         {
-            /*if (dropChance >= 0)
+            if (dropChance >= 50)
             {
-                Instantiate(dropHeart, transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
-            }*/
-            //Instantiate(dropHeart, transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+                Instantiate(dropHeart, obj.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+            }
             temp.gameObject.SetActive(false); temp.GetComponent<Enemy>().currentState = EnemyState.dead;
             
         }   //kills everything else   
@@ -131,11 +133,12 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
     public int attackDamage;//Use this in a child class or inspector to initialize RigidBody
     public int currentHealth;//Use this in a child class or inspector to initialize health
     public GameObject dropHeart;
-    private int dropChance;
-    System.Random random = new System.Random();
+    protected int dropChance;
+    System.Random random;
     
-    void Awake()
+    void FixedUpdate()
     {
+        random = new System.Random();
         dropChance = random.Next(0,100);
     }
 }

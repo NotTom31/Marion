@@ -52,7 +52,6 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
                 MoveInDirection(tempDir);//changes what direction the enemy is facing
             if (Vector2.Distance(transform.position, target.transform.position) <= rangedRadius && Time.time > lastAttack + attCooldown)
             { RangedAttack(); }
-            Debug.Log("Stuck in running at ");
         }   
         
         else if ((currentState != EnemyState.dead || currentState != EnemyState.attack) && Vector2.Distance(transform.position, target.position) < attackRadius)
@@ -66,7 +65,6 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
             tempDir = target.position;
             temp = castV3 - tempDir;
             MoveInDirection(-temp);
-            Debug.Log("Stuck in running away");
         }
         else if (currentState != EnemyState.dead)
         {//makes the enemy return to it's home position            
@@ -161,11 +159,11 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
     }    
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.CompareTag("Arrow"))
+        /*if (obj.CompareTag("Arrow"))
         {
             Push(this.GetComponent<Collider2D>());
             Damage(attackDamage, this.GetComponent<Collider2D>());           
-        }
+        }*/
         if (obj.CompareTag("Player"))//check to make sure either player hits enemy or enemy hits player
         {
             if (obj.gameObject != null)
