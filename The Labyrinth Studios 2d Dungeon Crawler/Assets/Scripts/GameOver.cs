@@ -7,17 +7,14 @@ using UnityEngine.Events;
 public class GameOver : MonoBehaviour
 {
     public static bool GameIsOver = false;
-
     public GameObject gameOverMenuUI;
-
+    private GameObject sceneHandle;
     // Update is called once per frame
       public void GameStatus()
     {
         Death();
         Debug.Log("Loading game over screen...");
     }
-
-
     public void Alive()
     {
         gameOverMenuUI.SetActive(false);  //hides the menu
@@ -48,8 +45,12 @@ public class GameOver : MonoBehaviour
     public void LoadGame() //sends you back to be the beginning of the game on game over
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Level_1"); //we will probably change this to send to start of current level or a checkpoint depending on how difficult we want the game
+        SceneManager.LoadScene(sceneHandle.GetComponent<SceneHandler>().theCurrentScene); //we will probably change this to send to start of current level or a checkpoint depending on how difficult we want the game
         Debug.Log("Loading Dungeon...");
         GameIsOver = false;
+    }
+    private void Start()
+    {
+        sceneHandle = GameObject.Find("SceneHandler");
     }
 }

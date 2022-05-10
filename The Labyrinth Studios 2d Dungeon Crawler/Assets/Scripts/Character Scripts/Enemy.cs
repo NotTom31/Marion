@@ -16,7 +16,7 @@ public class Enemy : Character
     //*******************************************************************************************************************************************************************
     public EnemyState currentState;//will determine the current state of the enemy
     protected Transform target;//will be our player
-    protected float chaseRadius;//the radius in which the enemy will activate and chase the player
+    public float chaseRadius;//the radius in which the enemy will activate and chase the player
     protected float attackRadius;//how far away we want the enemy to stop from the player
     public float reviveRadius;//this will initiate the Revive routine and is used in the Player Script
     public Vector2 homePosition;//the enemy's home position so it can return after chasing

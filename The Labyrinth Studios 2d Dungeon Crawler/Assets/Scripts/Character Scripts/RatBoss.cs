@@ -28,13 +28,13 @@ public class RatBoss : Enemy, IMoveable
     void Start()
     {
         currentHealth = 90;
-        maxMinionAmount = 9;
+        maxMinionAmount = 5;
         teleportCooldown = 15f;
         lastTeleport = 0f;
-        upperLeftPosition = new Vector3(.22f, 3.49f, transform.position.z);
-        lowerLeftPosition = new Vector3(.22f, 2.05f, transform.position.z);
-        upperRightPosition = new Vector3(4.7f, 3.49f, transform.position.z);
-        lowerRightPosition = new Vector3(4.7f, 2.05f, transform.position.z);
+        upperLeftPosition = new Vector3(-3.849f, 2.4738f, transform.position.z);
+        lowerLeftPosition = new Vector3(-3.849f, -2.1f, transform.position.z);
+        upperRightPosition = new Vector3(4.19f, 2.4738f, transform.position.z);
+        lowerRightPosition = new Vector3(4.19f, -2.1f, transform.position.z);
         disappear = new Vector3(1000, 1000,transform.position.z);
         //-----------------------------
         /*Attributes from Enemy script*/
@@ -113,12 +113,12 @@ public class RatBoss : Enemy, IMoveable
             }
             if(this.currentHealth <= 60 && this.currentHealth >= 31)
             {
-             maxMinionAmount = 12;
+             maxMinionAmount = 8;
              summonRandNum = randNum.Next(1, 3);
             }
             if(this.currentHealth <= 30)
             {
-                maxMinionAmount = 15;
+                maxMinionAmount = 10;
                 summonRandNum = randNum.Next(1, 4);
             }
        
@@ -130,16 +130,19 @@ public class RatBoss : Enemy, IMoveable
             {
                 GameObject newEnemy = Instantiate(aLintEnemy, new Vector3(spawnHere.x, spawnHere.y, transform.position.z), Quaternion.identity);
                 newEnemy.tag = "BossSummon";
+                newEnemy.GetComponent<Enemy>().chaseRadius = 50f;
             }
             if (summonRandNum == 2)
             {
                 GameObject newEnemy = Instantiate(aSpiderEnemy, new Vector3(spawnHere.x, spawnHere.y, transform.position.z), Quaternion.identity);
                 newEnemy.tag = "BossSummon";
+                newEnemy.GetComponent<Enemy>().chaseRadius = 50f;
             }
             if (summonRandNum == 3)
             {
                 GameObject newEnemy = Instantiate(aRatPlagueDr, new Vector3(spawnHere.x, spawnHere.y, transform.position.z), Quaternion.identity);
                 newEnemy.tag = "BossSummon";
+                newEnemy.GetComponent<Enemy>().chaseRadius = 50f;
             }
             currentMinionAmount++;
             yield return new WaitForSeconds(1f);

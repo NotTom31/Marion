@@ -17,7 +17,7 @@ public class Arrow : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        if (other.CompareTag("Fighter"))
+        if (other.CompareTag("Fighter") || other.CompareTag("BossSummon"))
         {
             other.GetComponent<Character>().Push(other);
             other.GetComponent<Character>().Damage(1, other);
