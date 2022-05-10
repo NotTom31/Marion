@@ -48,7 +48,8 @@ public class RatBoss : Enemy, IMoveable
         bigRatFace.SetActive(false);
 
         theUICamera = GameObject.Find("Pointer");
-}
+        theUICamera.SetActive(false);
+    }
 
     // Update is called once per frame
     void Update()
