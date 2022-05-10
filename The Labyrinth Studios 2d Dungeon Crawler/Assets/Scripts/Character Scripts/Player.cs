@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using System.Security.Cryptography.X509Certificates;
 using System.Runtime.CompilerServices;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 //******************************************************************************************************************************************************
 //********************************************************PLAYER STATE MACHINE**************************************************************************
 //******************************************************************************************************************************************************
@@ -67,8 +68,10 @@ public class Player : Character , IDataPersistence, IMoveable
         inRange = GameObject.FindGameObjectsWithTag("Fighter");
         moveSpeed = 1.25f;
         projectileForce = 80;
-        theCutscene = GameObject.Find("TimeLineManager").GetComponent<GameObject>();
-        
+        if (SceneManager.GetActiveScene().name == "BossBattleScene")
+        {
+            theCutscene = GameObject.Find("TimeLineManager").GetComponent<GameObject>();
+        }
     }
 
     void Start()
