@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Lever : Collectable , IDataPersistence
+public class Lever : Collectable, IDataPersistence
 {
     //******************************************************************************************************************************************************
     //***********************************************************************GUID***************************************************************************
@@ -38,7 +38,7 @@ public class Lever : Collectable , IDataPersistence
     }
     public void SaveData(GameData data)
     {
-        if(data.leversActivated.ContainsKey(leverId))
+        if (data.leversActivated.ContainsKey(leverId))
         {
             data.leversActivated.Remove(leverId);
         }
@@ -47,14 +47,17 @@ public class Lever : Collectable , IDataPersistence
     //******************************************************************************************************************************************************
     //************************************************************LEVER CLASS ATTRIBUTES********************************************************************
     //******************************************************************************************************************************************************
-    public Sprite onLever; 
+    public Sprite onLever;
     public Sprite offLever;
     public UnityEvent LeverOn;
     public UnityEvent LeverOff;
     public UnityEvent ActivatePortal;
-        
+    public UnityEvent InteractIconOn;
+    public UnityEvent InteractIconOff;
+
     protected override void OnCollect()
     {
+        InteractIconOn.Invoke();
         if (Input.GetKeyDown("e"))
         {
             if (!collected)
@@ -70,7 +73,7 @@ public class Lever : Collectable , IDataPersistence
         }
     }
     /*made these methods to make it easier for load and save data*/
-   public void LeverIsOn()
+    public void LeverIsOn()
     {
         GetComponent<SpriteRenderer>().sprite = onLever;
         LeverOn.Invoke(); //run unity events
@@ -85,6 +88,15 @@ public class Lever : Collectable , IDataPersistence
         transform.localScale = Vector3.one; //flip the sprite
     }
 
+
+    private void OnTriggerExit2D(Collider2D obj)
+    {
+        if (obj.CompareTag("Player"))
+        {
+            Debug.Log("Im here.");
+            InteractIconOff.Invoke();
+        }
+    }
 }
 
 
