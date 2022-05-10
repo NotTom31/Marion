@@ -285,6 +285,10 @@ public class Player : Character , IDataPersistence, IMoveable
                 Destroy(obj.gameObject);
             }
         }
+        if(obj.CompareTag("Crossbow"))
+        {
+            obj.GetComponent<ItemPickup>().Pickup();
+        }
         if(obj.CompareTag("Projectile"))
         {
             Push(this.GetComponent<Collider2D>());
