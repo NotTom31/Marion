@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DialogueHitbox : MonoBehaviour
+public class DialogueHitbox : Collectable
 {
     public UnityEvent DisplayText;
     public UnityEvent CloseText;
+    public UnityEvent InteractIconOn;
+    public UnityEvent InteractIconOff;
 
 
-    private void OnTriggerStay2D(Collider2D obj)
+    protected override void OnCollect()
     {
-        if (obj.CompareTag("Player") && Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("e"))
         {
             DisplayText.Invoke();
         }
+        InteractIconOn.Invoke();
     }
 
     private void OnTriggerExit2D(Collider2D obj)
@@ -23,6 +26,7 @@ public class DialogueHitbox : MonoBehaviour
         {
             CloseText.Invoke();
             Debug.Log("Walking away.");
+            InteractIconOff.Invoke();
         }
     }
 }
