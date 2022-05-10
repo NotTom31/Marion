@@ -7,7 +7,7 @@ using UnityEngine;
 //**********************************************************************************************************************************************************************
 public enum EnemyState//Different states the enemy can have
 {
-    idle, walk, attack, stagger, dead
+    idle, walk, attack, stagger, dead, teleport
 }
 public class Enemy : Character
 {

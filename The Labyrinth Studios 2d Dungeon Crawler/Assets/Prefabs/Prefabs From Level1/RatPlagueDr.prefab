@@ -229,7 +229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2316036599584552095}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.474, y: 2.906, z: 5.8748307}
+  m_LocalPosition: {x: 7.36, y: 2.906, z: 5.8748307}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0}
   m_Children:
   - {fileID: 2316036599693130156}
@@ -408,7 +408,7 @@ MonoBehaviour:
   currentState: 0
   reviveRadius: 0
   homePosition: {x: 0, y: 0}
-  heart: {fileID: 759409606641153946, guid: 0df05ca561e82c94a8ca2a9f9b59013d, type: 3}
+  heart: {fileID: 0}
 --- !u!1 &2316036599693130155
 GameObject:
   m_ObjectHideFlags: 0
