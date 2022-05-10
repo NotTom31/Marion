@@ -86,8 +86,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3012793279454092933}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3, y: 2.93, z: 5.8748307}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.07, y: 2.93, z: 5.8748307}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 3012793278700888683}
@@ -240,7 +240,7 @@ MonoBehaviour:
   - {x: -0.2650702, y: -0.072900176, z: 0}
   m_ShapePathHash: 278140805
   m_Mesh: {fileID: 0}
-  m_InstanceId: 20248
+  m_InstanceId: 20286
 --- !u!114 &3012793279454092940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,9 +262,10 @@ MonoBehaviour:
   charType: 0
   attackDamage: 0
   currentHealth: 0
-  dropHeart: {fileID: 0}
+  dropHeart: {fileID: 759409606641153946, guid: 0df05ca561e82c94a8ca2a9f9b59013d, type: 3}
   currentState: 0
+  chaseRadius: 0
   reviveRadius: 0
   homePosition: {x: 0, y: 0}
-  heart: {fileID: 759409606641153946, guid: 0df05ca561e82c94a8ca2a9f9b59013d, type: 3}
+  heart: {fileID: 0}
   projectile: {fileID: 7835366754799934803, guid: b5a80c2c89ddb64409e3d0c36307b24c, type: 3}

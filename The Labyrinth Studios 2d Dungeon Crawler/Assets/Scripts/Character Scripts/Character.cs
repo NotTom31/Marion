@@ -60,6 +60,19 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
         {
             temp.GetComponent<Player>().PlayerDied.Invoke();//kills player
         }
+        else if(obj.CompareTag("BossSummon"))
+        {
+            
+            GameObject theBoss = GameObject.Find("RatPlagueDrBoss");
+            theBoss.GetComponent<RatBoss>().currentMinionAmount--;
+            if (dropChance >= 50)
+            {
+                Instantiate(dropHeart, obj.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+            }
+            Debug.Log(dropChance);
+            Destroy(obj);
+            
+        }
         else if (obj.CompareTag("Fighter"))
         {
             if (dropChance >= 50)
@@ -68,6 +81,7 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
             }
             temp.gameObject.SetActive(false); temp.GetComponent<Enemy>().currentState = EnemyState.dead;
             
+
         }   //kills everything else   
     }
     //******************************************************************************************************************************************************

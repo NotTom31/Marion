@@ -16,6 +16,9 @@ TagManager:
   - Heart
   - Door
   - Arrow
+  - BossSummon
+  - UICamera
+  - StartCutscene
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using System.Security.Cryptography.X509Certificates;
 using System.Runtime.CompilerServices;
+using UnityEngine.Playables;
 //******************************************************************************************************************************************************
 //********************************************************PLAYER STATE MACHINE**************************************************************************
 //******************************************************************************************************************************************************
@@ -38,8 +39,8 @@ public class Player : Character , IDataPersistence, IMoveable
         data.lastVerticalPlayer = this.lastFacingVertical;
         Debug.Log(lastFacingHorizontal);
         Debug.Log(lastFacingVertical);
-    }   
-
+    }
+    private GameObject theCutscene;
     //******************************************************************************************************************************************************
     //********************************************************PLAYER CLASS ATTRIBUTES***********************************************************************
     //******************************************************************************************************************************************************
@@ -66,10 +67,13 @@ public class Player : Character , IDataPersistence, IMoveable
         inRange = GameObject.FindGameObjectsWithTag("Fighter");
         moveSpeed = 1.25f;
         projectileForce = 80;
+        theCutscene = GameObject.Find("TimeLineManager").GetComponent<GameObject>();
+        
     }
 
     void Start()
     {
+        
         anim.SetBool("holdingDagger", true);
     }
     //******************************************************************************************************************************************************
@@ -261,7 +265,7 @@ public class Player : Character , IDataPersistence, IMoveable
     //******************************************************************************************************************************************************
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if ( obj.CompareTag("Fighter"))//check to make sure either player hits enemy or enemy hits player
+        if ( obj.CompareTag("Fighter") || obj.CompareTag("BossSummon"))//check to make sure either player hits enemy or enemy hits player
         {
             if (obj.gameObject != null)
             {
@@ -282,6 +286,11 @@ public class Player : Character , IDataPersistence, IMoveable
         {
             Push(this.GetComponent<Collider2D>());
             Damage(1, this.GetComponent<Collider2D>());           
+        }
+        if(obj.CompareTag("StartCutscene"))
+        {
+            GameObject.Find("TimeLineManager").GetComponent<PlayableDirector>().Play();
+            GameObject.Find("StartBossCutscene").SetActive(false);
         }
     }
 }
