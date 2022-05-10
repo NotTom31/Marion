@@ -105,20 +105,27 @@ public class RatBoss : Enemy, IMoveable
     }    
     private IEnumerator SpawnEnemyCo(Vector3 SpawnPosition)
     {
-        if(this.currentHealth <= 60 && this.currentHealth >= 31)
-        {
-            maxMinionAmount = 12;
-        }
-        if(this.currentHealth <= 30)
-        {
-            maxMinionAmount = 15;
-        }
         while (currentMinionAmount < maxMinionAmount)
         {
+            if (this.currentHealth >= 61)
+            {
+             summonRandNum = randNum.Next(1, 2);
+            }
+            if(this.currentHealth <= 60 && this.currentHealth >= 31)
+            {
+             maxMinionAmount = 12;
+             summonRandNum = randNum.Next(1, 3);
+            }
+            if(this.currentHealth <= 30)
+            {
+                maxMinionAmount = 15;
+                summonRandNum = randNum.Next(1, 4);
+            }
+       
             Vector3 spawnHere = SpawnPosition;
             spawnHere.x = randNum.Next(-4, 1);
             spawnHere.y = randNum.Next(1, 2);
-            summonRandNum = randNum.Next(1, 4);
+            
             if (summonRandNum == 1)
             {
                 GameObject newEnemy = Instantiate(aLintEnemy, new Vector3(spawnHere.x, spawnHere.y, transform.position.z), Quaternion.identity);
