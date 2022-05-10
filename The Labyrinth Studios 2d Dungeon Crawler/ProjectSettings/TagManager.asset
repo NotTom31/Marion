@@ -18,6 +18,7 @@ TagManager:
   - Arrow
   - BossSummon
   - UICamera
+  - StartCutscene
   layers:
   - Default
   - TransparentFX
