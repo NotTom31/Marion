@@ -68,6 +68,8 @@ public class DoorTakeInput : Collectable , IDataPersistence
     public UnityEvent DisplayText;
     public UnityEvent CloseText;
     public UnityEvent ActivatePortal;
+    public UnityEvent InteractIconOn;
+    public UnityEvent InteractIconOff;
     private Animator anim;
     private void Awake()
     {
@@ -76,7 +78,7 @@ public class DoorTakeInput : Collectable , IDataPersistence
 
     protected override void OnCollect()
     {
-        
+        InteractIconOn.Invoke();
         if (Input.GetKeyDown("e") && unLocked == true)
         {
             anim.SetBool("DoorUnlock", true);
@@ -132,6 +134,7 @@ public class DoorTakeInput : Collectable , IDataPersistence
         {
             CloseText.Invoke();
             Debug.Log("Im here.");
+            InteractIconOff.Invoke();
         }
     }
 }
