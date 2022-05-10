@@ -22,6 +22,7 @@ public class RatBoss : Enemy, IMoveable
     public GameObject aSpiderEnemy;
     public GameObject aRatPlagueDr;
 
+    private GameObject theUICamera;
     private Vector2 faceDir;
     protected List<GameObject> minionContainer;
     // Start is called before the first frame update
@@ -45,7 +46,8 @@ public class RatBoss : Enemy, IMoveable
         thisBody = this.GetComponent<Rigidbody2D>();//Initializes the Rigidbody2d component
         bigRatFace = GameObject.Find("RatTurnAround_0");
         bigRatFace.SetActive(false);
-        
+
+        theUICamera = GameObject.Find("Pointer");
 }
 
     // Update is called once per frame
@@ -95,6 +97,7 @@ public class RatBoss : Enemy, IMoveable
         this.GetComponent<SpriteRenderer>().enabled = false;
         this.GetComponent<BoxCollider2D>().enabled = false;
         this.GetComponentInChildren<BoxCollider2D>().enabled = false;
+        theUICamera.SetActive(false);
         yield return new WaitForSeconds(10f);        
         transform.localPosition = teleportPosition;
         this.GetComponent<SpriteRenderer>().enabled = true;
@@ -102,6 +105,7 @@ public class RatBoss : Enemy, IMoveable
         this.GetComponentInChildren<BoxCollider2D>().enabled = true;
         bigRatFace.SetActive(false);
         this.currentState = EnemyState.idle;
+        theUICamera.SetActive(true);
     }    
     private IEnumerator SpawnEnemyCo(Vector3 SpawnPosition)
     {
@@ -123,8 +127,8 @@ public class RatBoss : Enemy, IMoveable
             }
        
             Vector3 spawnHere = SpawnPosition;
-            spawnHere.x = randNum.Next(-4, 1);
-            spawnHere.y = randNum.Next(1, 2);
+            spawnHere.x = randNum.Next(-4, 3);
+            spawnHere.y = randNum.Next(-1, 2);
             
             if (summonRandNum == 1)
             {

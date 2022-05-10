@@ -17,6 +17,7 @@ TagManager:
   - Door
   - Arrow
   - BossSummon
+  - UICamera
   layers:
   - Default
   - TransparentFX

@@ -38,11 +38,13 @@ public class GameData
         plateOn = new SerializableDictionary<string, bool>();//pressure plate in the on or off stated ** IN PRESSUREPLATE.cs**         
         boxPosition = new SerializableDictionary<string, Vector3>();//box's position is loaded and saved in box script
         boxHeld = new SerializableDictionary<string, bool>();//will remember if the box is being held by player when the game is saved
-        this.LastHorizontalBox = 0f;
-        this.LastVerticalBox = 0f;
-        this.lastHorizontalPlayer = 0f;
-        this.lastVerticalPlayer = 0f;
-        this.currentScene = "Level_1";//This is where the name of the current scene will be kept
+        /*Stores which way the player was facing*/
+        this.LastHorizontalBox = 0f;// **IN PLAYER.cs** 
+        this.LastVerticalBox = 0f;// **IN PLAYER.cs** 
+        this.lastHorizontalPlayer = 0f;// **IN PLAYER.cs** 
+        this.lastVerticalPlayer = 0f;// **IN PLAYER.cs** 
+        /*--------------------------------------*/
+        this.currentScene = "Level_1";//This is the first scene
     }
 }
 
