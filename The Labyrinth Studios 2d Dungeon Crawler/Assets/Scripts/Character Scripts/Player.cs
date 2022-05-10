@@ -261,7 +261,7 @@ public class Player : Character , IDataPersistence, IMoveable
     //******************************************************************************************************************************************************
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if ( obj.CompareTag("Fighter"))//check to make sure either player hits enemy or enemy hits player
+        if ( obj.CompareTag("Fighter") || obj.CompareTag("BossSummon"))//check to make sure either player hits enemy or enemy hits player
         {
             if (obj.gameObject != null)
             {

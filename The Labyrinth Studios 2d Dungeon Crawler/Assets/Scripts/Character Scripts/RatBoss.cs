@@ -5,7 +5,7 @@ using UnityEngine;
 public class RatBoss : Enemy, IMoveable
 {
     private int maxMinionAmount;
-    private int currentMinionCount;
+    public int currentMinionAmount;
     private float teleportCooldown;//this will be used in conjuction with lastSummon to control how fast the boss teleports
     private float lastTeleport;
     //These will be used to store the positions where the boss will teleport
@@ -21,19 +21,20 @@ public class RatBoss : Enemy, IMoveable
     public GameObject aLintEnemy;
     public GameObject aSpiderEnemy;
     public GameObject aRatPlagueDr;
+
+    private Vector2 faceDir;
+    protected List<GameObject> minionContainer;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = 90;
-        maxMinionAmount = 10;
-        currentMinionCount = 0;
+        maxMinionAmount = 9;
         teleportCooldown = 15f;
         lastTeleport = 0f;
         upperLeftPosition = new Vector3(.22f, 3.49f, transform.position.z);
         lowerLeftPosition = new Vector3(.22f, 2.05f, transform.position.z);
         upperRightPosition = new Vector3(4.7f, 3.49f, transform.position.z);
         lowerRightPosition = new Vector3(4.7f, 2.05f, transform.position.z);
-
         disappear = new Vector3(1000, 1000,transform.position.z);
         //-----------------------------
         /*Attributes from Enemy script*/
@@ -44,13 +45,23 @@ public class RatBoss : Enemy, IMoveable
         thisBody = this.GetComponent<Rigidbody2D>();//Initializes the Rigidbody2d component
         bigRatFace = GameObject.Find("RatTurnAround_0");
         bigRatFace.SetActive(false);
-    }
+        
+}
 
     // Update is called once per frame
     void Update()
     {
+        FacePlayer();
         Move();
     }
+    
+    public void FacePlayer()
+    {
+        faceDir = transform.position - target.position;
+        anim.SetFloat("moveX", -faceDir.x);
+        anim.SetFloat("moveY", -faceDir.y);
+    }
+   
     public void Move()
     {
         if (Time.time > (lastTeleport + teleportCooldown) && this.currentState != EnemyState.attack)
@@ -73,49 +84,57 @@ public class RatBoss : Enemy, IMoveable
                 StartCoroutine(TeleportCo(lowerRightPosition));
             }
             lastTeleport = Time.time;
-            Debug.Log(lastTeleport);
             this.currentState = EnemyState.idle;
         }
-    }
-    private void EnemySpawn()
-    {
-
     }
     private IEnumerator TeleportCo(Vector3 teleportPosition)
     {
         this.currentState = EnemyState.teleport;
         bigRatFace.SetActive(true);
         StartCoroutine(SpawnEnemyCo(transform.position));
-        transform.localPosition = disappear;
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        this.GetComponent<BoxCollider2D>().enabled = false;
+        this.GetComponentInChildren<BoxCollider2D>().enabled = false;
         yield return new WaitForSeconds(10f);        
         transform.localPosition = teleportPosition;
+        this.GetComponent<SpriteRenderer>().enabled = true;
+        this.GetComponent<BoxCollider2D>().enabled = true;
+        this.GetComponentInChildren<BoxCollider2D>().enabled = true;
         bigRatFace.SetActive(false);
         this.currentState = EnemyState.idle;
-    }
+    }    
     private IEnumerator SpawnEnemyCo(Vector3 SpawnPosition)
     {
-        while (currentMinionCount < maxMinionAmount)
+        if(this.currentHealth <= 60 && this.currentHealth >= 31)
+        {
+            maxMinionAmount = 12;
+        }
+        if(this.currentHealth <= 30)
+        {
+            maxMinionAmount = 15;
+        }
+        while (currentMinionAmount < maxMinionAmount)
         {
             Vector3 spawnHere = SpawnPosition;
             spawnHere.x = randNum.Next(-4, 1);
-            spawnHere.y = randNum.Next(0, 3);
-            summonRandNum = randNum.Next(1, 3);
-            Debug.Log("akjshf;laksjfkj");
+            spawnHere.y = randNum.Next(1, 2);
+            summonRandNum = randNum.Next(1, 4);
             if (summonRandNum == 1)
             {
-                Instantiate(aLintEnemy, new Vector3(spawnHere.x, spawnHere.y, transform.position.z), Quaternion.identity);
-                currentMinionCount++;
+                GameObject newEnemy = Instantiate(aLintEnemy, new Vector3(spawnHere.x, spawnHere.y, transform.position.z), Quaternion.identity);
+                newEnemy.tag = "BossSummon";
             }
             if (summonRandNum == 2)
             {
-                Instantiate(aSpiderEnemy, new Vector3(spawnHere.x, spawnHere.y, transform.position.z), Quaternion.identity);
-                currentMinionCount++;
+                GameObject newEnemy = Instantiate(aSpiderEnemy, new Vector3(spawnHere.x, spawnHere.y, transform.position.z), Quaternion.identity);
+                newEnemy.tag = "BossSummon";
             }
             if (summonRandNum == 3)
             {
-                Instantiate(aRatPlagueDr, new Vector3(spawnHere.x, spawnHere.y, transform.position.z), Quaternion.identity);
-                currentMinionCount++;
+                GameObject newEnemy = Instantiate(aRatPlagueDr, new Vector3(spawnHere.x, spawnHere.y, transform.position.z), Quaternion.identity);
+                newEnemy.tag = "BossSummon";
             }
+            currentMinionAmount++;
             yield return new WaitForSeconds(1f);
         }
     }

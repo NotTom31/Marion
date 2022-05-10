@@ -60,14 +60,26 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
         {
             temp.GetComponent<Player>().PlayerDied.Invoke();//kills player
         }
-        else if (obj.CompareTag("Fighter"))
+        else if(obj.CompareTag("BossSummon"))
         {
+            
+            GameObject theBoss = GameObject.Find("RatPlagueDrBoss");
+            theBoss.GetComponent<RatBoss>().currentMinionAmount--;
+            Destroy(obj);
             if (dropChance >= 50)
             {
                 Instantiate(dropHeart, obj.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
             }
-            temp.gameObject.SetActive(false); temp.GetComponent<Enemy>().currentState = EnemyState.dead;
+        }
+        else if (obj.CompareTag("Fighter"))
+        {
             
+            temp.gameObject.SetActive(false); temp.GetComponent<Enemy>().currentState = EnemyState.dead;
+            if (dropChance >= 50)
+            {
+                Instantiate(dropHeart, obj.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+            }
+
         }   //kills everything else   
     }
     //******************************************************************************************************************************************************

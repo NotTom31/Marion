@@ -16,6 +16,7 @@ TagManager:
   - Heart
   - Door
   - Arrow
+  - BossSummon
   layers:
   - Default
   - TransparentFX
