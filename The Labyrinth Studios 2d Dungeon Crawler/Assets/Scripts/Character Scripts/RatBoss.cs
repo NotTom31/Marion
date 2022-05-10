@@ -1,9 +1,11 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RatBoss : Enemy, IMoveable
 {
+    public bool fightStarted;
     private int maxMinionAmount;
     public int currentMinionAmount;
     private float teleportCooldown;//this will be used in conjuction with lastSummon to control how fast the boss teleports
@@ -28,6 +30,7 @@ public class RatBoss : Enemy, IMoveable
     // Start is called before the first frame update
     void Start()
     {
+        fightStarted = false;
         currentHealth = 90;
         maxMinionAmount = 5;
         teleportCooldown = 15f;
@@ -48,7 +51,7 @@ public class RatBoss : Enemy, IMoveable
         bigRatFace.SetActive(false);
 
         theUICamera = GameObject.Find("Pointer");
-        theUICamera.SetActive(false);
+        theUICamera.SetActive(false );
     }
 
     // Update is called once per frame
@@ -67,7 +70,11 @@ public class RatBoss : Enemy, IMoveable
    
     public void Move()
     {
-        if (Time.time > (lastTeleport + teleportCooldown) && this.currentState != EnemyState.attack)
+        if(fightStarted == false)
+        {
+            teleportCooldown = 0;
+        }        
+        if (Time.time > (lastTeleport + teleportCooldown) && this.currentState != EnemyState.attack && fightStarted == true)
         {
             teleportNum = randNum.Next(0, 100);
             if (teleportNum <= 24)
@@ -88,6 +95,10 @@ public class RatBoss : Enemy, IMoveable
             }
             lastTeleport = Time.time;
             this.currentState = EnemyState.idle;
+            if (fightStarted == true)
+            {
+                teleportCooldown = 22;
+            }
         }
     }
     private IEnumerator TeleportCo(Vector3 teleportPosition)
