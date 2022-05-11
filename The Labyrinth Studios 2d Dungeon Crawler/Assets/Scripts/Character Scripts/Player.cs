@@ -153,37 +153,62 @@ public class Player : Character , IDataPersistence, IMoveable
                     castv = offset;
                     GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
                     newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(projectileForce, 0f));
+                    anim.SetBool("attacking", true);//allow animation
+                    currentState = PlayerState.attack;//player state machine
+                    yield return null;//wait for a frame
+                    anim.SetBool("attacking", false);//allow animation to continue
+                    yield return new WaitForSeconds(.33f);//wait for a third of a second
+                    currentState = PlayerState.walk;//resetting player state machine
                 }
-                else if (offset.x == -1f)
+                if (offset.x == -1f)
                 {
                     offset.x = -.1f;
                     castv = offset;
                     GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 180f));
                     newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(-projectileForce, 0f));
+                    anim.SetBool("attacking", true);//allow animation
+                    currentState = PlayerState.attack;//player state machine
+                    yield return null;//wait for a frame
+                    anim.SetBool("attacking", false);//allow animation to continue
+                    yield return new WaitForSeconds(.33f);//wait for a third of a second
+                    currentState = PlayerState.walk;//resetting player state machine
                 }
-                else if (offset.y == 1f)
+               
+                if (offset.y == 1f)
                 {
                     offset.y = .1f;
                     castv = offset;
                     GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 90f));
                     newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, projectileForce));
+                    anim.SetBool("attacking", true);//allow animation
+                    currentState = PlayerState.attack;//player state machine
+                    yield return null;//wait for a frame
+                    anim.SetBool("attacking", false);//allow animation to continue
+                    yield return new WaitForSeconds(.33f);//wait for a third of a second
+                    currentState = PlayerState.walk;//resetting player state machine
                 }
-                else if (offset.y == -1f)
+                if (offset.y == -1f)
                 {
+                    
                     offset.y = -.1f;
                     castv = offset;
                     GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, -90f));
                     newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -projectileForce));
+                    
+                    anim.SetBool("attacking", true);//allow animation
+                    currentState = PlayerState.attack;//player state machine
+                    yield return null;//wait for a frame
+                    anim.SetBool("attacking", false);//allow animation to continue
+                    yield return new WaitForSeconds(.33f);//wait for a third of a second
+                    currentState = PlayerState.walk;//resetting player state machine
                 }
                 castv = offset;
             }
          }
-            anim.SetBool("attacking", true);//allow animation
-            currentState = PlayerState.attack;//player state machine
-            yield return null;//wait for a frame
-            anim.SetBool("attacking", false);//allow animation to continue
-            yield return new WaitForSeconds(.33f);//wait for a third of a second
-            currentState = PlayerState.walk;//resetting player state machine
+            
+            
+        
+        
         }
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IMOVABLE************************************************************************

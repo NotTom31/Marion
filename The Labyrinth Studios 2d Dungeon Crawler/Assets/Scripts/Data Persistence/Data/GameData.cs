@@ -23,6 +23,7 @@ public class GameData
     public SerializableDictionary<string, bool> plateOn;    
     public SerializableDictionary<string, Vector3> boxPosition;
     public SerializableDictionary<string, bool> boxHeld;
+    public SerializableDictionary<string, bool> portal;
     public float LastHorizontalBox;
     public float LastVerticalBox;
     public float lastHorizontalPlayer;
