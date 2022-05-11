@@ -14,7 +14,7 @@ public enum PlayerState//Different states the player can have
 {
     walk, attack, interact, stagger, dead, holdingBox, holdingBow
 }
-public class Player : Character , IDataPersistence, IMoveable
+public class Player : Character, IDataPersistence, IMoveable
 {
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IDATAPERSISTENCE****************************************************************
@@ -22,7 +22,7 @@ public class Player : Character , IDataPersistence, IMoveable
     public void LoadData(GameData data)
     {
         this.currentHealth = data.currentHealth;
-        if(this.currentHealth == 0)
+        if (this.currentHealth == 0)
         {
             this.currentHealth = 3;
         }
@@ -66,7 +66,7 @@ public class Player : Character , IDataPersistence, IMoveable
     //********************************************************INITIALIZATION********************************************************************************
     //******************************************************************************************************************************************************
     void Awake()
-    {          
+    {
         charType = CharacterType.player;//state machine, what is the type of character
         PlayerState currentState = PlayerState.walk;//initialize playerstate to walk        
         anim = this.GetComponent<Animator>();//Initializes the animator component
@@ -82,7 +82,7 @@ public class Player : Character , IDataPersistence, IMoveable
     }
 
     void Start()
-    {        
+    {
         anim.SetBool("holdingDagger", true);
     }
     //******************************************************************************************************************************************************
@@ -133,12 +133,21 @@ public class Player : Character , IDataPersistence, IMoveable
         }
 
         heartGUI();//manages heart display
-            ReviveInRange();//revives enemies once out of a certain range
+        ReviveInRange();//revives enemies once out of a certain range
     }
-        private IEnumerator AttackCo()
+    private IEnumerator AttackCo()
+    {
+        if (anim.GetBool("holdingDagger"))
         {
-         if (anim.GetBool("holdingCrossbow"))
-         {
+            anim.SetBool("attacking", true);//allow animation
+            currentState = PlayerState.attack;//player state machine
+            yield return null;//wait for a frame
+            anim.SetBool("attacking", false);//allow animation to continue
+            yield return new WaitForSeconds(.33f);//wait for a third of a second
+            currentState = PlayerState.walk;//resetting player state machine
+        }
+        if (anim.GetBool("holdingCrossbow"))
+        {
 
             Vector2 offset = new Vector2(0, 0);
             Vector3 castv;
@@ -159,6 +168,7 @@ public class Player : Character , IDataPersistence, IMoveable
                     anim.SetBool("attacking", false);//allow animation to continue
                     yield return new WaitForSeconds(.33f);//wait for a third of a second
                     currentState = PlayerState.walk;//resetting player state machine
+
                 }
                 if (offset.x == -1f)
                 {
@@ -173,7 +183,7 @@ public class Player : Character , IDataPersistence, IMoveable
                     yield return new WaitForSeconds(.33f);//wait for a third of a second
                     currentState = PlayerState.walk;//resetting player state machine
                 }
-               
+
                 if (offset.y == 1f)
                 {
                     offset.y = .1f;
@@ -189,12 +199,12 @@ public class Player : Character , IDataPersistence, IMoveable
                 }
                 if (offset.y == -1f)
                 {
-                    
+
                     offset.y = -.1f;
                     castv = offset;
                     GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, -90f));
                     newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -projectileForce));
-                    
+
                     anim.SetBool("attacking", true);//allow animation
                     currentState = PlayerState.attack;//player state machine
                     yield return null;//wait for a frame
@@ -203,13 +213,14 @@ public class Player : Character , IDataPersistence, IMoveable
                     currentState = PlayerState.walk;//resetting player state machine
                 }
                 castv = offset;
+
             }
-         }
-            
-            
-        
-        
         }
+
+
+
+
+    }
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IMOVABLE************************************************************************
     //******************************************************************************************************************************************************
@@ -222,7 +233,7 @@ public class Player : Character , IDataPersistence, IMoveable
         {
             lastFacingHorizontal = Input.GetAxisRaw("Horizontal");
             lastFacingVertical = Input.GetAxisRaw("Vertical");
-        }           
+        }
         if (movement != Vector2.zero)
         {
             thisBody.MovePosition(thisBody.position + movement * moveSpeed * Time.fixedDeltaTime);//actually moves the player
@@ -236,7 +247,7 @@ public class Player : Character , IDataPersistence, IMoveable
             anim.SetBool("moving", false);
             currentState = PlayerState.walk;
         }
-    }     
+    }
     //******************************************************************************************************************************************************
     //*****************************************************************HEALTH GUI***************************************************************************
     //******************************************************************************************************************************************************
@@ -247,9 +258,9 @@ public class Player : Character , IDataPersistence, IMoveable
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < currentHealth) { hearts[i].sprite = fullHeart; }
-            else {  hearts[i].sprite = emptyHeart; }
+            else { hearts[i].sprite = emptyHeart; }
             if (i < numOfHearts) { hearts[i].enabled = true; }
-            else{ hearts[i].enabled = false; }
+            else { hearts[i].enabled = false; }
         }
     }
     //******************************************************************************************************************************************************
@@ -280,14 +291,14 @@ public class Player : Character , IDataPersistence, IMoveable
     //ReviveInRange() revives an enemy once the player has reached a specific range. Range is determined by reviveRadius variable located in Enemy script
     //this method is needed here because once we disable an enemy, that enemy's script is also disabled thus it is unable to revive itself
     void ReviveInRange()//Author Johnathan Bates
-    {        
+    {
         for (int i = 0; i < inRange.Length; i++)//cycle through the array
         {
             GameObject temp = inRange[i];
-            
+
             //check if the enemy is no longer active and the player is far enough away from spawn point
             if (temp.GetComponent<Enemy>().currentState == EnemyState.dead && Vector2.Distance(transform.position, temp.GetComponent<Enemy>().homePosition) > temp.GetComponent<Enemy>().reviveRadius)
-            { 
+            {
                 temp.transform.position = temp.GetComponent<Enemy>().homePosition;//puts enemy back to spawn point
                 temp.GetComponent<Enemy>().currentHealth = 3;// resets its health back to 3
                 temp.GetComponent<Enemy>().currentState = EnemyState.idle;//resets the enemy state back to idle
@@ -300,12 +311,12 @@ public class Player : Character , IDataPersistence, IMoveable
     //******************************************************************************************************************************************************
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if ( obj.CompareTag("Fighter") || obj.CompareTag("BossSummon"))//check to make sure either player hits enemy or enemy hits player
+        if (obj.CompareTag("Fighter") || obj.CompareTag("BossSummon"))//check to make sure either player hits enemy or enemy hits player
         {
             if (obj.gameObject != null)
             {
                 Push(obj);
-                Damage(attackDamage, obj);                
+                Damage(attackDamage, obj);
             }
         }
         // Author Joel Monteon
@@ -317,27 +328,27 @@ public class Player : Character , IDataPersistence, IMoveable
                 Destroy(obj.gameObject);
             }
         }
-        if(obj.CompareTag("Projectile"))
+        if (obj.CompareTag("Projectile"))
         {
             Push(this.GetComponent<Collider2D>());
-            Damage(1, this.GetComponent<Collider2D>());           
+            Damage(1, this.GetComponent<Collider2D>());
         }
-        if(obj.CompareTag("StartCutscene"))
+        if (obj.CompareTag("StartCutscene"))
         {
             GameObject.Find("TimeLineManager").GetComponent<PlayableDirector>().Play();
             GameObject.Find("StartBossCutscene").SetActive(false);
         }
-        if(obj.CompareTag("ArrowPickUp"))
+        if (obj.CompareTag("ArrowPickUp"))
         {
             arrowManager.GetComponent<ArrowManager>().AddArrow();
             Destroy(obj.gameObject);
         }
-        if(obj.CompareTag("Dagger"))
+        if (obj.CompareTag("Dagger"))
         {
             obj.GetComponent<ItemPickup>().Pickup();
             hasDagger = true;
         }
-        if(obj.CompareTag("Crossbow"))
+        if (obj.CompareTag("Crossbow"))
         {
             obj.GetComponent<ItemPickup>().Pickup();
             hasCrossbow = true;
