@@ -1881,23 +1881,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Brian Cabrera(Project Manager):Will manage tasks and deadlines assigned
-    to the development team. Communicate with client in regards to the development
-    of the video game and completion of prototypes.\n\nJohnathan Bates(Assistant
-    Project Manager): Will manage document creation and control. Work in conjunction
-    with Project Manager to facilitate completion of prototypes.\n\nNaim Dakhil(Software
-    Engineer): Responsible for the creation of the GUI\u2019s within the video game.\n\nJoel
-    Monteon(Software Engineer): Responsible for character movement, camera view and
-    animating the graphics which includes characters and environment.\n\nKatelyn
-    Langley(Graphics Designer): Responsible for design and creation of character
-    sprites, tilesets and various other objects that will be used as the graphics
-    for the video game.\n\nAlex Hernandez(Software Engineer): Responsible for the
-    video games combat system. This will include calculating character health and
-    damage, enemy health and damage, and attributes for armor, weapons and abilities.\n\nThomas
-    Mezzie(Software Engineer): Responsible for all collision and interaction within
-    the video game.\n\nJason Bet Sargon(Software Engineer): Responsible for level
-    design. This includes anything involving the overall layout of the environment.\n\nThank
-    you for playing our game!"
+  m_text: "Brian Cabrera: Project Manager\n\nJohnathan Bates: Assistant Project Manager\n\nJoel
+    Monteon: Software Engineer, character movement, camera, and animation programming.\n\nKatelyn
+    Langley: Software Engineer, Grapics designer\n\nAlex Hernandez: Software Engineer,
+    Combat System\n\nThomas Mezzie: Software Engineer, Level Design, Interactable
+    Object Programming\n\nJason Bet Sargon: Software Engineer, level design. \n\nNaim
+    Dakhil: Software Engineer, GUI\n\nThank you for playing our game!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1924,8 +1913,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 22.5
+  m_fontSizeBase: 22.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
