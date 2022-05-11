@@ -238,7 +238,7 @@ MonoBehaviour:
   - {x: -0.15228547, y: 0.15467678, z: 0}
   m_ShapePathHash: -1913819238
   m_Mesh: {fileID: 0}
-  m_InstanceId: 154654
+  m_InstanceId: 43114
 --- !u!114 &7665300305255538547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,6 +261,8 @@ MonoBehaviour:
   attackDamage: 0
   currentHealth: 0
   dropHeart: {fileID: 759409606641153946, guid: 0df05ca561e82c94a8ca2a9f9b59013d, type: 3}
+  dropArrow: {fileID: 7274618211555800166, guid: 2827bdb2f02c2b74d8c01a34d61ffbac, type: 3}
+  dropPotion: {fileID: 5723745264014639260, guid: 7567513d32039db408d959ab82d09ef8, type: 3}
   currentState: 0
   chaseRadius: 0
   reviveRadius: 0
