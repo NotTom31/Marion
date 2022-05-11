@@ -31,7 +31,7 @@ public class RatBoss : Enemy, IMoveable
     void Start()
     {
         fightStarted = false;
-        currentHealth = 90;
+        currentHealth = 45;
         maxMinionAmount = 5;
         teleportCooldown = 15f;
         lastTeleport = 0f;
@@ -123,18 +123,18 @@ public class RatBoss : Enemy, IMoveable
     {
         while (currentMinionAmount < maxMinionAmount)
         {
-            if (this.currentHealth >= 61)
+            if (this.currentHealth >= 31)
             {
              summonRandNum = randNum.Next(1, 2);
             }
-            if(this.currentHealth <= 60 && this.currentHealth >= 31)
+            if(this.currentHealth <= 30 && this.currentHealth >= 16)
             {
-             maxMinionAmount = 8;
+             maxMinionAmount = 6;
              summonRandNum = randNum.Next(1, 3);
             }
-            if(this.currentHealth <= 30)
+            if(this.currentHealth <= 15)
             {
-                maxMinionAmount = 10;
+                maxMinionAmount = 8;
                 summonRandNum = randNum.Next(1, 4);
             }
        
