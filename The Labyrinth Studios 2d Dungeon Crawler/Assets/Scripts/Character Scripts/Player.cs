@@ -45,7 +45,7 @@ public class Player : Character, IDataPersistence, IMoveable
         { data.playerPosition = this.transform.position; }
         if (usedAPortal == true)
         {
-            data.playerPortalPosition = new Vector3(0, 0, 0);
+            data.playerPosition = new Vector3(0, 0, 0);
         }
         data.lastHorizontalPlayer = this.lastFacingHorizontal;
         data.lastVerticalPlayer = this.lastFacingVertical;

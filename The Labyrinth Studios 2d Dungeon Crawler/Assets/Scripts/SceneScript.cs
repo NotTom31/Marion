@@ -28,6 +28,5 @@ public class SceneScript : MonoBehaviour , IDataPersistence
         }
         DontDestroyOnLoad(this.gameObject);
         this.currentScene = SceneManager.GetActiveScene().name;
-        Debug.Log(SceneManager.GetActiveScene().name);
     }
 }
