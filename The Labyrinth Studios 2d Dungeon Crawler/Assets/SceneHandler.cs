@@ -7,10 +7,10 @@ public class SceneHandler : MonoBehaviour, IDataPersistence
     public string theCurrentScene;
     public void LoadData(GameData data)
     {
-        theCurrentScene = data.currentScene;
+        //theCurrentScene = data.currentScene;
     }
     public void SaveData(GameData data)
     {
-        data.currentScene = SceneManager.GetActiveScene().name;
+        //data.currentScene = SceneManager.GetActiveScene().name;
     }
 }

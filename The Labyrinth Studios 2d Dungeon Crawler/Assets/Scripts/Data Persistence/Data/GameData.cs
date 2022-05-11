@@ -31,7 +31,7 @@ public class GameData
     public float LastVerticalBox;
     public float lastHorizontalPlayer;
     public float lastVerticalPlayer;
-    public string currentScene;
+    public int currentScene;
     public GameData()//New Game values will be stored in this method
     {
         storedItems = new List<Item>();
@@ -56,7 +56,7 @@ public class GameData
         this.lastHorizontalPlayer = 0f;// **IN PLAYER.cs** 
         this.lastVerticalPlayer = 0f;// **IN PLAYER.cs** 
         /*--------------------------------------*/
-        this.currentScene = "Level_0";//This is the first scene
+        this.currentScene = 0;//This is the first scene
     }
 }
 

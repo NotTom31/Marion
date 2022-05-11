@@ -54,7 +54,7 @@ public class MenuController : MonoBehaviour
         if(buttonName == "Load")
         {
             SceneManager.LoadSceneAsync(sceneHandle.GetComponent<SceneScript>().currentScene);
-        }
-        
+        }        
     }
+    
 }

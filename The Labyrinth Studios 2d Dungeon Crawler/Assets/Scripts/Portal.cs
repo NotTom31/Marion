@@ -39,7 +39,7 @@ public class Portal : Collidable, IDataPersistence
                 data.portal.Remove(portalId);
             }
             data.portal.Add(portalId, portalUsed);
-            data.playerPortalPosition = GameObject.Find("player").transform.position;
+           // data.playerPortalPosition = GameObject.Find("player").transform.position;
         }
     }
     private GameObject theData;
