@@ -45,7 +45,6 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)//Loads all data for the current scene
     {
-        Debug.Log("scene was loaded and data shoudl be too");
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
     }
