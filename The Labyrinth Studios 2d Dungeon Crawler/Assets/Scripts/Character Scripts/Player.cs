@@ -56,6 +56,8 @@ public class Player : Character , IDataPersistence, IMoveable
     private float projectileForce;
     private float lastFacingVertical;
     private float lastFacingHorizontal;
+
+    private GameObject arrowManager;
     //******************************************************************************************************************************************************
     //********************************************************INITIALIZATION********************************************************************************
     //******************************************************************************************************************************************************
@@ -72,6 +74,7 @@ public class Player : Character , IDataPersistence, IMoveable
         {
             theCutscene = GameObject.Find("TimeLineManager").GetComponent<GameObject>();
         }
+        arrowManager = GameObject.Find("Arrow Count");
     }
 
     void Start()
@@ -133,43 +136,47 @@ public class Player : Character , IDataPersistence, IMoveable
         {
 
         if (anim.GetBool("holdingCrossbow"))
-            {
+        {
 
             Vector2 offset = new Vector2(0, 0);
             Vector3 castv;
             offset.x = anim.GetFloat("moveX");
-            if (offset.x == 1f)
+            if (arrowManager.GetComponent<ArrowManager>().arrowCount > 0)
             {
-                offset.x = .1f;
+                arrowManager.GetComponent<ArrowManager>().SubtractArrow();
+                if (offset.x == 1f)
+                {
+                    offset.x = .1f;
+                    castv = offset;
+                    GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+                    newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(projectileForce, 0f));
+                }
+                if (offset.x == -1f)
+                {
+                    offset.x = -.1f;
+                    castv = offset;
+                    GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 180f));
+                    newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(-projectileForce, 0f));
+                }
+                offset.y = anim.GetFloat("moveY");
+                if (offset.y == 1f)
+                {
+                    offset.y = .1f;
+                    castv = offset;
+                    GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 90f));
+                    newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, projectileForce));
+                }
+                if (offset.y == -1f)
+                {
+                    offset.y = -.1f;
+                    castv = offset;
+                    GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, -90f));
+                    newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -projectileForce));
+                }
                 castv = offset;
-                GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
-                newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(projectileForce, 0f));
-            }
-            if (offset.x == -1f)
-            {
-                offset.x = -.1f;
-                castv = offset;
-                GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 180f));
-                newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(-projectileForce, 0f));
-            }
-            offset.y = anim.GetFloat("moveY");
-            if (offset.y == 1f)
-            {
-                offset.y = .1f;
-                castv = offset;
-                GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 90f));
-                newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, projectileForce));
-            }
-            if (offset.y == -1f)
-            {
-                offset.y = -.1f;
-                castv = offset;
-                GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, -90f));
-                newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -projectileForce));
-            }
-            castv = offset;
 
             }
+        }
 
             anim.SetBool("attacking", true);//allow animation
             currentState = PlayerState.attack;//player state machine
@@ -287,7 +294,6 @@ public class Player : Character , IDataPersistence, IMoveable
         }
         if(obj.CompareTag("Item"))
         {
-            Debug.Log("l;aksdjf;laksdjfl;aksdjf");
             obj.GetComponent<ItemPickup>().Pickup();
         }
         if(obj.CompareTag("Projectile"))
@@ -299,6 +305,11 @@ public class Player : Character , IDataPersistence, IMoveable
         {
             GameObject.Find("TimeLineManager").GetComponent<PlayableDirector>().Play();
             GameObject.Find("StartBossCutscene").SetActive(false);
+        }
+        if(obj.CompareTag("ArrowPickUp"))
+        {
+            arrowManager.GetComponent<ArrowManager>().AddArrow();
+            Destroy(obj.gameObject);
         }
     }
 }
