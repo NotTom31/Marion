@@ -54,7 +54,7 @@ public class GameData
         this.lastHorizontalPlayer = 0f;// **IN PLAYER.cs** 
         this.lastVerticalPlayer = 0f;// **IN PLAYER.cs** 
         /*--------------------------------------*/
-        this.currentScene = "Level_1";//This is the first scene
+        this.currentScene = "Level_0";//This is the first scene
     }
 }
 

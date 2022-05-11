@@ -46,7 +46,7 @@ public class MenuController : MonoBehaviour
         if(buttonName == "New")
         {
             DataPersistenceManager.instance.NewGame();
-            SceneManager.LoadSceneAsync("Level_1");
+            SceneManager.LoadSceneAsync("Level_0");
         }
         if(buttonName == "Load")
         {
