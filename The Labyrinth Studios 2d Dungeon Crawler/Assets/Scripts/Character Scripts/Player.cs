@@ -26,9 +26,11 @@ public class Player : Character, IDataPersistence, IMoveable
         {
             this.currentHealth = 3;
         }
+        this.usedAPortal = data.usedAPortal;
         if (usedAPortal == false)
-        { this.transform.position = data.playerPosition; }  
-        
+        { this.transform.position = data.playerPosition; }
+        if(usedAPortal == true)
+        { this.transform.position = new Vector3(0, 0, 0); }
         this.lastFacingHorizontal = data.lastHorizontalPlayer;
         this.lastFacingVertical = data.LastVerticalBox;
         this.hasDagger = data.hasDagger;
@@ -48,7 +50,8 @@ public class Player : Character, IDataPersistence, IMoveable
         data.lastHorizontalPlayer = this.lastFacingHorizontal;
         data.lastVerticalPlayer = this.lastFacingVertical;
         data.hasDagger = this.hasDagger;
-        this.hasCrossbow = data.hasCrossbow;
+        data.hasCrossbow = this.hasCrossbow;
+        data.usedAPortal = this.usedAPortal;
     }
     private GameObject theCutscene;
     //******************************************************************************************************************************************************
@@ -66,8 +69,6 @@ public class Player : Character, IDataPersistence, IMoveable
     private float lastFacingVertical;
     private float lastFacingHorizontal;
 
-    public string[] sceneNames;
-    private GameObject theData;
     public bool usedAPortal = false;
     private bool hasDagger = false;
     private bool hasCrossbow = false;
