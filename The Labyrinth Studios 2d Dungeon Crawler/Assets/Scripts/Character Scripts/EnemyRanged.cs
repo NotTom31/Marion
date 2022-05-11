@@ -32,6 +32,10 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
     void Update()
     {
         Move();
+        if (this.currentHealth <= 0)
+        {
+            Kill(this.gameObject);
+        }
     }
    public void Move()//Author Johnathan Bates
     {
