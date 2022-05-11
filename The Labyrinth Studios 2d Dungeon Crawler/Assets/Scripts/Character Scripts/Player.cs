@@ -29,6 +29,8 @@ public class Player : Character , IDataPersistence, IMoveable
         this.transform.position = data.playerPosition;
         this.lastFacingHorizontal = data.lastHorizontalPlayer;
         this.lastFacingVertical = data.LastVerticalBox;
+        this.hasDagger = data.hasDagger;
+        this.hasCrossbow = data.hasCrossbow;
         anim.SetFloat("moveX", lastFacingHorizontal);//allows movement animation
         anim.SetFloat("moveY", lastFacingVertical);//allows movement animation
     }
@@ -38,8 +40,8 @@ public class Player : Character , IDataPersistence, IMoveable
         data.playerPosition = this.transform.position;
         data.lastHorizontalPlayer = this.lastFacingHorizontal;
         data.lastVerticalPlayer = this.lastFacingVertical;
-        Debug.Log(lastFacingHorizontal);
-        Debug.Log(lastFacingVertical);
+        data.hasDagger = this.hasDagger;
+        this.hasCrossbow = data.hasCrossbow;
     }
     private GameObject theCutscene;
     //******************************************************************************************************************************************************
@@ -57,6 +59,8 @@ public class Player : Character , IDataPersistence, IMoveable
     private float lastFacingVertical;
     private float lastFacingHorizontal;
 
+    private bool hasDagger = false;
+    private bool hasCrossbow = false;
     private GameObject arrowManager;
     //******************************************************************************************************************************************************
     //********************************************************INITIALIZATION********************************************************************************
@@ -78,8 +82,7 @@ public class Player : Character , IDataPersistence, IMoveable
     }
 
     void Start()
-    {
-        
+    {        
         anim.SetBool("holdingDagger", true);
     }
     //******************************************************************************************************************************************************
@@ -93,7 +96,7 @@ public class Player : Character , IDataPersistence, IMoveable
             anim.SetBool("holdingCrossbow", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && hasCrossbow == true)
         {
             anim.SetBool("holdingDagger", false);
             anim.SetBool("holdingCrossbow", true);
@@ -101,7 +104,7 @@ public class Player : Character , IDataPersistence, IMoveable
 
         if (anim.GetBool("holdingDagger"))
         {
-            if (Input.GetButtonDown("attack") && currentState != PlayerState.attack)//checks for user input to attack
+            if (Input.GetButtonDown("attack") && currentState != PlayerState.attack && hasDagger == true)//checks for user input to attack
             {
                 if (this.currentState != PlayerState.holdingBox)
                 {
@@ -292,10 +295,6 @@ public class Player : Character , IDataPersistence, IMoveable
                 Destroy(obj.gameObject);
             }
         }
-        if(obj.CompareTag("Item"))
-        {
-            obj.GetComponent<ItemPickup>().Pickup();
-        }
         if(obj.CompareTag("Projectile"))
         {
             Push(this.GetComponent<Collider2D>());
@@ -310,6 +309,20 @@ public class Player : Character , IDataPersistence, IMoveable
         {
             arrowManager.GetComponent<ArrowManager>().AddArrow();
             Destroy(obj.gameObject);
+        }
+        if(obj.CompareTag("Dagger"))
+        {
+            obj.GetComponent<ItemPickup>().Pickup();
+            hasDagger = true;
+        }
+        if(obj.CompareTag("Crossbow"))
+        {
+            obj.GetComponent<ItemPickup>().Pickup();
+            hasCrossbow = true;
+        }
+        if (obj.CompareTag("Item"))
+        {
+            obj.GetComponent<ItemPickup>().Pickup();
         }
     }
 }

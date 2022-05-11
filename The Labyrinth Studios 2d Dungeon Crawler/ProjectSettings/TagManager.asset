@@ -21,6 +21,8 @@ TagManager:
   - StartCutscene
   - Item
   - ArrowPickUp
+  - Dagger
+  - Crossbow
   layers:
   - Default
   - TransparentFX
