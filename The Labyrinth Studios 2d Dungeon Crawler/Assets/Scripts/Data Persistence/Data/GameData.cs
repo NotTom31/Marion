@@ -33,7 +33,7 @@ public class GameData
     {
         this.currentHealth = 3;//current health is loaded and saved in the player script. **IN PLAYER.cs**
         this.keyCount = 0;//How many keys does the player current have **IN KEYMANAGER.cs**
-        playerPosition = new Vector3(0.14f, -3.72f,0f);//player position is loaded and saved in the player script **IN PLAYER.cs** 
+        playerPosition = new Vector3(0f, 0f,0f);//player position is loaded and saved in the player script **IN PLAYER.cs** 
         bool keyCollected = false;//keys that have been collected
         bool hasDagger = false;
         bool hasCrossbow = false;

@@ -39,11 +39,6 @@ public class Portal : Collidable, IDataPersistence
         data.portal.Add(portalId, portalUsed);
     }
     private bool portalUsed = false;
-
-    
-
-
-
     public string[] sceneNames;
 
     protected override void OnCollide(Collider2D coll)
