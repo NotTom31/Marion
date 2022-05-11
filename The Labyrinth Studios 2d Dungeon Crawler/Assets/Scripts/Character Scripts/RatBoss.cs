@@ -62,8 +62,7 @@ public class RatBoss : Enemy, IMoveable
         Move();
         if (this.currentHealth <= 0)
         {
-            SceneManager.LoadSceneAsync("EndGame");
-            Destroy(this.gameObject);            
+            SceneManager.LoadSceneAsync("EndGame");         
         }
         Debug.Log(this.currentHealth);
     }
