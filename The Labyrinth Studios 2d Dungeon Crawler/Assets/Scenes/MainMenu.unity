@@ -1885,8 +1885,9 @@ MonoBehaviour:
     Monteon: Software Engineer, character movement, camera, and animation programming.\n\nKatelyn
     Langley: Software Engineer, Grapics designer\n\nAlex Hernandez: Software Engineer,
     Combat System\n\nThomas Mezzie: Software Engineer, Level Design, Interactable
-    Object Programming\n\nJason Bet Sargon: Software Engineer, level design. \n\nNaim
-    Dakhil: Software Engineer, GUI\n\nThank you for playing our game!"
+    Object Programming\n\nJason Bet Sargon: Software Engineer, Level Design, Enemy
+    Development. \n\nNaim Dakhil: Software Engineer, GUI\n\nThank you for playing
+    our game!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
