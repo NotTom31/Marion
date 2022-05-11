@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 226219441}
   m_Layer: 0
   m_Name: crossbow
-  m_TagString: Item
+  m_TagString: Crossbow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
