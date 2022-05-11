@@ -137,13 +137,13 @@ public class Player : Character , IDataPersistence, IMoveable
     }
         private IEnumerator AttackCo()
         {
-
-        if (anim.GetBool("holdingCrossbow"))
-        {
+         if (anim.GetBool("holdingCrossbow"))
+         {
 
             Vector2 offset = new Vector2(0, 0);
             Vector3 castv;
             offset.x = anim.GetFloat("moveX");
+            offset.y = anim.GetFloat("moveY");
             if (arrowManager.GetComponent<ArrowManager>().arrowCount > 0)
             {
                 arrowManager.GetComponent<ArrowManager>().SubtractArrow();
@@ -154,22 +154,21 @@ public class Player : Character , IDataPersistence, IMoveable
                     GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
                     newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(projectileForce, 0f));
                 }
-                if (offset.x == -1f)
+                else if (offset.x == -1f)
                 {
                     offset.x = -.1f;
                     castv = offset;
                     GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 180f));
                     newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(-projectileForce, 0f));
                 }
-                offset.y = anim.GetFloat("moveY");
-                if (offset.y == 1f)
+                else if (offset.y == 1f)
                 {
                     offset.y = .1f;
                     castv = offset;
                     GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 90f));
                     newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, projectileForce));
                 }
-                if (offset.y == -1f)
+                else if (offset.y == -1f)
                 {
                     offset.y = -.1f;
                     castv = offset;
@@ -177,10 +176,8 @@ public class Player : Character , IDataPersistence, IMoveable
                     newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -projectileForce));
                 }
                 castv = offset;
-
             }
-        }
-
+         }
             anim.SetBool("attacking", true);//allow animation
             currentState = PlayerState.attack;//player state machine
             yield return null;//wait for a frame
