@@ -45,6 +45,7 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)//Loads all data for the current scene
     {
+        Debug.Log("scene was loaded and data shoudl be too");
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
     }
@@ -95,11 +96,7 @@ public class DataPersistenceManager : MonoBehaviour
         }
         // save that data to a file using the data handler
         dataHandler.Save(gameData);
-    }
-    private void OnApplicationQuit()
-    {
-        //SaveGame();
-    }
+    }   
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>()
