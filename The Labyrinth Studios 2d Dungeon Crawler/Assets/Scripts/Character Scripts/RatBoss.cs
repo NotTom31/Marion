@@ -135,12 +135,12 @@ public class RatBoss : Enemy, IMoveable
             }
             if(this.currentHealth <= 20 && this.currentHealth >= 11)
             {
-             maxMinionAmount = 6;
+             maxMinionAmount = 8;
              summonRandNum = randNum.Next(1, 3);
             }
             if(this.currentHealth <= 10 && this.currentHealth > 0)
             {
-                maxMinionAmount = 8;
+                maxMinionAmount = 10;
                 summonRandNum = randNum.Next(1, 4);
             }
        
