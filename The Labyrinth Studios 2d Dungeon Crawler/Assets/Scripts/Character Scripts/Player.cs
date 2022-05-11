@@ -329,8 +329,9 @@ public class Player : Character, IDataPersistence, IMoveable
         {
             if (obj.gameObject != null)
             {
-                Push(obj);
                 Damage(attackDamage, obj);
+                Push(obj);
+                
             }
         }
         // Author Joel Monteon

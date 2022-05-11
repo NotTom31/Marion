@@ -62,9 +62,9 @@ public class RatBoss : Enemy, IMoveable
         Move();
         if (this.currentHealth <= 0)
         {
+            Debug.Log("he died wheres our ending");
             SceneManager.LoadSceneAsync("EndGame");         
         }
-        Debug.Log(this.currentHealth);
     }
     
     public void FacePlayer()

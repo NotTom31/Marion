@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
 
@@ -62,6 +62,9 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
         }
         else if (obj.CompareTag("Boss"))
         {
+            SceneManager.LoadSceneAsync("EndGame");
+            GameObject toEndGame = GameObject.Find("WillEndGame");
+            toEndGame.SetActive(true);
             temp.gameObject.SetActive(false); temp.GetComponent<Enemy>().currentState = EnemyState.dead;
         }
         else if(obj.CompareTag("BossSummon"))
@@ -81,7 +84,6 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
             {
                 Instantiate(dropPotion, obj.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
             }
-            Debug.Log(dropChance);
             Destroy(obj);
             
         }
