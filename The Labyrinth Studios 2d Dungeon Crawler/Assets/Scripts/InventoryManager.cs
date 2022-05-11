@@ -4,8 +4,16 @@ using UnityEngine.UI;
 using UnityEngine;
 
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : MonoBehaviour , IDataPersistence
 {
+    public void LoadData(GameData data)
+    {
+        this.Items = data.storedItems;
+    }
+    public void SaveData(GameData data)
+    {
+        data.storedItems = this.Items;
+    }
     public static InventoryManager Instance;
     public List<Item> Items = new List<Item>();
 

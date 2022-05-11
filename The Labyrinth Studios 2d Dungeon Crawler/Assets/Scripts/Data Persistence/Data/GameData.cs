@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class GameData
 {
+    public List<Item> storedItems;
     public int currentHealth;
     public int keyCount;
     public int arrowCount;
@@ -33,6 +34,7 @@ public class GameData
     public string currentScene;
     public GameData()//New Game values will be stored in this method
     {
+        storedItems = new List<Item>();
         this.currentHealth = 3;//current health is loaded and saved in the player script. **IN PLAYER.cs**
         this.keyCount = 0;//How many keys does the player current have **IN KEYMANAGER.cs**
         playerPosition = new Vector3(0f,0f,0f);//player position is loaded and saved in the player script **IN PLAYER.cs** 
