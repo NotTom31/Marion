@@ -585,50 +585,6 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 8553901985322740021, guid: ec8a9551c4fbcac4f818689757e6fe5b, type: 3}
   m_PrefabInstance: {fileID: 7249990917077480697}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3538063028522059339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1308494545710587341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cfee2efd0c28944b87d54d0e7e1a3e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thisBody: {fileID: 1308494545710587340}
-  moveSpeed: 1.25
-  charType: 0
-  attackDamage: 1
-  currentHealth: 3
-  currentState: 0
-  hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  fullHeart: {fileID: 21300000, guid: 428e0881db6a9ec4aa0a22b40393add9, type: 3}
-  emptyHeart: {fileID: 21300000, guid: f094ce0fbf98ad14e96785000cc2578c, type: 3}
-  numOfHearts: 3
-  PlayerDied:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
-        m_MethodName: Death
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &3538063028522059332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -656,4 +612,57 @@ MonoBehaviour:
   - {x: -0.06, y: 0, z: 0}
   m_ShapePathHash: -1113825389
   m_Mesh: {fileID: 0}
-  m_InstanceId: -99886
+  m_InstanceId: 107850
+--- !u!114 &3538063028522059339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308494545710587341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cfee2efd0c28944b87d54d0e7e1a3e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  health: 0
+  timeBetweenHurt: 0
+  gameoverUI: {fileID: 0}
+  thisBody: {fileID: 1308494545710587340}
+  moveSpeed: 1.25
+  charType: 0
+  attackDamage: 1
+  currentHealth: 3
+  dropHeart: {fileID: 759409606641153946, guid: 0df05ca561e82c94a8ca2a9f9b59013d, type: 3}
+  dropArrow: {fileID: 7274618211555800166, guid: 2827bdb2f02c2b74d8c01a34d61ffbac, type: 3}
+  dropPotion: {fileID: 5723745264014639260, guid: 7567513d32039db408d959ab82d09ef8, type: 3}
+  currentState: 0
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHeart: {fileID: 21300000, guid: 428e0881db6a9ec4aa0a22b40393add9, type: 3}
+  emptyHeart: {fileID: 21300000, guid: f094ce0fbf98ad14e96785000cc2578c, type: 3}
+  numOfHearts: 3
+  PlayerDied:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+        m_MethodName: Death
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  arrow: {fileID: 0}
+  usedAPortal: 0
