@@ -52,6 +52,7 @@ public class PressurePlate : MonoBehaviour, IDataPersistence
         {
             this.GetComponent<Animator>().SetBool("on", true);
             plateOn = true;
+            PlatePushed.Invoke();
         }        
     }
     private void OnTriggerExit2D(Collider2D obj)
@@ -60,6 +61,7 @@ public class PressurePlate : MonoBehaviour, IDataPersistence
         {
             this.GetComponent<Animator>().SetBool("on", false);
             plateOn = false;
+            PlateReleased.Invoke();
         }
     }
 }
