@@ -288,12 +288,11 @@ public class Player : Character, IDataPersistence, IMoveable
             temp.enabled = true;
             yield return new WaitForSeconds(.015f);
         }
-        this.currentState = PlayerState.walk;
     }
 
     public IEnumerator playerInvulnerable(GameObject obj)//Author Johnathan Bates
     {
-        this.currentState = PlayerState.stagger;
+        //this.currentState = PlayerState.stagger;
         yield return new WaitForSeconds(.35f);
     }
     //******************************************************************************************************************************************************

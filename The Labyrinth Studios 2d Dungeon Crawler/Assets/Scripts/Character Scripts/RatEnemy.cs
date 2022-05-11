@@ -28,6 +28,10 @@ public class RatEnemy : Enemy, IDamageable, IKillable, IMoveable
     private void Update()
     {
         Move();
+        if (this.currentHealth <= 0)
+        {
+            Kill(this.gameObject);
+        }
     }
     public void Move()//Author Johnathan Bates
     {
