@@ -9,6 +9,7 @@ public class GameOver : MonoBehaviour
     public static bool GameIsOver = false;
     public GameObject gameOverMenuUI;
     private GameObject sceneHandle;
+    private GameObject theData;
     // Update is called once per frame
       public void GameStatus()
     {
@@ -45,12 +46,14 @@ public class GameOver : MonoBehaviour
     public void LoadGame() //sends you back to be the beginning of the game on game over
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(sceneHandle.GetComponent<SceneHandler>().theCurrentScene); //we will probably change this to send to start of current level or a checkpoint depending on how difficult we want the game
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //we will probably change this to send to start of current level or a checkpoint depending on how difficult we want the game
         Debug.Log("Loading Dungeon...");
         GameIsOver = false;
+        theData.GetComponent<DataPersistenceManager>().LoadGame();
     }
     private void Start()
     {
+        theData = GameObject.Find("DataPersistenceManager");
         sceneHandle = GameObject.Find("SceneHandler");
     }
 }
