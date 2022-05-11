@@ -2877,7 +2877,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1012349237}
+      - m_Target: {fileID: 807684491}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: LoadGameDialogYes
         m_Mode: 1

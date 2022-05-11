@@ -24,6 +24,7 @@ TagManager:
   - Dagger
   - Crossbow
   - Portal
+  - Boss
   layers:
   - Default
   - TransparentFX

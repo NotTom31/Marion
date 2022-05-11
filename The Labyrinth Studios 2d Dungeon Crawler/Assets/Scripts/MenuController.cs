@@ -15,9 +15,12 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button loadGameButton;
     GameObject theLoadScene;
+    private GameObject sceneHandle;
+    private GameObject theData;
     private void Start()
     {
-        theLoadScene = GameObject.Find("Scene Data");
+        theData = GameObject.Find("DataPersistenceManager");
+        sceneHandle = GameObject.Find("Scene Data");
     }
     public void NewGameDialogYes()
     {
@@ -50,8 +53,8 @@ public class MenuController : MonoBehaviour
         }
         if(buttonName == "Load")
         {
-            DisableMenuButtons();
-            SceneManager.LoadSceneAsync(theLoadScene.GetComponent<SceneScript>().currentScene);
+            SceneManager.LoadSceneAsync(sceneHandle.GetComponent<SceneScript>().currentScene);
         }
+        
     }
 }

@@ -60,6 +60,10 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
         {
             temp.GetComponent<Player>().PlayerDied.Invoke();//kills player
         }
+        else if (obj.CompareTag("Boss"))
+        {
+            temp.gameObject.SetActive(false); temp.GetComponent<Enemy>().currentState = EnemyState.dead;
+        }
         else if(obj.CompareTag("BossSummon"))
         {
             

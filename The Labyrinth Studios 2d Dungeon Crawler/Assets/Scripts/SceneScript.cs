@@ -15,7 +15,6 @@ public class SceneScript : MonoBehaviour , IDataPersistence
     {
         data.currentScene = this.currentScene;
     }
-
     public string currentScene;
     // Start is called before the first frame update
     void Awake()
@@ -27,6 +26,9 @@ public class SceneScript : MonoBehaviour , IDataPersistence
             return;
         }
         DontDestroyOnLoad(this.gameObject);
-        this.currentScene = SceneManager.GetActiveScene().name;
+        if(SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            this.currentScene = SceneManager.GetActiveScene().name;
+        }
     }
 }

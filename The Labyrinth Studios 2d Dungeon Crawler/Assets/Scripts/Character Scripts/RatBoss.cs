@@ -61,8 +61,9 @@ public class RatBoss : Enemy, IMoveable
         Move();
         if (this.currentHealth <= 0)
         {
-            Kill(this.gameObject);
+            Destroy(this.gameObject);
         }
+        Debug.Log(this.currentHealth);
     }
     
     public void FacePlayer()

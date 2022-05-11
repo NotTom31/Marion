@@ -8,7 +8,8 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
-
+    private GameObject sceneHandle;
+    private GameObject theData;
     // Update is called once per frame
     void Update()
     {
@@ -23,6 +24,11 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+    }
+    private void Start()
+    {
+        theData = GameObject.Find("DataPersistenceManager");
+        sceneHandle = GameObject.Find("SceneHandler");
     }
 
     public void Resume()
@@ -54,8 +60,7 @@ public class PauseMenu : MonoBehaviour
     public void LoadGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Dungeon");
-        Debug.Log("Loading menu...");
+        theData.GetComponent<DataPersistenceManager>().LoadGame();
     }
     public void SaveGame()
     {
