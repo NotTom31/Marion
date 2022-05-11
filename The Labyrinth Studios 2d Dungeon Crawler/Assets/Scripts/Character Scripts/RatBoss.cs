@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RatBoss : Enemy, IMoveable
 {
@@ -61,7 +62,8 @@ public class RatBoss : Enemy, IMoveable
         Move();
         if (this.currentHealth <= 0)
         {
-            Destroy(this.gameObject);
+            SceneManager.LoadSceneAsync("EndGame");
+            Destroy(this.gameObject);            
         }
         Debug.Log(this.currentHealth);
     }
