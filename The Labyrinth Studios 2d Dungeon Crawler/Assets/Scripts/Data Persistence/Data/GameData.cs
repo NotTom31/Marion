@@ -11,6 +11,7 @@ public class GameData
 {
     public int currentHealth;
     public int keyCount;
+    public int arrowCount;
     public Vector3 playerPosition;
     public bool keyCollected;
     public SerializableDictionary<string, bool> chestOpened;

@@ -14,7 +14,11 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject noSavedGameDialog = null;
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button loadGameButton;
-
+    GameObject theLoadScene;
+    private void Start()
+    {
+        theLoadScene = GameObject.Find("Scene Data");
+    }
     public void NewGameDialogYes()
     {
         buttonPressed = "New";
@@ -47,7 +51,7 @@ public class MenuController : MonoBehaviour
         if(buttonName == "Load")
         {
             DisableMenuButtons();
-            SceneManager.LoadSceneAsync("Level_1");
+            SceneManager.LoadSceneAsync(theLoadScene.GetComponent<SceneScript>().currentScene);
         }
     }
 }
