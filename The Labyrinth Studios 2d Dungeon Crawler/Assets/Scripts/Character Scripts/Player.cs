@@ -285,6 +285,11 @@ public class Player : Character , IDataPersistence, IMoveable
                 Destroy(obj.gameObject);
             }
         }
+        if(obj.CompareTag("Item"))
+        {
+            Debug.Log("l;aksdjf;laksdjfl;aksdjf");
+            obj.GetComponent<ItemPickup>().Pickup();
+        }
         if(obj.CompareTag("Projectile"))
         {
             Push(this.GetComponent<Collider2D>());

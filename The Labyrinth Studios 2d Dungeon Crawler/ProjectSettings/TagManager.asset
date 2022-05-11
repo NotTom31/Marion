@@ -19,6 +19,7 @@ TagManager:
   - BossSummon
   - UICamera
   - StartCutscene
+  - Item
   layers:
   - Default
   - TransparentFX
