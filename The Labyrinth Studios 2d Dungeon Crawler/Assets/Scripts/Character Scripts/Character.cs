@@ -65,9 +65,17 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
             
             GameObject theBoss = GameObject.Find("RatPlagueDrBoss");
             theBoss.GetComponent<RatBoss>().currentMinionAmount--;
-            if (dropChance >= 50)
+            if (dropChance > 75)
             {
                 Instantiate(dropHeart, obj.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+            }
+            if(dropChance < 75 && dropChance > 60)
+            {
+                Instantiate(dropArrow, obj.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+            }
+            if(dropChance < 11 )
+            {
+                Instantiate(dropPotion, obj.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
             }
             Debug.Log(dropChance);
             Destroy(obj);
@@ -75,12 +83,19 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
         }
         else if (obj.CompareTag("Fighter"))
         {
-            if (dropChance >= 50)
+            if (dropChance > 75)
             {
                 Instantiate(dropHeart, obj.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
             }
-            temp.gameObject.SetActive(false); temp.GetComponent<Enemy>().currentState = EnemyState.dead;
-            
+            if (dropChance < 75 && dropChance > 60)
+            {
+                Instantiate(dropArrow, obj.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+            }
+            if (dropChance < 11)
+            {
+                Instantiate(dropPotion, obj.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+            }
+            temp.gameObject.SetActive(false); temp.GetComponent<Enemy>().currentState = EnemyState.dead;            
 
         }   //kills everything else   
     }
@@ -147,12 +162,16 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
     public int attackDamage;//Use this in a child class or inspector to initialize RigidBody
     public int currentHealth;//Use this in a child class or inspector to initialize health
     public GameObject dropHeart;
+    public GameObject dropArrow;
+    public GameObject dropPotion;
     protected int dropChance;
+    protected int itemChance;
     System.Random random;
     
     void FixedUpdate()
     {
         random = new System.Random();
-        dropChance = random.Next(0,100);
+        dropChance = random.Next(0,101);
+        itemChance = random.Next(0, 4);
     }
 }
