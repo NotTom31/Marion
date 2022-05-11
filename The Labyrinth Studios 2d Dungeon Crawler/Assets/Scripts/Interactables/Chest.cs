@@ -55,8 +55,6 @@ public class Chest : Collectable , IDataPersistence
                 KeyManager.instance.AddKey();
                 KeyAnimation.Invoke();
             }
-            else
-                KeyAnimation.Invoke();
         }
     }
     
