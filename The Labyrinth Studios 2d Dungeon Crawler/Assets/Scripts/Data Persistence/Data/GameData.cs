@@ -13,6 +13,7 @@ public class GameData
     public int keyCount;
     public int arrowCount;
     public Vector3 playerPosition;
+    public Vector3 playerPortalPosition;
     public bool keyCollected;
     public bool hasDagger;
     public bool hasCrossbow;
@@ -34,6 +35,7 @@ public class GameData
         this.currentHealth = 3;//current health is loaded and saved in the player script. **IN PLAYER.cs**
         this.keyCount = 0;//How many keys does the player current have **IN KEYMANAGER.cs**
         playerPosition = new Vector3(0f,0f,0f);//player position is loaded and saved in the player script **IN PLAYER.cs** 
+        playerPortalPosition = new Vector3(0f, 0f, 0f);
         bool keyCollected = false;//keys that have been collected
         bool hasDagger = false;
         bool hasCrossbow = false;

@@ -23,6 +23,7 @@ TagManager:
   - ArrowPickUp
   - Dagger
   - Crossbow
+  - Portal
   layers:
   - Default
   - TransparentFX

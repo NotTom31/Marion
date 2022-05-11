@@ -32,14 +32,22 @@ public class Portal : Collidable, IDataPersistence
     }
     public void SaveData(GameData data)
     {
-        if(data.portal.ContainsKey(portalId))
+        if (portalUsed)
         {
-            data.portal.Remove(portalId);
+            if (data.portal.ContainsKey(portalId))
+            {
+                data.portal.Remove(portalId);
+            }
+            data.portal.Add(portalId, portalUsed);
+            data.playerPortalPosition = GameObject.Find("player").transform.position;
         }
-        data.portal.Add(portalId, portalUsed);
     }
+    private GameObject theData;
     private bool portalUsed = false;
-
+     public void IfSaveClicked()
+    {
+        portalUsed = false;
+    }
     
 
 
@@ -52,6 +60,8 @@ public class Portal : Collidable, IDataPersistence
         {
             // Teleport the player
             portalUsed = true;
+            theData = GameObject.Find("DataPersistenceManager");
+            theData.GetComponent<DataPersistenceManager>().SaveGame();
             string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
         }

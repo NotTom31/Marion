@@ -26,7 +26,9 @@ public class Player : Character, IDataPersistence, IMoveable
         {
             this.currentHealth = 3;
         }
-        this.transform.position = data.playerPosition;
+        if (usedAPortal == false)
+        { this.transform.position = data.playerPosition; }  
+        
         this.lastFacingHorizontal = data.lastHorizontalPlayer;
         this.lastFacingVertical = data.LastVerticalBox;
         this.hasDagger = data.hasDagger;
@@ -37,7 +39,12 @@ public class Player : Character, IDataPersistence, IMoveable
     public void SaveData(GameData data)
     {
         data.currentHealth = this.currentHealth;
-        data.playerPosition = this.transform.position;
+        if(usedAPortal == false)
+        { data.playerPosition = this.transform.position; }
+        if (usedAPortal == true)
+        {
+            data.playerPortalPosition = new Vector3(0, 0, 0);
+        }
         data.lastHorizontalPlayer = this.lastFacingHorizontal;
         data.lastVerticalPlayer = this.lastFacingVertical;
         data.hasDagger = this.hasDagger;
@@ -59,6 +66,9 @@ public class Player : Character, IDataPersistence, IMoveable
     private float lastFacingVertical;
     private float lastFacingHorizontal;
 
+    public string[] sceneNames;
+    private GameObject theData;
+    public bool usedAPortal = false;
     private bool hasDagger = false;
     private bool hasCrossbow = false;
     private GameObject arrowManager;
@@ -356,6 +366,7 @@ public class Player : Character, IDataPersistence, IMoveable
         if (obj.CompareTag("Item"))
         {
             obj.GetComponent<ItemPickup>().Pickup();
-        }
+        }        
     }
+   
 }
