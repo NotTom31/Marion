@@ -35,10 +35,10 @@ public class RatBoss : Enemy, IMoveable
         maxMinionAmount = 5;
         teleportCooldown = 15f;
         lastTeleport = 0f;
-        upperLeftPosition = new Vector3(-3.849f, 2.4738f, transform.position.z);
-        lowerLeftPosition = new Vector3(-3.849f, -2.1f, transform.position.z);
-        upperRightPosition = new Vector3(4.19f, 2.4738f, transform.position.z);
-        lowerRightPosition = new Vector3(4.19f, -2.1f, transform.position.z);
+        upperLeftPosition = new Vector3(-4.034f, 5.665f, transform.position.z);
+        lowerLeftPosition = new Vector3(-4.034f, 1.11f, transform.position.z);
+        upperRightPosition = new Vector3(4.05f, 2.4738f, transform.position.z);
+        lowerRightPosition = new Vector3(4.05f, 1.11f, transform.position.z);
         disappear = new Vector3(1000, 1000,transform.position.z);
         //-----------------------------
         /*Attributes from Enemy script*/
@@ -139,8 +139,8 @@ public class RatBoss : Enemy, IMoveable
             }
        
             Vector3 spawnHere = SpawnPosition;
-            spawnHere.x = randNum.Next(-4, 3);
-            spawnHere.y = randNum.Next(-1, 2);
+            spawnHere.x = randNum.Next(-3, 3);
+            spawnHere.y = randNum.Next(1, 4);
             
             if (summonRandNum == 1)
             {

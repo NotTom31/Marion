@@ -366,14 +366,7 @@ public class Player : Character, IDataPersistence, IMoveable
         if (obj.CompareTag("Item"))
         {
             obj.GetComponent<ItemPickup>().Pickup();
-        }
-        if(obj.CompareTag("Portal"))
-        {
-            theData = GameObject.Find("DataPersistenceManager");
-            theData.GetComponent<DataPersistenceManager>().SaveGame();
-            string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
-            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
-        }
+        }        
     }
    
 }
