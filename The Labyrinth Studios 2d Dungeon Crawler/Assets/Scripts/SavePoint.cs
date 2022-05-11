@@ -20,6 +20,11 @@ public class SavePoint : MonoBehaviour
         {
             saveGame.SetActive(false);
             this.GetComponent<Animator>().SetBool("on", false);
+            GameObject temp = GameObject.Find("player");
+            if(temp.GetComponent<Player>().currentHealth < temp.GetComponent<Player>().maxHealth)
+            {
+                temp.GetComponent<Player>().currentHealth = 3;
+            }
         }
     }    
 }
