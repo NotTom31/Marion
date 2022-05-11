@@ -60,6 +60,8 @@ public class Portal : Collidable, IDataPersistence
         {
             // Teleport the player
             portalUsed = true;
+            GameObject temp = GameObject.Find("player");
+            temp.GetComponent<Player>().usedAPortal = true;
             theData = GameObject.Find("DataPersistenceManager");
             theData.GetComponent<DataPersistenceManager>().SaveGame();
             string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
