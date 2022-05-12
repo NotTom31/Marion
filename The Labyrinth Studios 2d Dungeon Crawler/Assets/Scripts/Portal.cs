@@ -7,6 +7,7 @@ public class Portal : Collidable, IDataPersistence
     //***********************************************************************GUID***************************************************************************
     //******************************************************************************************************************************************************
     [SerializeField] private string portalId;//will be used for saving game state
+    [SerializeField] private string portalPosId;
     [ContextMenu("Generate guid for id")]
     /*the context menu above uses the GenerateGuid() below to allow someone to generate a unique id for levers.
      All one has to do is click on a lever, expand the lever script in the inspector, right click the script and select
@@ -14,6 +15,7 @@ public class Portal : Collidable, IDataPersistence
     private void GenerateGuid()
     {
         portalId = System.Guid.NewGuid().ToString();
+        portalPosId = System.Guid.NewGuid().ToString();
     }
 
     public void LoadData(GameData data)
@@ -22,28 +24,41 @@ public class Portal : Collidable, IDataPersistence
         {
             data.portal.TryGetValue(portalId, out portalUsed);
         }
-        if(portalUsed)
+        if (portalUsed)
         {
-            GameObject temp = GameObject.Find("player");
-            Vector3 tempPos = this.transform.position;
-            tempPos.y += .4f;
-            temp.transform.position = tempPos;
+            this.portalUsed = false;
+            if (data.playerPortalPosition.ContainsKey(portalPosId))
+            {
+                data.playerPortalPosition.TryGetValue(portalPosId, out thePosition);
+                if (thePosition != Vector3.zero)
+                {
+                    GameObject temp = GameObject.Find("player");
+                    Vector3 tempPos = thePosition;
+                    tempPos.y += .4f;
+                    temp.transform.position = tempPos;
+                }
+            }            
         }
     }
     public void SaveData(GameData data)
     {
-        if (portalUsed)
-        {
+        
+            thePosition = transform.position;
             if (data.portal.ContainsKey(portalId))
             {
                 data.portal.Remove(portalId);
             }
             data.portal.Add(portalId, portalUsed);
-            //data.playerPortalPosition = GameObject.Find("player").transform.position;
-        }
+            if(data.playerPortalPosition.ContainsKey(portalPosId))
+            {
+                data.playerPortalPosition.Remove(portalPosId);
+            }
+            data.playerPortalPosition.Add(portalPosId, thePosition);            
+        
     }
     private GameObject theData;
-    private bool portalUsed = false;
+    protected Vector3 thePosition;
+    private bool portalUsed;
      public void IfSaveClicked()
     {
         portalUsed = false;
@@ -59,9 +74,10 @@ public class Portal : Collidable, IDataPersistence
         if (coll.name == "player")
         {
             // Teleport the player
-            portalUsed = true;
+            this.portalUsed = true;
             GameObject temp = GameObject.Find("player");
             temp.GetComponent<Player>().usedAPortal = true;
+
             theData = GameObject.Find("DataPersistenceManager");
             theData.GetComponent<DataPersistenceManager>().SaveGame();
             string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];

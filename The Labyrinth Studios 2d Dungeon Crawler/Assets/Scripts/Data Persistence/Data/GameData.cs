@@ -14,11 +14,11 @@ public class GameData
     public int keyCount;
     public int arrowCount;
     public Vector3 playerPosition;
-    public Vector3 playerPortalPosition;
     public bool keyCollected;
     public bool hasDagger;
     public bool hasCrossbow;
     public bool usedAPortal;
+    public SerializableDictionary<string, Vector3> playerPortalPosition;
     public SerializableDictionary<string, bool> chestOpened;
     public SerializableDictionary<string, bool> leversActivated;
     public SerializableDictionary<string, bool> doorUnlocked;
@@ -39,11 +39,11 @@ public class GameData
         this.keyCount = 0;//How many keys does the player current have **IN KEYMANAGER.cs**
         this.arrowCount = 0;
         playerPosition = new Vector3(0f,0f,0f);//player position is loaded and saved in the player script **IN PLAYER.cs** 
-        playerPortalPosition = new Vector3(0f, 0f, 0f);
         this.keyCollected = false;//keys that have been collected
         this.hasDagger = false;
         this.hasCrossbow = false;
         this.usedAPortal = false;
+        playerPortalPosition = new SerializableDictionary<string, Vector3>();
         chestOpened = new SerializableDictionary<string, bool>();//chest that have been opened
         leversActivated = new SerializableDictionary<string, bool>();//levers activated are loaded and saved in the lever script **IN LEVER.cs**
         doorUnlocked = new SerializableDictionary<string, bool>();//Doors that have been unlocked **IN DOORTAKEINPUT.cs**
@@ -51,13 +51,14 @@ public class GameData
         plateOn = new SerializableDictionary<string, bool>();//pressure plate in the on or off stated ** IN PRESSUREPLATE.cs**         
         boxPosition = new SerializableDictionary<string, Vector3>();//box's position is loaded and saved in box script
         boxHeld = new SerializableDictionary<string, bool>();//will remember if the box is being held by player when the game is saved
+        portal = new SerializableDictionary<string, bool>();
         /*Stores which way the player was facing*/
         this.LastHorizontalBox = 0f;// **IN PLAYER.cs** 
         this.LastVerticalBox = 0f;// **IN PLAYER.cs** 
         this.lastHorizontalPlayer = 0f;// **IN PLAYER.cs** 
         this.lastVerticalPlayer = 0f;// **IN PLAYER.cs** 
         /*--------------------------------------*/
-        this.currentScene = 0;//This is the first scene
+        this.currentScene = 1;//This is the first scene
     }
 }
 

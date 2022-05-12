@@ -29,8 +29,8 @@ public class Player : Character, IDataPersistence, IMoveable
         this.usedAPortal = data.usedAPortal;
         if (usedAPortal == false)
         { this.transform.position = data.playerPosition; }
-        if(usedAPortal == true)
-        { this.transform.position = new Vector3(0, 0, 0); }
+        /*if(usedAPortal == true)
+        { this.transform.position = new Vector3(0, 0, 0); }*/
         this.lastFacingHorizontal = data.lastHorizontalPlayer;
         this.lastFacingVertical = data.LastVerticalBox;
         this.hasDagger = data.hasDagger;

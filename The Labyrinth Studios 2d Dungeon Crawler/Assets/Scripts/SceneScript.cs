@@ -17,5 +17,5 @@ public class SceneScript : MonoBehaviour , IDataPersistence
             data.currentScene = SceneManager.GetActiveScene().buildIndex;            
         }
     }
-    public int currentScene;      
+    public int currentScene = 1;      
 }

@@ -66,14 +66,12 @@ public class DataPersistenceManager : MonoBehaviour
         {
             NewGame();
         }
-
         // if no data can be loaded, don't continue
         if (this.gameData == null)
         {
             Debug.Log("No data was found. A New Game needs to be started before data can be loaded.");
-            return;
+            NewGame();
         }
-
         // push the loaded data to all other scripts that need it
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {

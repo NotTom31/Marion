@@ -21,7 +21,6 @@ public class Chest : Collectable , IDataPersistence
             data.chestOpened.TryGetValue(chestId, out collected);
             if (collected)
             {
-                ChestOpened.Invoke();
                 GetComponent<SpriteRenderer>().sprite = emptyChest;
                 HasKey = false;
             }
