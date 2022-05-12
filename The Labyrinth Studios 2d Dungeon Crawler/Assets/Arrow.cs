@@ -12,15 +12,15 @@ public class Arrow : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Wall") || other.CompareTag("Fighter"))
-        {
-            Destroy(this.gameObject);
-        }
-        if (other.CompareTag("Fighter") || other.CompareTag("BossSummon"))
+    {      
+        if (other.CompareTag("Fighter") || other.CompareTag("BossSummon") || other.CompareTag("Boss"))
         {
             other.GetComponent<Character>().Push(other);
-            other.GetComponent<Character>().Damage(1, other);
+            other.GetComponent<Character>().Damage(3, other);
+            Destroy(this.gameObject);
+        }
+        if (other.CompareTag("Wall"))
+        {
             Destroy(this.gameObject);
         }
     }

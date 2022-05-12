@@ -286,6 +286,9 @@ public class Player : Character, IDataPersistence, IMoveable
         {
             this.currentState = PlayerState.stagger;
             yield return new WaitForSeconds(.3f);
+        }
+        if (obj != null)
+        { 
             this.currentState = PlayerState.walk;
         }
     }

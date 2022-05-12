@@ -148,21 +148,24 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
     }   
     public IEnumerator PushCo(Rigidbody2D character)//Author Johnathan Bates
     {
-        if(character.CompareTag("Player"))
+        if (character != null)
         {
-            character.GetComponent<Animator>().SetBool("staggered", true);
-            character.GetComponent<Player>().currentState = PlayerState.stagger;
-            character.GetComponent<Animator>().SetFloat("moveX", character.GetComponent<Player>().lastFacingHorizontal);//allows movement animation
-            character.GetComponent<Animator>().SetFloat("moveY", character.GetComponent<Player>().lastFacingVertical);//allows movement animation
-        }
-        yield return new WaitForSeconds(this.pushTime);//how long the push last
-        if (character.CompareTag("Player"))
-        {
-            character.GetComponent<Animator>().SetBool("staggered", false);
-            character.GetComponent<Player>().currentState = PlayerState.walk;
-        }
+            if (character.CompareTag("Player"))
+            {
+                character.GetComponent<Animator>().SetBool("staggered", true);
+                character.GetComponent<Player>().currentState = PlayerState.stagger;
+                character.GetComponent<Animator>().SetFloat("moveX", character.GetComponent<Player>().lastFacingHorizontal);//allows movement animation
+                character.GetComponent<Animator>().SetFloat("moveY", character.GetComponent<Player>().lastFacingVertical);//allows movement animation
+            }
+            yield return new WaitForSeconds(this.pushTime);//how long the push last
+        }        
         if (character != null)//check to see the character isn't destroyed/set to null
         {
+            if (character.CompareTag("Player"))
+            {
+                character.GetComponent<Animator>().SetBool("staggered", false);
+                character.GetComponent<Player>().currentState = PlayerState.walk;
+            }
             character.velocity = Vector2.zero;//stops the push
         }
     }

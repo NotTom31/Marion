@@ -39,7 +39,8 @@ public class TimeLineManager : MonoBehaviour
             fix = true;
             theMusic.GetComponent<AudioSource>().Play();
             GameObject.Find("RatPlagueDrBoss").GetComponent<RatBoss>().fightStarted = true;
-            GameObject.Find("Portal").SetActive(false);
+            Destroy(GameObject.Find("Portal"));
+            Destroy(GameObject.Find("TempBossWall"));
         }
     }
 }

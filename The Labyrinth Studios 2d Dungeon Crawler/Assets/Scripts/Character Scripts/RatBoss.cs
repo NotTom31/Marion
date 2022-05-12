@@ -98,7 +98,7 @@ public class RatBoss : Enemy, IMoveable
             this.currentState = EnemyState.idle;
             if (fightStarted == true)
             {
-                teleportCooldown = 12;
+                teleportCooldown = 20;
             }
         }
     }
