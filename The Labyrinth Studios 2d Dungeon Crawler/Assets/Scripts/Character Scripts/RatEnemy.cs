@@ -99,8 +99,8 @@ public class RatEnemy : Enemy, IDamageable, IKillable, IMoveable
                 Push(obj);
             }
             if (obj != null)
-            { 
-                Damage(attackDamage, obj);                
+            {
+                Damage(attackDamage, obj);
             }
         }
     }

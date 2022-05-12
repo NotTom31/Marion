@@ -165,10 +165,13 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
     {
         if (obj.CompareTag("Player"))//check to make sure either player hits enemy or enemy hits player
         {
-            if (obj.gameObject != null)
+            if (obj != null)
             {
                 Push(obj);
-                Damage(attackDamage, obj);                
+            }
+            if (obj != null)
+            {
+                Damage(attackDamage, obj);
             }
         }
     }

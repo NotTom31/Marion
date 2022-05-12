@@ -29,32 +29,23 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
     //******************************************************************************************************************************************************
     public void Damage(int damage, Collider2D obj)//Author Johnathan Bates
     {
-
-        GameObject temp = obj.gameObject;//reference to the gameobject attatched to obj
-        if(damage > 0)
-        {
-            GameObject.Find("Hit Sfx").GetComponent<AudioSource>().Play();//sfx for getting hit 
-        }        
-        if (temp.GetComponent<Character>().currentHealth > 0)//check if they still have health
-        {
-            if (obj.CompareTag("Player") && obj.GetComponent<Player>().currentState != PlayerState.stagger && damage > 0)//Player damaged, will  run the blink routine and set to stagger
+        
+        GameObject temp = obj.gameObject;//reference to the gameobject attatched to obj      
             {
-                if (obj != null)
-                {
-                    StartCoroutine(temp.GetComponent<Player>().playerInvulnerable(temp));
-                }
-                if (obj != null)
-                {
-                    StartCoroutine(temp.GetComponent<Player>().playerBlink(temp));//start coroutine
-                }
-            }
-            if (obj.CompareTag("Fighter"))//Enemy damaged, will set state to stagger
+            if (damage > 0)
             {
-                temp.GetComponent<Enemy>().currentState = EnemyState.stagger;
+                GameObject.Find("Hit Sfx").GetComponent<AudioSource>().Play();//sfx for getting hit 
             }
-            temp.GetComponent<Character>().currentHealth -= damage;//compute damage 
-            if (temp.GetComponent<Character>().currentHealth <= 0)//check if they should be dead
-            { Kill(obj.gameObject); }//KILL THEM!!!!
+            if (temp.GetComponent<Character>().currentHealth > 0)//check if they still have health
+            {
+                if (obj.CompareTag("Fighter"))//Enemy damaged, will set state to stagger
+                {
+                    temp.GetComponent<Enemy>().currentState = EnemyState.stagger;
+                }
+                temp.GetComponent<Character>().currentHealth -= damage;//compute damage 
+                if (temp.GetComponent<Character>().currentHealth <= 0)//check if they should be dead
+                { Kill(obj.gameObject); }//KILL THEM!!!!
+            }
         }
     }
     //******************************************************************************************************************************************************
@@ -157,7 +148,19 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
     }   
     public IEnumerator PushCo(Rigidbody2D character)//Author Johnathan Bates
     {
+        if(character.CompareTag("Player"))
+        {
+            character.GetComponent<Animator>().SetBool("staggered", true);
+            character.GetComponent<Player>().currentState = PlayerState.stagger;
+            character.GetComponent<Animator>().SetFloat("moveX", character.GetComponent<Player>().lastFacingHorizontal);//allows movement animation
+            character.GetComponent<Animator>().SetFloat("moveY", character.GetComponent<Player>().lastFacingVertical);//allows movement animation
+        }
         yield return new WaitForSeconds(this.pushTime);//how long the push last
+        if (character.CompareTag("Player"))
+        {
+            character.GetComponent<Animator>().SetBool("staggered", false);
+            character.GetComponent<Player>().currentState = PlayerState.walk;
+        }
         if (character != null)//check to see the character isn't destroyed/set to null
         {
             character.velocity = Vector2.zero;//stops the push

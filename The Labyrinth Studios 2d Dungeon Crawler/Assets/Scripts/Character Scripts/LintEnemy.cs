@@ -85,14 +85,14 @@ public class LintEnemy : Enemy, IDamageable, IKillable, IMoveable
     private void OnTriggerEnter2D(Collider2D obj)
     {
         if (obj.CompareTag("Player"))//check to make sure either player hits enemy or enemy hits player
-        {
+        {            
             if (obj != null)
             {
                 Push(obj);
             }
             if (obj != null)
-            { 
-                Damage(attackDamage, obj);                
+            {
+                Damage(attackDamage, obj);
             }
         }
     }

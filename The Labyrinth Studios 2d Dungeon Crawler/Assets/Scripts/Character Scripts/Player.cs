@@ -66,8 +66,8 @@ public class Player : Character, IDataPersistence, IMoveable
     protected GameObject[] inRange;//array that will hold all enemies, will be used to revive them
     public GameObject arrow;
     private float projectileForce;
-    private float lastFacingVertical;
-    private float lastFacingHorizontal;
+    public float lastFacingVertical;
+    public float lastFacingHorizontal;
 
     public bool usedAPortal = false;
     private bool hasDagger = false;
@@ -277,26 +277,6 @@ public class Player : Character, IDataPersistence, IMoveable
             else { hearts[i].sprite = emptyHeart; }
             if (i < numOfHearts) { hearts[i].enabled = true; }
             else { hearts[i].enabled = false; }
-        }
-    }
-    //******************************************************************************************************************************************************
-    //*****************************************************************VISUAL EFFECTS***********************************************************************
-    //******************************************************************************************************************************************************
-    public IEnumerator playerBlink(GameObject other)//Coroutine to make the player blink whenever the player takes damage
-                                                    //Author Johnathan Bates
-    {
-        for (int i = 10; i > 0; i--)
-        {
-            if (other != null)
-            {
-                other.GetComponent<SpriteRenderer>().enabled = false;
-                yield return new WaitForSeconds(.01f);
-            }
-            if (other != null)
-            {
-                other.GetComponent<SpriteRenderer>().enabled = true;
-                yield return new WaitForSeconds(.015f);
-            }
         }
     }
 
