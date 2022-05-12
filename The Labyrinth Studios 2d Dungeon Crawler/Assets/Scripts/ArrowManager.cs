@@ -6,12 +6,16 @@ public class ArrowManager : MonoBehaviour
 {
     public void LoadData(GameData data)
     {
+        Debug.Log("thisgot saved");
+        Debug.Log(data.arrowCount);
         this.arrowCount = data.arrowCount;
         arrowText.text = arrowCount.ToString(); //Sets initial UI key count
     }
     public void SaveData(GameData data)
     {
+        Debug.Log("thisgot saved");
         data.arrowCount = this.arrowCount;
+        Debug.Log(data.arrowCount);
     }
 
     public static ArrowManager instance;

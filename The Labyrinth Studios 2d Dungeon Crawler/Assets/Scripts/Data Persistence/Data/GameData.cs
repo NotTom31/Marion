@@ -37,12 +37,13 @@ public class GameData
         storedItems = new List<Item>();
         this.currentHealth = 3;//current health is loaded and saved in the player script. **IN PLAYER.cs**
         this.keyCount = 0;//How many keys does the player current have **IN KEYMANAGER.cs**
+        this.arrowCount = 0;
         playerPosition = new Vector3(0f,0f,0f);//player position is loaded and saved in the player script **IN PLAYER.cs** 
         playerPortalPosition = new Vector3(0f, 0f, 0f);
-        bool keyCollected = false;//keys that have been collected
-        bool hasDagger = false;
-        bool hasCrossbow = false;
-        bool usedAPortal = false;
+        this.keyCollected = false;//keys that have been collected
+        this.hasDagger = false;
+        this.hasCrossbow = false;
+        this.usedAPortal = false;
         chestOpened = new SerializableDictionary<string, bool>();//chest that have been opened
         leversActivated = new SerializableDictionary<string, bool>();//levers activated are loaded and saved in the lever script **IN LEVER.cs**
         doorUnlocked = new SerializableDictionary<string, bool>();//Doors that have been unlocked **IN DOORTAKEINPUT.cs**

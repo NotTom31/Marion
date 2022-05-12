@@ -49,7 +49,6 @@ public class Chest : Collectable , IDataPersistence
             ChestOpened.Invoke();
             GameObject.Find("Door Open SFX").GetComponent<AudioSource>().Play();//I thought this might sound good for the chest but we can change it 
             GetComponent<SpriteRenderer>().sprite = emptyChest;
-            Debug.Log("Grant " + pesosAmount + " pesos!");
             if (HasKey == true)
             {
                 KeyManager.instance.AddKey();

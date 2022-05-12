@@ -68,8 +68,7 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
             temp.gameObject.SetActive(false); temp.GetComponent<Enemy>().currentState = EnemyState.dead;
         }
         else if(obj.CompareTag("BossSummon"))
-        {
-            
+        {            
             GameObject theBoss = GameObject.Find("RatPlagueDrBoss");
             theBoss.GetComponent<RatBoss>().currentMinionAmount--;
             if (dropChance > 75)
