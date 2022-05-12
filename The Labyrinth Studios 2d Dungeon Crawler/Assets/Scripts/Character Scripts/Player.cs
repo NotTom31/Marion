@@ -87,6 +87,7 @@ public class Player : Character, IDataPersistence, IMoveable
         anim = this.GetComponent<Animator>();//Initializes the animator component
         thisBody = this.GetComponent<Rigidbody2D>();//Initializes the Rigidbody2d component        
         inRange = GameObject.FindGameObjectsWithTag("Fighter");
+
         moveSpeed = 1.25f;
         projectileForce = 80;
         if (SceneManager.GetActiveScene().name == "BossBattleScene")
@@ -286,18 +287,27 @@ public class Player : Character, IDataPersistence, IMoveable
     {
         for (int i = 10; i > 0; i--)
         {
-            SpriteRenderer temp = other.GetComponent<SpriteRenderer>();
-            temp.enabled = false;
-            yield return new WaitForSeconds(.01f);
-            temp.enabled = true;
-            yield return new WaitForSeconds(.015f);
+            if (other != null)
+            {
+                other.GetComponent<SpriteRenderer>().enabled = false;
+                yield return new WaitForSeconds(.01f);
+            }
+            if (other != null)
+            {
+                other.GetComponent<SpriteRenderer>().enabled = true;
+                yield return new WaitForSeconds(.015f);
+            }
         }
     }
 
     public IEnumerator playerInvulnerable(GameObject obj)//Author Johnathan Bates
     {
-        //this.currentState = PlayerState.stagger;
-        yield return new WaitForSeconds(.35f);
+        if (obj != null)
+        {
+            this.currentState = PlayerState.stagger;
+            yield return new WaitForSeconds(.3f);
+            this.currentState = PlayerState.walk;
+        }
     }
     //******************************************************************************************************************************************************
     //*****************************************************************ENEMY MANAGEMENT*********************************************************************
@@ -327,11 +337,13 @@ public class Player : Character, IDataPersistence, IMoveable
     {
         if (obj.CompareTag("Fighter") || obj.CompareTag("BossSummon") || obj.CompareTag("Boss"))//check to make sure either player hits enemy or enemy hits player
         {
-            if (obj.gameObject != null)
+            if (obj != null)
             {
                 Damage(attackDamage, obj);
-                Push(obj);
-                
+            }
+            if (obj != null)
+            { 
+                Push(obj);                
             }
         }
         // Author Joel Monteon

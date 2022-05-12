@@ -29,6 +29,7 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
     //******************************************************************************************************************************************************
     public void Damage(int damage, Collider2D obj)//Author Johnathan Bates
     {
+
         GameObject temp = obj.gameObject;//reference to the gameobject attatched to obj
         if(damage > 0)
         {
@@ -38,8 +39,14 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
         {
             if (obj.CompareTag("Player") && obj.GetComponent<Player>().currentState != PlayerState.stagger && damage > 0)//Player damaged, will  run the blink routine and set to stagger
             {
-                StartCoroutine(temp.GetComponent<Player>().playerInvulnerable(temp));
-                StartCoroutine(temp.GetComponent<Player>().playerBlink(temp));//start coroutine
+                if (obj != null)
+                {
+                    StartCoroutine(temp.GetComponent<Player>().playerInvulnerable(temp));
+                }
+                if (obj != null)
+                {
+                    StartCoroutine(temp.GetComponent<Player>().playerBlink(temp));//start coroutine
+                }
             }
             if (obj.CompareTag("Fighter"))//Enemy damaged, will set state to stagger
             {
@@ -63,9 +70,6 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
         else if (obj.CompareTag("Boss"))
         {
             SceneManager.LoadSceneAsync("EndGame");
-            GameObject toEndGame = GameObject.Find("WillEndGame");
-            toEndGame.SetActive(true);
-            temp.gameObject.SetActive(false); temp.GetComponent<Enemy>().currentState = EnemyState.dead;
         }
         else if(obj.CompareTag("BossSummon"))
         {            
@@ -150,9 +154,9 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
     }   
     public IEnumerator PushCo(Rigidbody2D character)//Author Johnathan Bates
     {
+        yield return new WaitForSeconds(this.pushTime);//how long the push last
         if (character != null)//check to see the character isn't destroyed/set to null
-        {            
-            yield return new WaitForSeconds(this.pushTime);//how long the push last
+        {
             character.velocity = Vector2.zero;//stops the push
         }
     }

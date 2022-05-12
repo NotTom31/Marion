@@ -23,7 +23,7 @@ public class LintEnemy : Enemy, IDamageable, IKillable, IMoveable
         thisBody = this.GetComponent<Rigidbody2D>();//Initializes the Rigidbody2d component
         chaseRadius = 1.3f;
         attackRadius = .1f;
-        reviveRadius = 5f;
+        reviveRadius = 15f;
     }
     private void Update()
     {
@@ -84,16 +84,14 @@ public class LintEnemy : Enemy, IDamageable, IKillable, IMoveable
     //******************************************************************************************************************************************************
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        /*if (obj.CompareTag("Arrow"))
-        {
-            Push(this.GetComponent<Collider2D>());
-            Damage(attackDamage, this.GetComponent<Collider2D>());            
-        }*/
         if (obj.CompareTag("Player"))//check to make sure either player hits enemy or enemy hits player
         {
-            if (obj.gameObject != null)
+            if (obj != null)
             {
                 Push(obj);
+            }
+            if (obj != null)
+            { 
                 Damage(attackDamage, obj);                
             }
         }

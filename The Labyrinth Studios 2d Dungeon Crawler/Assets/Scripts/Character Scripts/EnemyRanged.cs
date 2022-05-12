@@ -17,7 +17,7 @@ public class EnemyRanged : Enemy, IDamageable, IKillable, IMoveable, IPushable
         currentHealth = 3;
         chaseRadius = 4.5f;
         attackRadius = .8f;
-        reviveRadius = 5f;
+        reviveRadius = 15f;
         rangedRadius = 4;
         projectileForce = 80;
         attCooldown = 2;

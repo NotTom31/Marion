@@ -22,7 +22,6 @@ public class ArrowManager : MonoBehaviour , IDataPersistence
     private void Awake()
     {
         instance = this;
-
     }
 
     // Start is called before the first frame update

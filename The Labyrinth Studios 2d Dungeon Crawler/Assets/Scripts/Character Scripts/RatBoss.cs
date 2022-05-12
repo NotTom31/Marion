@@ -32,13 +32,13 @@ public class RatBoss : Enemy, IMoveable
     void Start()
     {
         fightStarted = false;
-        currentHealth = 30;
+        currentHealth = 45;
         maxMinionAmount = 5;
-        teleportCooldown = 15f;
+        teleportCooldown = 10f;
         lastTeleport = 0f;
         upperLeftPosition = new Vector3(-4.034f, 5.665f, transform.position.z);
         lowerLeftPosition = new Vector3(-4.034f, 1.11f, transform.position.z);
-        upperRightPosition = new Vector3(4.05f, 2.4738f, transform.position.z);
+        upperRightPosition = new Vector3(4.05f, 5.665f, transform.position.z);
         lowerRightPosition = new Vector3(4.05f, 1.11f, transform.position.z);
         disappear = new Vector3(1000, 1000,transform.position.z);
         //-----------------------------
@@ -60,11 +60,6 @@ public class RatBoss : Enemy, IMoveable
     {
         FacePlayer();
         Move();
-        if (this.currentHealth <= 0)
-        {
-            Debug.Log("he died wheres our ending");
-            SceneManager.LoadSceneAsync("EndGame");         
-        }
     }
     
     public void FacePlayer()
@@ -103,7 +98,7 @@ public class RatBoss : Enemy, IMoveable
             this.currentState = EnemyState.idle;
             if (fightStarted == true)
             {
-                teleportCooldown = 22;
+                teleportCooldown = 12;
             }
         }
     }
@@ -127,18 +122,18 @@ public class RatBoss : Enemy, IMoveable
     }    
     private IEnumerator SpawnEnemyCo(Vector3 SpawnPosition)
     {
-        while (currentMinionAmount < maxMinionAmount)
+        while(currentMinionAmount< maxMinionAmount)
         {
-            if (this.currentHealth >= 21)
+            if (this.currentHealth >= 31)
             {
              summonRandNum = randNum.Next(1, 2);
             }
-            if(this.currentHealth <= 20 && this.currentHealth >= 11)
+            if(this.currentHealth <= 30 && this.currentHealth >= 16)
             {
              maxMinionAmount = 8;
              summonRandNum = randNum.Next(1, 3);
             }
-            if(this.currentHealth <= 10 && this.currentHealth > 0)
+            if(this.currentHealth <= 15 && this.currentHealth > 0)
             {
                 maxMinionAmount = 10;
                 summonRandNum = randNum.Next(1, 4);
@@ -158,19 +153,19 @@ public class RatBoss : Enemy, IMoveable
             if (summonRandNum == 2)
             {
                 GameObject newEnemy = Instantiate(aSpiderEnemy, new Vector3(spawnHere.x, spawnHere.y, transform.position.z), Quaternion.identity);
-                newEnemy.GetComponent<LintEnemy>().currentHealth = 2;
+                newEnemy.GetComponent<EnemyRanged>().currentHealth = 2;
                 newEnemy.tag = "BossSummon";
                 newEnemy.GetComponent<Enemy>().chaseRadius = 50f;
             }
             if (summonRandNum == 3)
             {
                 GameObject newEnemy = Instantiate(aRatPlagueDr, new Vector3(spawnHere.x, spawnHere.y, transform.position.z), Quaternion.identity);
-                newEnemy.GetComponent<LintEnemy>().currentHealth = 4;
+                newEnemy.GetComponent<RatEnemy>().currentHealth = 4;
                 newEnemy.tag = "BossSummon";
                 newEnemy.GetComponent<Enemy>().chaseRadius = 50f;
             }
             currentMinionAmount++;
-            yield return new WaitForSeconds(1f);
-        }
+            yield return new WaitForSeconds(.8f);
+        }        
     }
 }

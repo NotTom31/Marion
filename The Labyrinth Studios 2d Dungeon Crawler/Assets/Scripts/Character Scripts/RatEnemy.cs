@@ -23,7 +23,7 @@ public class RatEnemy : Enemy, IDamageable, IKillable, IMoveable
         thisBody = this.GetComponent<Rigidbody2D>();//Initializes the Rigidbody2d component
         chaseRadius = 1.3f;
         attackRadius = .35f;
-        reviveRadius = 5f;       
+        reviveRadius = 15f;       
     }
     private void Update()
     {
@@ -94,9 +94,12 @@ public class RatEnemy : Enemy, IDamageable, IKillable, IMoveable
     {
         if (obj.CompareTag("Player"))//check to make sure either player hits enemy or enemy hits player
         {
-            if (obj.gameObject != null)
+            if (obj != null)
             {
                 Push(obj);
+            }
+            if (obj != null)
+            { 
                 Damage(attackDamage, obj);                
             }
         }
