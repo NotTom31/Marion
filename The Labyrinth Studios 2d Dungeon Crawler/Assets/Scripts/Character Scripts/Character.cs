@@ -147,8 +147,11 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
             if (character != null)//makes sure the object hasn't already been destroyed
             {           
                 Vector2 difference = character.transform.position - transform.position;//not sure lol
-                difference = difference.normalized * this.thrust;//this is where the thrust will change how far something is pushed back            
+                difference = difference.normalized * this.thrust;//this is where the thrust will change how far something is pushed back
+            if (character != null)
+            {
                 character.AddForce(difference, ForceMode2D.Impulse);//the actual push occurs here
+            }
                 StartCoroutine(PushCo(character));
             }
     }   
