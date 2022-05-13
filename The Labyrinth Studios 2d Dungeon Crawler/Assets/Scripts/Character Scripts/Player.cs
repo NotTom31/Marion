@@ -33,6 +33,12 @@ public class Player : Character, IDataPersistence, IMoveable
         this.lastFacingVertical = data.LastVerticalBox;
         this.hasDagger = data.hasDagger;
         this.hasCrossbow = data.hasCrossbow;
+        this.holdingDagger = data.holdingDagger;
+        this.holdingCrossbow = data.holdingCrossbow;
+        if(this.holdingCrossbow == true)
+        {
+            EquipBow();
+        }
         anim.SetFloat("moveX", lastFacingHorizontal);//allows movement animation
         anim.SetFloat("moveY", lastFacingVertical);//allows movement animation
     }
@@ -47,7 +53,9 @@ public class Player : Character, IDataPersistence, IMoveable
         }
         data.lastHorizontalPlayer = this.lastFacingHorizontal;
         data.lastVerticalPlayer = this.lastFacingVertical;
-        data.hasDagger = this.hasDagger;
+        data.holdingCrossbow = this.holdingCrossbow;
+        data.holdingDagger = this.holdingDagger;
+        data.hasDagger = this.holdingDagger;
         data.hasCrossbow = this.hasCrossbow;
         data.usedAPortal = this.usedAPortal;
     }
@@ -70,6 +78,8 @@ public class Player : Character, IDataPersistence, IMoveable
     public bool usedAPortal = false;
     private bool hasDagger = false;
     private bool hasCrossbow = false;
+    private bool holdingDagger = false;
+    private bool holdingCrossbow = false;
     private GameObject arrowManager;
     //******************************************************************************************************************************************************
     //********************************************************INITIALIZATION********************************************************************************
@@ -96,7 +106,10 @@ public class Player : Character, IDataPersistence, IMoveable
 
     void Start()
     {
-        anim.SetBool("holdingDagger", true);
+        if (hasDagger == false & hasCrossbow == false)
+        {
+            anim.SetBool("holdingDagger", true);
+        }
     }
     //******************************************************************************************************************************************************
     //*****************************************************************UPDATE*******************************************************************************
@@ -107,12 +120,13 @@ public class Player : Character, IDataPersistence, IMoveable
         {
             anim.SetBool("holdingDagger", true);
             anim.SetBool("holdingCrossbow", false);
+            holdingDagger = true;
+            holdingCrossbow = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && hasCrossbow == true)
         {
-            anim.SetBool("holdingDagger", false);
-            anim.SetBool("holdingCrossbow", true);
+            EquipBow();
         }
 
         if (anim.GetBool("holdingDagger"))
@@ -147,6 +161,13 @@ public class Player : Character, IDataPersistence, IMoveable
 
         heartGUI();//manages heart display
         ReviveInRange();//revives enemies once out of a certain range
+    }
+    void EquipBow()
+    {
+        anim.SetBool("holdingDagger", false);
+        anim.SetBool("holdingCrossbow", true);
+        holdingCrossbow = true;
+        holdingDagger = false;
     }
     private IEnumerator AttackCo()
     {

@@ -25,7 +25,6 @@ public class DialogueHitbox : Collectable
         if (obj.CompareTag("Player"))
         {
             CloseText.Invoke();
-            Debug.Log("Walking away.");
             InteractIconOff.Invoke();
         }
     }

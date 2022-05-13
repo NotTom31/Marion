@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class Portal : Collidable, IDataPersistence
+public class Portal : MonoBehaviour, IDataPersistence
 {
     //******************************************************************************************************************************************************
     //***********************************************************************GUID***************************************************************************
@@ -20,7 +20,7 @@ public class Portal : Collidable, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        if(data.portal.ContainsKey(portalId))
+        if (data.portal.ContainsKey(portalId))
         {
             data.portal.TryGetValue(portalId, out portalUsed);
         }
@@ -42,7 +42,6 @@ public class Portal : Collidable, IDataPersistence
     }
     public void SaveData(GameData data)
     {
-            thePosition = transform.position;
             if (data.portal.ContainsKey(portalId))
             {
                 data.portal.Remove(portalId);
@@ -52,7 +51,7 @@ public class Portal : Collidable, IDataPersistence
             {
                 data.playerPortalPosition.Remove(portalPosId);
             }
-            data.playerPortalPosition.Add(portalPosId, thePosition);            
+            data.playerPortalPosition.Add(portalPosId, thePosition);
         
     }
     private GameObject theData;
@@ -62,13 +61,16 @@ public class Portal : Collidable, IDataPersistence
     {
         portalUsed = false;
     }
-    
+    void Start()
+    {
+        thePosition = this.transform.position;
+    }
 
 
 
     public string[] sceneNames;
 
-    protected override void OnCollide(Collider2D coll)
+    protected void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.name == "player")
         {
@@ -76,9 +78,6 @@ public class Portal : Collidable, IDataPersistence
             this.portalUsed = true;
             GameObject temp = GameObject.Find("player");
             temp.GetComponent<Player>().usedAPortal = true;
-
-            theData = GameObject.Find("DataPersistenceManager");
-            theData.GetComponent<DataPersistenceManager>().SaveGame();
             string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
         }

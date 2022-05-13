@@ -12,17 +12,7 @@ public enum CharacterType//State machine for the type of character
     player, lintEnemy, ratEnemy, ratBoss, spiderEnemy, npc
 }
 public class Character : MonoBehaviour, IDamageable, IKillable, IPushable 
-{
-    // Variables
-    // Variables
-    bool hurt;
-    public float maxHealth;
-    [SerializeField]
-    float health;
-    public float timeBetweenHurt;
-    float iframe;
-    public GameObject gameoverUI;
-    bool gameover;
+{    
 
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IDamageable*********************************************************************
@@ -103,28 +93,7 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
     //************************************************************DECLARING IMOVABLE************************************************************************
     //******************************************************************************************************************************************************
 
-    // idoa;sfkj
-    public void Damage(float amt)
-    {
-        if (iframe < 0)
-        {
-            health -= amt;
-            hurt = true;
-            Invoke("ResetHurt", 0.2f);
-            if (health <= 0)
-            {
-                GameOver();
-            }
-            iframe = timeBetweenHurt;
-        }
-    }
-    // asdjfhadsof
-    private void GameOver()
-    {
-        gameover = true;
-        gameoverUI.SetActive(true);
-        Time.timeScale = 0f;
-    }    
+   
     //******************************************************************************************************************************************************
     //************************************************************DECLARING IPUSHABLE***********************************************************************
     //******************************************************************************************************************************************************
@@ -185,6 +154,7 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
     public CharacterType charType;//Use this in the Inspector to initialize what type of character it is
     public int attackDamage;//Use this in a child class or inspector to initialize RigidBody
     public int currentHealth;//Use this in a child class or inspector to initialize health
+    public int maxHealth;
     public GameObject dropHeart;
     public GameObject dropArrow;
     public GameObject dropPotion;

@@ -49,7 +49,7 @@ public class Box : Collectable , IDataPersistence
     {
         data.LastHorizontalBox = this.LastFacingHorizontal;
         data.LastVerticalBox = this.LastFacingVertical;
-        currentPosition = this.transform.position;
+        
         if (data.boxPosition.ContainsKey(boxId))
         {
             data.boxPosition.Remove(boxId);
@@ -77,6 +77,7 @@ public UnityEvent BoxLift;
         {
             LastFacingHorizontal = Input.GetAxisRaw("Horizontal");
             LastFacingVertical = Input.GetAxisRaw("Vertical");
+            currentPosition = this.transform.position;
         }
     }
 

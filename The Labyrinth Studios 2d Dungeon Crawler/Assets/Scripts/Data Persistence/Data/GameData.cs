@@ -17,6 +17,8 @@ public class GameData
     public bool keyCollected;
     public bool hasDagger;
     public bool hasCrossbow;
+    public bool holdingDagger;
+    public bool holdingCrossbow;
     public bool usedAPortal;
     public SerializableDictionary<string, Vector3> playerPortalPosition;
     public SerializableDictionary<string, bool> chestOpened;
@@ -42,6 +44,8 @@ public class GameData
         this.keyCollected = false;//keys that have been collected
         this.hasDagger = false;
         this.hasCrossbow = false;
+        this.holdingDagger = false;
+        this.holdingCrossbow = false;
         this.usedAPortal = false;
         playerPortalPosition = new SerializableDictionary<string, Vector3>();
         chestOpened = new SerializableDictionary<string, bool>();//chest that have been opened
