@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1824100766090067827}
   - component: {fileID: 3468949519158013708}
-  - component: {fileID: 5271769531127487081}
   - component: {fileID: 6540918357395875544}
   m_Layer: 9
   m_Name: heart
@@ -84,33 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5271769531127487081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 759409606641153946}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84f7c7a6d90430f40af5a75bd1680a57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filter:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 0
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  collected: 0
 --- !u!61 &6540918357395875544
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -66,7 +66,7 @@ public class Player : Character, IDataPersistence, IMoveable
     private float projectileForce;
     public float lastFacingVertical;
     public float lastFacingHorizontal;
-
+    public bool attacking = false;
     public bool usedAPortal = false;
     private bool hasDagger = false;
     private bool hasCrossbow = false;
@@ -80,8 +80,7 @@ public class Player : Character, IDataPersistence, IMoveable
     }
     void Awake()
     {
-        charType = CharacterType.player;//state machine, what is the type of character
-        PlayerState currentState = PlayerState.walk;//initialize playerstate to walk        
+        charType = CharacterType.player;//state machine, what is the type of character   
         anim = this.GetComponent<Animator>();//Initializes the animator component
         thisBody = this.GetComponent<Rigidbody2D>();//Initializes the Rigidbody2d component        
         inRange = GameObject.FindGameObjectsWithTag("Fighter");
@@ -157,14 +156,17 @@ public class Player : Character, IDataPersistence, IMoveable
             {
                 if (this != null)
                 {
+                    attacking = true;
                     anim.SetBool("attacking", true);//allow animation
                     currentState = PlayerState.attack;//player state machine
                     yield return null;//wait for a frame
                 }
                 if (this != null)
                 {
+                    attacking = false;
                     anim.SetBool("attacking", false);//allow animation to continue
                     yield return new WaitForSeconds(.33f);//wait for a third of a second
+                    this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;//stops the push
                 }
                 currentState = PlayerState.walk;//resetting player state machine
             }

@@ -11,16 +11,19 @@ public class MenuController : MonoBehaviour
     public string _newGameLevel;
     private string levelToLoad;
     private string buttonPressed;
-    [SerializeField] private GameObject noSavedGameDialog = null;
+    [SerializeField] private GameObject noSavedGameDialog;
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button loadGameButton;
     GameObject theLoadScene;
     private GameObject sceneHandle;
     private GameObject theData;
+    private GameObject fade;
     private void Start()
     {
         theData = GameObject.Find("DataPersistenceManager");
         sceneHandle = GameObject.Find("Scene Data");
+        fade = GameObject.Find("Image");
+        fade.SetActive(false);
     }
     public void NewGameDialogYes()
     {
@@ -44,15 +47,20 @@ public class MenuController : MonoBehaviour
         loadGameButton.interactable = false;
     }
     private IEnumerator chillOut(string buttonName)
-    {
-        yield return new WaitForSeconds(2f);
+    {        
         if(buttonName == "New")
         {
+            fade.SetActive(true);
+            fade.GetComponent<Animator>().Play("MenuFade");
+            yield return new WaitForSeconds(2f);
             DataPersistenceManager.instance.NewGame();
             SceneManager.LoadSceneAsync("Level_0");
         }
         if(buttonName == "Load")
         {
+            fade.SetActive(true);
+            fade.GetComponent<Animator>().Play("MenuFade");
+            yield return new WaitForSeconds(2f);
             SceneManager.LoadSceneAsync(sceneHandle.GetComponent<SceneScript>().currentScene);
         }        
     }

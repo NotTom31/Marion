@@ -42,7 +42,6 @@ public class Portal : Collidable, IDataPersistence
     }
     public void SaveData(GameData data)
     {
-        Debug.Log(this.portalId);
             thePosition = transform.position;
             if (data.portal.ContainsKey(portalId))
             {

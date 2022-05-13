@@ -95,6 +95,7 @@ public UnityEvent BoxLift;
                 BoxLayer.Invoke(); //initial setting the boxes local position and layer to keep it consistant
                 //transform.localPosition = new Vector3(0, 0, 0);
                 BoxFacing();
+
             }
             else
             {

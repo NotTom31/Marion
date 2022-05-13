@@ -161,7 +161,7 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
                 character.GetComponent<Player>().currentState = PlayerState.stagger;
                 character.GetComponent<Animator>().SetFloat("moveX", character.GetComponent<Player>().lastFacingHorizontal);//allows movement animation
                 character.GetComponent<Animator>().SetFloat("moveY", character.GetComponent<Player>().lastFacingVertical);//allows movement animation
-            }
+            }            
             yield return new WaitForSeconds(this.pushTime);//how long the push last
         }        
         if (character != null)//check to see the character isn't destroyed/set to null
