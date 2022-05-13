@@ -144,10 +144,15 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
                 character.AddForce(difference, ForceMode2D.Impulse);//the actual push occurs here
             }
                 StartCoroutine(PushCo(character));
+                if(character.CompareTag("Player"))
+                {
+                    character.GetComponent<Player>().currentState = PlayerState.walk;
+                }
             }
     }   
     public IEnumerator PushCo(Rigidbody2D character)//Author Johnathan Bates
     {
+        beingPushed = true;
         if (character != null)
         {
             if (character.CompareTag("Player"))
@@ -168,6 +173,7 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
             }
             character.velocity = Vector2.zero;//stops the push
         }
+        beingPushed = false;
     }
     //******************************************************************************************************************************************************
     //********************************************************CHARACTER CLASS ATTRIBUTES********************************************************************
@@ -184,6 +190,7 @@ public class Character : MonoBehaviour, IDamageable, IKillable, IPushable
     public GameObject dropPotion;
     protected int dropChance;
     protected int itemChance;
+    protected bool beingPushed = false;
     System.Random random;
     
     void FixedUpdate()

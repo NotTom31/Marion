@@ -29,8 +29,6 @@ public class Player : Character, IDataPersistence, IMoveable
         this.usedAPortal = data.usedAPortal;
         if (usedAPortal == false)
         { this.transform.position = data.playerPosition; }
-        /*if(usedAPortal == true)
-        { this.transform.position = new Vector3(0, 0, 0); }*/
         this.lastFacingHorizontal = data.lastHorizontalPlayer;
         this.lastFacingVertical = data.LastVerticalBox;
         this.hasDagger = data.hasDagger;
@@ -153,86 +151,94 @@ public class Player : Character, IDataPersistence, IMoveable
     }
     private IEnumerator AttackCo()
     {
-        if (anim.GetBool("holdingDagger"))
+        if (beingPushed == false)
         {
-            anim.SetBool("attacking", true);//allow animation
-            currentState = PlayerState.attack;//player state machine
-            yield return null;//wait for a frame
-            anim.SetBool("attacking", false);//allow animation to continue
-            yield return new WaitForSeconds(.33f);//wait for a third of a second
-            currentState = PlayerState.walk;//resetting player state machine
-        }
-        if (anim.GetBool("holdingCrossbow"))
-        {
-
-            Vector2 offset = new Vector2(0, 0);
-            Vector3 castv;
-            offset.x = anim.GetFloat("moveX");
-            offset.y = anim.GetFloat("moveY");
-            if (arrowManager.GetComponent<ArrowManager>().arrowCount > 0)
+            if (anim.GetBool("holdingDagger"))
             {
-                arrowManager.GetComponent<ArrowManager>().SubtractArrow();
-                if (offset.x == 1f)
+                if (this != null)
                 {
-                    offset.x = .1f;
-                    castv = offset;
-                    GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
-                    newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(projectileForce, 0f));
                     anim.SetBool("attacking", true);//allow animation
                     currentState = PlayerState.attack;//player state machine
                     yield return null;//wait for a frame
-                    anim.SetBool("attacking", false);//allow animation to continue
-                    yield return new WaitForSeconds(.33f);//wait for a third of a second
-                    currentState = PlayerState.walk;//resetting player state machine
-
                 }
-                if (offset.x == -1f)
+                if (this != null)
                 {
-                    offset.x = -.1f;
-                    castv = offset;
-                    GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 180f));
-                    newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(-projectileForce, 0f));
-                    anim.SetBool("attacking", true);//allow animation
-                    currentState = PlayerState.attack;//player state machine
-                    yield return null;//wait for a frame
                     anim.SetBool("attacking", false);//allow animation to continue
                     yield return new WaitForSeconds(.33f);//wait for a third of a second
-                    currentState = PlayerState.walk;//resetting player state machine
                 }
+                currentState = PlayerState.walk;//resetting player state machine
+            }
+            if (anim.GetBool("holdingCrossbow"))
+            {
 
-                if (offset.y == 1f)
+                Vector2 offset = new Vector2(0, 0);
+                Vector3 castv;
+                offset.x = anim.GetFloat("moveX");
+                offset.y = anim.GetFloat("moveY");
+                if (arrowManager.GetComponent<ArrowManager>().arrowCount > 0)
                 {
-                    offset.y = .1f;
+                    arrowManager.GetComponent<ArrowManager>().SubtractArrow();
+                    if (offset.x == 1f)
+                    {
+                        offset.x = .1f;
+                        castv = offset;
+                        GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+                        newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(projectileForce, 0f));
+                        anim.SetBool("attacking", true);//allow animation
+                        currentState = PlayerState.attack;//player state machine
+                        yield return null;//wait for a frame
+                        anim.SetBool("attacking", false);//allow animation to continue
+                        yield return new WaitForSeconds(.33f);//wait for a third of a second
+                        currentState = PlayerState.walk;//resetting player state machine
+
+                    }
+                    if (offset.x == -1f)
+                    {
+                        offset.x = -.1f;
+                        castv = offset;
+                        GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 180f));
+                        newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(-projectileForce, 0f));
+                        anim.SetBool("attacking", true);//allow animation
+                        currentState = PlayerState.attack;//player state machine
+                        yield return null;//wait for a frame
+                        anim.SetBool("attacking", false);//allow animation to continue
+                        yield return new WaitForSeconds(.33f);//wait for a third of a second
+                        currentState = PlayerState.walk;//resetting player state machine
+                    }
+
+                    if (offset.y == 1f)
+                    {
+                        offset.y = .1f;
+                        castv = offset;
+                        GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 90f));
+                        newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, projectileForce));
+                        anim.SetBool("attacking", true);//allow animation
+                        currentState = PlayerState.attack;//player state machine
+                        yield return null;//wait for a frame
+                        anim.SetBool("attacking", false);//allow animation to continue
+                        yield return new WaitForSeconds(.33f);//wait for a third of a second
+                        currentState = PlayerState.walk;//resetting player state machine
+                    }
+                    if (offset.y == -1f)
+                    {
+
+                        offset.y = -.1f;
+                        castv = offset;
+                        GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, -90f));
+                        newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -projectileForce));
+
+                        anim.SetBool("attacking", true);//allow animation
+                        currentState = PlayerState.attack;//player state machine
+                        yield return null;//wait for a frame
+                        anim.SetBool("attacking", false);//allow animation to continue
+                        yield return new WaitForSeconds(.33f);//wait for a third of a second
+                        currentState = PlayerState.walk;//resetting player state machine
+                    }
                     castv = offset;
-                    GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, 90f));
-                    newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, projectileForce));
-                    anim.SetBool("attacking", true);//allow animation
-                    currentState = PlayerState.attack;//player state machine
-                    yield return null;//wait for a frame
-                    anim.SetBool("attacking", false);//allow animation to continue
-                    yield return new WaitForSeconds(.33f);//wait for a third of a second
-                    currentState = PlayerState.walk;//resetting player state machine
+
                 }
-                if (offset.y == -1f)
-                {
-
-                    offset.y = -.1f;
-                    castv = offset;
-                    GameObject newProjectile = Instantiate(arrow, transform.position + castv, transform.rotation * Quaternion.Euler(0f, 0f, -90f));
-                    newProjectile.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -projectileForce));
-
-                    anim.SetBool("attacking", true);//allow animation
-                    currentState = PlayerState.attack;//player state machine
-                    yield return null;//wait for a frame
-                    anim.SetBool("attacking", false);//allow animation to continue
-                    yield return new WaitForSeconds(.33f);//wait for a third of a second
-                    currentState = PlayerState.walk;//resetting player state machine
-                }
-                castv = offset;
-
             }
         }
-
 
 
 
