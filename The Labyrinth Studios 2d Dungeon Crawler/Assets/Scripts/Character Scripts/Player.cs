@@ -35,7 +35,13 @@ public class Player : Character, IDataPersistence, IMoveable
         this.hasCrossbow = data.hasCrossbow;
         this.holdingDagger = data.holdingDagger;
         this.holdingCrossbow = data.holdingCrossbow;
-        if(this.holdingCrossbow == true)
+        Debug.Log("holding dagger is " + holdingDagger);
+        Debug.Log("holding crossbow is " + holdingCrossbow);
+        if (holdingDagger)
+        {
+            EquipDagger();
+        }
+        if(holdingCrossbow)
         {
             EquipBow();
         }
@@ -44,6 +50,7 @@ public class Player : Character, IDataPersistence, IMoveable
     }
     public void SaveData(GameData data)
     {
+        
         data.currentHealth = this.currentHealth;
         if(usedAPortal == false)
         { data.playerPosition = this.transform.position; }
@@ -56,6 +63,7 @@ public class Player : Character, IDataPersistence, IMoveable
         data.holdingCrossbow = this.holdingCrossbow;
         data.holdingDagger = this.holdingDagger;
         data.hasDagger = this.holdingDagger;
+        Debug.Log("Saved holding dagger is " + data.holdingDagger);
         data.hasCrossbow = this.hasCrossbow;
         data.usedAPortal = this.usedAPortal;
     }
@@ -118,10 +126,7 @@ public class Player : Character, IDataPersistence, IMoveable
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            anim.SetBool("holdingDagger", true);
-            anim.SetBool("holdingCrossbow", false);
-            holdingDagger = true;
-            holdingCrossbow = false;
+            EquipDagger();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && hasCrossbow == true)
@@ -161,6 +166,13 @@ public class Player : Character, IDataPersistence, IMoveable
 
         heartGUI();//manages heart display
         ReviveInRange();//revives enemies once out of a certain range
+    }
+    void EquipDagger()
+    {
+        anim.SetBool("holdingDagger", true);
+        anim.SetBool("holdingCrossbow", false);
+        holdingDagger = true;
+        holdingCrossbow = false;
     }
     void EquipBow()
     {
@@ -386,6 +398,7 @@ public class Player : Character, IDataPersistence, IMoveable
         {
             obj.GetComponent<ItemPickup>().Pickup();
             hasDagger = true;
+            holdingDagger = true;
         }
         if (obj.CompareTag("Crossbow"))
         {
