@@ -140,12 +140,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9000415251d210e41b085b13dec3f804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  filter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  collected: 0
   DisplayText:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2354172604596628815}
         m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
         m_MethodName: TriggerDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  NextSentence:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2354172604596628815}
+        m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
+        m_MethodName: TriggerNextSentence
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -170,3 +200,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  InteractIconOn:
+    m_PersistentCalls:
+      m_Calls: []
+  InteractIconOff:
+    m_PersistentCalls:
+      m_Calls: []

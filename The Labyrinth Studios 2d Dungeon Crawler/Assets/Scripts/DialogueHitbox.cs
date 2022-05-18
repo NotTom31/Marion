@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class DialogueHitbox : Collectable
 {
     public UnityEvent DisplayText;
+    public UnityEvent NextSentence;
     public UnityEvent CloseText;
     public UnityEvent InteractIconOn;
     public UnityEvent InteractIconOff;
@@ -13,12 +14,19 @@ public class DialogueHitbox : Collectable
 
     protected override void OnCollect()
     {
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("e") && collected == true)
         {
-            DisplayText.Invoke();
+            NextSentence.Invoke();
         }
-        InteractIconOn.Invoke();
+        if (Input.GetKeyDown("e") && collected == false)
+        {
+            collected = true;
+            DisplayText.Invoke();
+        } 
+    InteractIconOn.Invoke();
     }
+        
+
 
     private void OnTriggerExit2D(Collider2D obj)
     {
@@ -26,6 +34,7 @@ public class DialogueHitbox : Collectable
         {
             CloseText.Invoke();
             InteractIconOff.Invoke();
+            collected = false;
         }
     }
 }

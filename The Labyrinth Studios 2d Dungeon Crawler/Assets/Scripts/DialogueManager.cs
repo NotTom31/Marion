@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     public Text contText;
     public Text dialogueText;
+    public UnityEvent SetCollected;
 
     public Animator animator;
 
@@ -61,6 +63,7 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
+        SetCollected.Invoke();
     }
 
 }
