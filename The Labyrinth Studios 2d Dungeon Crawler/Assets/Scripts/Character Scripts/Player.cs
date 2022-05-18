@@ -62,7 +62,7 @@ public class Player : Character, IDataPersistence, IMoveable
         data.lastVerticalPlayer = this.lastFacingVertical;
         data.holdingCrossbow = this.holdingCrossbow;
         data.holdingDagger = this.holdingDagger;
-        data.hasDagger = this.holdingDagger;
+        data.hasDagger = this.hasDagger;
         Debug.Log("Saved holding dagger is " + data.holdingDagger);
         data.hasCrossbow = this.hasCrossbow;
         data.usedAPortal = this.usedAPortal;

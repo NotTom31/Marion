@@ -22,7 +22,7 @@ public class MenuController : MonoBehaviour
     {
         theData = GameObject.Find("DataPersistenceManager");
         sceneHandle = GameObject.Find("Scene Data");
-        if(SceneManager.GetActiveScene().name == "MainMenu")
+        if(SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "EndGame")
         {
             fade = GameObject.Find("Image");
             fade.SetActive(false);
