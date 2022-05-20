@@ -10,7 +10,13 @@ public class DialogueHitbox : Collectable
     public UnityEvent CloseText;
     public UnityEvent InteractIconOn;
     public UnityEvent InteractIconOff;
+    public Animator animator;
+    public GameObject DialogueBox;
 
+    void Awake()
+    {
+        animator = DialogueBox.GetComponent<Animator>();
+    }
 
     protected override void OnCollect()
     {
@@ -25,10 +31,16 @@ public class DialogueHitbox : Collectable
         } 
     InteractIconOn.Invoke();
     }
-        
 
+    private void OnTriggerStay2D(Collider2D obj)
+    {
+        if(animator.GetBool("IsOpen") == false)
+        {
+            collected = false;
+        }
+    }
 
-    private void OnTriggerExit2D(Collider2D obj)
+        private void OnTriggerExit2D(Collider2D obj)
     {
         if (obj.CompareTag("Player"))
         {

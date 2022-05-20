@@ -206,3 +206,5 @@ MonoBehaviour:
   InteractIconOff:
     m_PersistentCalls:
       m_Calls: []
+  animator: {fileID: 0}
+  DialogueBox: {fileID: 4232533005381788193, guid: d4d199b7976a7004fbb00812ab5cd894, type: 3}
