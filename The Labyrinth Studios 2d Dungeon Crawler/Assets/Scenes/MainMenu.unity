@@ -1933,7 +1933,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -3642,10 +3642,10 @@ MonoBehaviour:
 
     "A" To move left
 
-    "S" To move right
+    "S" To move down
 
     "D" To
-    move down
+    move right
 
 
     "E" To Interact with interactable objects
